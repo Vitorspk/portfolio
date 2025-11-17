@@ -2568,66 +2568,7 @@
                         </div>
                     </div>
                 </div>
-                
-                <!-- Timeline Tab -->
-                <div id="timeline" class="tab-content">
-                    <div class="section-header">
-                        <h2 class="section-title">4-Year Career Timeline</h2>
-                        <p class="section-subtitle">
-                            From foundation to FinOps mastery - a journey of continuous growth and impact.
-                        </p>
-                    </div>
-                    
-                    <div class="timeline">
-                        <div class="timeline-item">
-                            <div class="timeline-year">2021 - Foundation Year</div>
-                            <div class="timeline-count">131 tasks completed</div>
-                            <p class="timeline-description">
-                                Started at Verifymy. Initial infrastructure setup and DevOps foundations.
-                                Deployed first cloud run workers, created infrastructure diagrams, centralized
-                                database connections on Secret Manager.
-                            </p>
-                        </div>
-                        
-                        <div class="timeline-item">
-                            <div class="timeline-year">2022 - Growth Year</div>
-                            <div class="timeline-count">192 tasks completed (+47%)</div>
-                            <p class="timeline-description">
-                                Expanding capabilities. Increased productivity by 47%. Began managing more
-                                complex infrastructure projects and automation initiatives.
-                            </p>
-                        </div>
-                        
-                        <div class="timeline-item">
-                            <div class="timeline-year">2023 - Breakthrough Year 🚀</div>
-                            <div class="timeline-count">376 tasks completed (+96%!)</div>
-                            <p class="timeline-description">
-                                Tech Lead role solidified. DOUBLED productivity! Record month: 106 tasks in
-                                August 2023. Started bi-weekly DevOps reviews. Truly became a force multiplier.
-                            </p>
-                        </div>
-                        
-                        <div class="timeline-item">
-                            <div class="timeline-year">2024 - Consolidation Year</div>
-                            <div class="timeline-count">382 tasks completed</div>
-                            <p class="timeline-description">
-                                Maintaining excellence. Sustained 380+ tasks/year while taking on more strategic
-                                initiatives. Continued bi-weekly planning presentations.
-                            </p>
-                        </div>
-                        
-                        <div class="timeline-item">
-                            <div class="timeline-year">2025 - FinOps Mastery Year 💰</div>
-                            <div class="timeline-count">481 tasks completed (+26%)</div>
-                            <p class="timeline-description">
-                                Peak performance. Led massive FinOps initiative achieving $183K annual savings
-                                (27% cost reduction). Implemented mTLS with Cloudflare, AWS-GCP HA VPN, custom
-                                canary deployment, and secured all 61 databases with SSL/TLS + certificates.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                
+
                 <!-- FinOps Tab -->
                 <div id="finops" class="tab-content">
                     <div class="section-header">
@@ -3439,35 +3380,34 @@
     
     <script>
         function showTab(event, tabName) {
-            console.log('=== showTab called ===');
-            console.log('Tab name:', tabName);
-            
             // Get all tabs and contents
             const allTabs = document.querySelectorAll('.tab');
             const allContents = document.querySelectorAll('.tab-content');
-            
-            console.log('Found', allTabs.length, 'tab buttons');
-            console.log('Found', allContents.length, 'tab contents');
-            
-            // Remove all active classes
-            allTabs.forEach(tab => tab.classList.remove('active'));
-            allContents.forEach(content => content.classList.remove('active'));
-            
+
+            // Remove all active classes AND inline styles
+            allTabs.forEach(tab => {
+                tab.classList.remove('active');
+            });
+            allContents.forEach(content => {
+                content.classList.remove('active');
+                content.style.display = ''; // Remove inline style to let CSS take over
+            });
+
             // Add active to clicked button
             if (event && event.currentTarget) {
                 event.currentTarget.classList.add('active');
             }
-            
+
             // Show target content
             const targetContent = document.getElementById(tabName);
-            console.log('Target content element:', targetContent);
-            
+
             if (targetContent) {
                 targetContent.classList.add('active');
-                targetContent.style.display = 'block'; // Force display
-                console.log('✅ Tab activated:', tabName);
-            } else {
-                console.error('❌ Tab content NOT FOUND:', tabName);
+
+                // Smooth scroll to top of content
+                setTimeout(() => {
+                    targetContent.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }, 100);
             }
         }
         
@@ -3520,7 +3460,8 @@
             if (e.key === 'ArrowRight') {
                 currentTabIndex = (currentTabIndex + 1) % tabs.length;
                 tabs[currentTabIndex].click();
-            } else if (e.key === 'ArrowLeft') {                currentTabIndex = (currentTabIndex - 1 + tabs.length) % tabs.length;
+            } else if (e.key === 'ArrowLeft') {
+                currentTabIndex = (currentTabIndex - 1 + tabs.length) % tabs.length;
                 tabs[currentTabIndex].click();
             }
         });
