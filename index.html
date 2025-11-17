@@ -694,6 +694,209 @@
             transform: translateY(0);
         }
         
+        /* Case Study Styles */
+        .case-study {
+            background: white;
+            border: 2px solid var(--border);
+            border-radius: var(--radius-xl);
+            overflow: hidden;
+            margin-bottom: var(--space-2xl);
+            transition: all var(--transition-base);
+        }
+        
+        .case-study:hover {
+            box-shadow: var(--shadow-xl);
+            border-color: var(--primary);
+        }
+        
+        .case-header {
+            background: linear-gradient(135deg, var(--gray-50), var(--gray-100));
+            padding: var(--space-xl);
+            border-bottom: 2px solid var(--border);
+        }
+        
+        .case-title {
+            font-size: 1.75rem;
+            font-weight: 800;
+            color: var(--text-primary);
+            margin-bottom: var(--space-sm);
+        }
+        
+        .case-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--space-sm);
+            margin-top: var(--space-md);
+        }
+        
+        .case-tag {
+            padding: var(--space-xs) var(--space-md);
+            background: var(--primary);
+            color: white;
+            border-radius: var(--radius-full);
+            font-size: 0.8125rem;
+            font-weight: 600;
+        }
+        
+        .case-body {
+            padding: var(--space-xl);
+        }
+        
+        .case-section {
+            margin-bottom: var(--space-xl);
+        }
+        
+        .case-section-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: var(--space-md);
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+        }
+        
+        .before-after {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--space-xl);
+            margin: var(--space-lg) 0;
+        }
+        
+        .before-card, .after-card {
+            padding: var(--space-xl);
+            border-radius: var(--radius-lg);
+            position: relative;
+        }
+        
+        .before-card {
+            background: linear-gradient(135deg, #fee2e2, #fecaca);
+            border: 2px solid #f87171;
+        }
+        
+        .after-card {
+            background: linear-gradient(135deg, #d1fae5, #a7f3d0);
+            border: 2px solid #34d399;
+        }
+        
+        .before-label, .after-label {
+            font-size: 0.875rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: var(--space-md);
+            display: inline-block;
+            padding: var(--space-xs) var(--space-md);
+            border-radius: var(--radius-full);
+        }
+        
+        .before-label {
+            background: #dc2626;
+            color: white;
+        }
+        
+        .after-label {
+            background: #059669;
+            color: white;
+        }
+        
+        .metric-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: var(--space-md) 0;
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+            font-size: 1rem;
+        }
+        
+        .metric-row:last-child {
+            border-bottom: none;
+        }
+        
+        .metric-name {
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+        
+        .metric-value {
+            font-weight: 700;
+            font-size: 1.125rem;
+        }
+        
+        .savings-badge {
+            display: inline-block;
+            padding: var(--space-sm) var(--space-lg);
+            background: var(--success);
+            color: white;
+            border-radius: var(--radius-lg);
+            font-size: 1.5rem;
+            font-weight: 900;
+            margin: var(--space-lg) 0;
+            box-shadow: var(--shadow-md);
+        }
+        
+        .diagram-placeholder {
+            background: var(--gray-100);
+            border: 2px dashed var(--gray-300);
+            border-radius: var(--radius-lg);
+            padding: var(--space-2xl);
+            text-align: center;
+            color: var(--text-secondary);
+            font-style: italic;
+            margin: var(--space-lg) 0;
+        }
+        
+        .tech-stack-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--space-sm);
+            margin-top: var(--space-md);
+        }
+        
+        .tech-badge {
+            padding: var(--space-xs) var(--space-md);
+            background: var(--gray-100);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+        
+        .impact-metrics {
+            background: var(--gray-50);
+            padding: var(--space-xl);
+            border-radius: var(--radius-lg);
+            border-left: 4px solid var(--success);
+        }
+        
+        .impact-title {
+            font-size: 1.125rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: var(--space-md);
+        }
+        
+        .impact-list {
+            list-style: none;
+        }
+        
+        .impact-item {
+            padding: var(--space-sm) 0;
+            color: var(--text-secondary);
+            display: flex;
+            align-items: flex-start;
+            gap: var(--space-sm);
+        }
+        
+        .impact-item::before {
+            content: '✓';
+            color: var(--success);
+            font-weight: 700;
+            font-size: 1.25rem;
+            flex-shrink: 0;
+        }
+        
         /* Footer */
         footer {
             background: var(--gray-900);
@@ -860,6 +1063,46 @@
                 padding: var(--space-sm) var(--space-xs);
             }
             
+            .before-after {
+                grid-template-columns: 1fr;
+                gap: var(--space-md);
+            }
+            
+            .case-study {
+                margin-bottom: var(--space-xl);
+            }
+            
+            .case-header {
+                padding: var(--space-lg);
+            }
+            
+            .case-title {
+                font-size: 1.25rem;
+            }
+            
+            .case-body {
+                padding: var(--space-lg);
+            }
+            
+            .case-tags {
+                gap: var(--space-xs);
+            }
+            
+            .case-tag {
+                font-size: 0.75rem;
+                padding: 4px var(--space-sm);
+            }
+            
+            .savings-badge {
+                font-size: 1.125rem;
+                padding: var(--space-sm) var(--space-md);
+            }
+            
+            .diagram-placeholder {
+                padding: var(--space-lg);
+                font-size: 0.875rem;
+            }
+            
             footer {
                 padding: var(--space-2xl) var(--space-lg);
             }
@@ -893,7 +1136,8 @@
             
             .tab {
                 flex: 1;
-                min-width: 80px;
+                min-width: 60px;
+                padding: var(--space-sm);
             }
             
             .tab span:not(.tab-icon) {
@@ -902,6 +1146,16 @@
             
             .tab-icon {
                 font-size: 1.25rem;
+            }
+            
+            .case-title {
+                font-size: 1.125rem;
+            }
+            
+            .metric-row {
+                flex-direction: column;
+                gap: var(--space-xs);
+                align-items: flex-start;
             }
         }
         
@@ -929,7 +1183,7 @@
                 <div class="hero-content">
                     <h1>Vitor Schiavo</h1>
                     <p class="hero-subtitle">
-                        Platform Engineering & FinOps Excellence
+                        Site Reliability Engineer | Platform Engineering & FinOps Excellence
                     </p>
                     <div class="hero-meta">
                         <div class="hero-meta-item">
@@ -978,6 +1232,10 @@
                     <button class="tab active" onclick="showTab(event, 'overview')">
                         <span class="tab-icon">📊</span>
                         <span>Overview</span>
+                    </button>
+                    <button class="tab" onclick="showTab(event, 'cases')">
+                        <span class="tab-icon">📁</span>
+                        <span>Case Studies</span>
                     </button>
                     <button class="tab" onclick="showTab(event, 'experience')">
                         <span class="tab-icon">💼</span>
@@ -1120,6 +1378,665 @@
                                     </tr>
                                 </tbody>
                             </table>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Case Studies Tab -->
+                <div id="cases" class="tab-content">
+                    <div class="section-header">
+                        <h2 class="section-title">Case Studies & Projects</h2>
+                        <p class="section-subtitle">
+                            Real-world problems solved with measurable impact - documented with before/after metrics and technical details.
+                        </p>
+                    </div>
+                    
+                    <!-- CASE 1: Storage Migration -->
+                    <div class="case-study">
+                        <div class="case-header">
+                            <h3 class="case-title">💾 GCP Storage Migration - 95.9% Cost Reduction</h3>
+                            <p style="color: var(--text-secondary); font-size: 1rem; margin-top: var(--space-sm);">
+                                January 2025 | Cloud Cost Optimization | Lifecycle Management
+                            </p>
+                            <div class="case-tags">
+                                <span class="case-tag">GCP Cloud Storage</span>
+                                <span class="case-tag">Lifecycle Policies</span>
+                                <span class="case-tag">FinOps</span>
+                                <span class="case-tag">$148K Savings</span>
+                            </div>
+                        </div>
+                        <div class="case-body">
+                            <div class="case-section">
+                                <h4 class="case-section-title">❓ Problem</h4>
+                                <p style="font-size: 1rem; line-height: 1.7; color: var(--text-secondary);">
+                                    Cloud storage costs were growing exponentially - spending <strong>$12,874/month</strong> 
+                                    on 360 TiB of data, all in expensive Standard storage class. No lifecycle management, 
+                                    no archival strategy, no deletion policies. Old data sitting in hot storage forever.
+                                </p>
+                            </div>
+                            
+                            <div class="case-section">
+                                <h4 class="case-section-title">💡 Solution</h4>
+                                <p style="font-size: 1rem; line-height: 1.7; color: var(--text-secondary); margin-bottom: var(--space-md);">
+                                    Implemented intelligent lifecycle management strategy:
+                                </p>
+                                <ul class="impact-list">
+                                    <li class="impact-item">Analyzed data access patterns to identify hot vs cold data</li>
+                                    <li class="impact-item">Configured automatic archival for files older than 5 days</li>
+                                    <li class="impact-item">Set auto-deletion policy for files older than 365 days</li>
+                                    <li class="impact-item">Kept only last 5 days in Standard storage (hot data)</li>
+                                    <li class="impact-item">Applied policies to both multi-region and single-region buckets</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="before-after">
+                                <div class="before-card">
+                                    <span class="before-label">❌ BEFORE</span>
+                                    <div class="metric-row">
+                                        <span class="metric-name">Storage:</span>
+                                        <span class="metric-value">360 TiB</span>
+                                    </div>
+                                    <div class="metric-row">
+                                        <span class="metric-name">Storage Class:</span>
+                                        <span class="metric-value">100% Standard</span>
+                                    </div>
+                                    <div class="metric-row">
+                                        <span class="metric-name">Monthly Cost:</span>
+                                        <span class="metric-value">$12,874</span>
+                                    </div>
+                                    <div class="metric-row">
+                                        <span class="metric-name">Annual Cost:</span>
+                                        <span class="metric-value">$154,488</span>
+                                    </div>
+                                    <div class="metric-row">
+                                        <span class="metric-name">Lifecycle:</span>
+                                        <span class="metric-value">None</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="after-card">
+                                    <span class="after-label">✅ AFTER</span>
+                                    <div class="metric-row">
+                                        <span class="metric-name">Storage:</span>
+                                        <span class="metric-value">21 TiB</span>
+                                    </div>
+                                    <div class="metric-row">
+                                        <span class="metric-name">Storage Class:</span>
+                                        <span class="metric-value">10.5 TiB Std + Archive</span>
+                                    </div>
+                                    <div class="metric-row">
+                                        <span class="metric-name">Monthly Cost:</span>
+                                        <span class="metric-value">$533</span>
+                                    </div>
+                                    <div class="metric-row">
+                                        <span class="metric-name">Annual Cost:</span>
+                                        <span class="metric-value">$6,396</span>
+                                    </div>
+                                    <div class="metric-row">
+                                        <span class="metric-name">Lifecycle:</span>
+                                        <span class="metric-value">Automated</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="impact-metrics">
+                                <h4 class="impact-title">📈 Business Impact</h4>
+                                <ul class="impact-list">
+                                    <li class="impact-item"><strong>$148,092 annual savings</strong> (95.9% cost reduction)</li>
+                                    <li class="impact-item"><strong>94.2% storage reduction</strong> (360 TiB → 21 TiB)</li>
+                                    <li class="impact-item"><strong>$444K saved over 3 years</strong> with zero data loss</li>
+                                    <li class="impact-item"><strong>Automated lifecycle</strong> - no manual intervention required</li>
+                                    <li class="impact-item"><strong>Maintained performance</strong> - hot data still in Standard class</li>
+                                </ul>
+                            </div>
+                            
+                            <div style="margin-top: var(--space-lg);">
+                                <p style="font-size: 0.875rem; color: var(--text-secondary); font-weight: 600;">
+                                    <strong>Technologies:</strong>
+                                </p>
+                                <div class="tech-stack-list">
+                                    <span class="tech-badge">GCP Cloud Storage</span>
+                                    <span class="tech-badge">Lifecycle Management</span>
+                                    <span class="tech-badge">Archive Storage Class</span>
+                                    <span class="tech-badge">Cost Analysis</span>
+                                    <span class="tech-badge">Data Retention Policies</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- CASE 2: Airflow Optimization -->
+                    <div class="case-study">
+                        <div class="case-header">
+                            <h3 class="case-title">✈️ Airflow Infrastructure Optimization - 93% Reduction</h3>
+                            <p style="color: var(--text-secondary); font-size: 1rem; margin-top: var(--space-sm);">
+                                January 2025 | Resource Optimization | Kubernetes
+                            </p>
+                            <div class="case-tags">
+                                <span class="case-tag">Apache Airflow</span>
+                                <span class="case-tag">Kubernetes</span>
+                                <span class="case-tag">Resource Optimization</span>
+                                <span class="case-tag">$18K Savings</span>
+                            </div>
+                        </div>
+                        <div class="case-body">
+                            <div class="case-section">
+                                <h4 class="case-section-title">❓ Problem</h4>
+                                <p style="font-size: 1rem; line-height: 1.7; color: var(--text-secondary);">
+                                    Airflow deployment was massively over-provisioned: 100 pods (50 dev + 50 prod) consuming 
+                                    20 CPUs and 200 GB memory across 7 nodes, costing $1,513/month. Most pods idle 90% of the time.
+                                </p>
+                            </div>
+                            
+                            <div class="case-section">
+                                <h4 class="case-section-title">💡 Solution</h4>
+                                <ul class="impact-list">
+                                    <li class="impact-item">Analyzed actual workload patterns and resource utilization</li>
+                                    <li class="impact-item">Implemented intelligent autoscaling (4-10 replicas per environment)</li>
+                                    <li class="impact-item">Rightsized CPU and memory based on real usage data</li>
+                                    <li class="impact-item">Consolidated from 7 nodes to 1 node with better bin-packing</li>
+                                    <li class="impact-item">Maintained all functionality while dramatically reducing footprint</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="before-after">
+                                <div class="before-card">
+                                    <span class="before-label">❌ BEFORE</span>
+                                    <div class="metric-row">
+                                        <span class="metric-name">Replicas:</span>
+                                        <span class="metric-value">100 pods</span>
+                                    </div>
+                                    <div class="metric-row">
+                                        <span class="metric-name">CPU:</span>
+                                        <span class="metric-value">20 vCPUs</span>
+                                    </div>
+                                    <div class="metric-row">
+                                        <span class="metric-name">Memory:</span>
+                                        <span class="metric-value">200 GB</span>
+                                    </div>
+                                    <div class="metric-row">
+                                        <span class="metric-name">Nodes:</span>
+                                        <span class="metric-value">7 nodes</span>
+                                    </div>
+                                    <div class="metric-row">
+                                        <span class="metric-name">Cost:</span>
+                                        <span class="metric-value">$1,513/mo</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="after-card">
+                                    <span class="after-label">✅ AFTER</span>
+                                    <div class="metric-row">
+                                        <span class="metric-name">Replicas:</span>
+                                        <span class="metric-value">14 pods (avg)</span>
+                                    </div>
+                                    <div class="metric-row">
+                                        <span class="metric-name">CPU:</span>
+                                        <span class="metric-value">2.8 vCPUs</span>
+                                    </div>
+                                    <div class="metric-row">
+                                        <span class="metric-name">Memory:</span>
+                                        <span class="metric-value">28 GB</span>
+                                    </div>
+                                    <div class="metric-row">
+                                        <span class="metric-name">Nodes:</span>
+                                        <span class="metric-value">1 node</span>
+                                    </div>
+                                    <div class="metric-row">
+                                        <span class="metric-name">Cost:</span>
+                                        <span class="metric-value">~$0/mo</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="savings-badge">
+                                💰 $18,165/year saved (93% reduction)
+                            </div>
+                            
+                            <div class="impact-metrics">
+                                <h4 class="impact-title">📈 Business Impact</h4>
+                                <ul class="impact-list">
+                                    <li class="impact-item">86% reduction in pods (100 → 14)</li>
+                                    <li class="impact-item">86% reduction in CPU usage</li>
+                                    <li class="impact-item">86% reduction in memory allocation</li>
+                                    <li class="impact-item">Zero performance degradation - all DAGs running normally</li>
+                                    <li class="impact-item">Freed up 6 nodes for other workloads</li>
+                                </ul>
+                            </div>
+                            
+                            <div style="margin-top: var(--space-lg);">
+                                <div class="tech-stack-list">
+                                    <span class="tech-badge">Apache Airflow</span>
+                                    <span class="tech-badge">Kubernetes</span>
+                                    <span class="tech-badge">HPA</span>
+                                    <span class="tech-badge">Resource Quotas</span>
+                                    <span class="tech-badge">GCP GKE</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- CASE 3: mTLS & Zero-Trust -->
+                    <div class="case-study">
+                        <div class="case-header">
+                            <h3 class="case-title">🔐 mTLS with Cloudflare - Zero-Trust Architecture</h3>
+                            <p style="color: var(--text-secondary); font-size: 1rem; margin-top: var(--space-sm);">
+                                2024-2025 | Advanced Security | Network Architecture
+                            </p>
+                            <div class="case-tags">
+                                <span class="case-tag">mTLS</span>
+                                <span class="case-tag">Cloudflare</span>
+                                <span class="case-tag">Zero-Trust</span>
+                                <span class="case-tag">Certificate Management</span>
+                            </div>
+                        </div>
+                        <div class="case-body">
+                            <div class="case-section">
+                                <h4 class="case-section-title">❓ Problem</h4>
+                                <p style="font-size: 1rem; line-height: 1.7; color: var(--text-secondary);">
+                                    Standard TLS only authenticates server to client (one-way). Need mutual authentication 
+                                    where both client and server verify each other's identity using certificates. Critical for 
+                                    API security and compliance requirements (ISO 27001).
+                                </p>
+                            </div>
+                            
+                            <div class="case-section">
+                                <h4 class="case-section-title">💡 Solution</h4>
+                                <ul class="impact-list">
+                                    <li class="impact-item">Configured Cloudflare for Mutual TLS (mTLS) authentication</li>
+                                    <li class="impact-item">Generated and distributed client certificates to authorized services</li>
+                                    <li class="impact-item">Implemented certificate revocation and rotation policies</li>
+                                    <li class="impact-item">Built zero-trust architecture - verify every request with certificates</li>
+                                    <li class="impact-item">Automated certificate lifecycle management</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="diagram-placeholder">
+                                <p style="font-size: 1.125rem; font-weight: 600; margin-bottom: var(--space-md);">
+                                    🔐 mTLS Architecture Flow
+                                </p>
+                                <p style="font-size: 0.9375rem; line-height: 1.6;">
+                                    Client (with certificate) → Cloudflare (validates client cert) → Origin Server (validates Cloudflare cert)<br>
+                                    ↓ Mutual verification at every layer ↓<br>
+                                    End-to-end encrypted + authenticated communication
+                                </p>
+                            </div>
+                            
+                            <div class="impact-metrics">
+                                <h4 class="impact-title">📈 Business Impact</h4>
+                                <ul class="impact-list">
+                                    <li class="impact-item"><strong>Zero-trust security posture</strong> - every request authenticated</li>
+                                    <li class="impact-item"><strong>ISO 27001 compliance</strong> requirement satisfied</li>
+                                    <li class="impact-item"><strong>Protection against</strong> man-in-the-middle attacks and API abuse</li>
+                                    <li class="impact-item"><strong>Certificate-based access control</strong> - revoke instantly if compromised</li>
+                                    <li class="impact-item"><strong>Audit trail</strong> - every authenticated request logged</li>
+                                </ul>
+                            </div>
+                            
+                            <div style="margin-top: var(--space-lg);">
+                                <div class="tech-stack-list">
+                                    <span class="tech-badge">Cloudflare</span>
+                                    <span class="tech-badge">mTLS</span>
+                                    <span class="tech-badge">X.509 Certificates</span>
+                                    <span class="tech-badge">Zero-Trust</span>
+                                    <span class="tech-badge">PKI</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- CASE 4: AWS-GCP HA VPN -->
+                    <div class="case-study">
+                        <div class="case-header">
+                            <h3 class="case-title">🌉 AWS-GCP HA VPN - Multi-Cloud Connectivity</h3>
+                            <p style="color: var(--text-secondary); font-size: 1rem; margin-top: var(--space-sm);">
+                                2024 | Multi-Cloud Networking | High Availability
+                            </p>
+                            <div class="case-tags">
+                                <span class="case-tag">HA VPN</span>
+                                <span class="case-tag">AWS-GCP</span>
+                                <span class="case-tag">BGP Routing</span>
+                                <span class="case-tag">Multi-Cloud</span>
+                            </div>
+                        </div>
+                        <div class="case-body">
+                            <div class="case-section">
+                                <h4 class="case-section-title">❓ Problem</h4>
+                                <p style="font-size: 1rem; line-height: 1.7; color: var(--text-secondary);">
+                                    Need secure, reliable communication between AWS and GCP environments for hybrid workloads. 
+                                    Public internet routing not acceptable for sensitive data. Required redundancy for high availability.
+                                </p>
+                            </div>
+                            
+                            <div class="case-section">
+                                <h4 class="case-section-title">💡 Solution</h4>
+                                <ul class="impact-list">
+                                    <li class="impact-item">Architected High Availability VPN with redundant tunnels</li>
+                                    <li class="impact-item">Configured BGP routing for automatic failover</li>
+                                    <li class="impact-item">Set up private IP addressing and internal routing tables</li>
+                                    <li class="impact-item">Implemented encryption for all inter-cloud traffic</li>
+                                    <li class="impact-item">Built monitoring and alerting for tunnel health</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="diagram-placeholder">
+                                <p style="font-size: 1.125rem; font-weight: 600; margin-bottom: var(--space-md);">
+                                    🌉 HA VPN Architecture
+                                </p>
+                                <p style="font-size: 0.9375rem; line-height: 1.6;">
+                                    AWS VPC (10.0.0.0/16) ←→ VPN Tunnel 1 (Primary) ←→ GCP VPC (172.16.0.0/16)<br>
+                                    AWS VPC (10.0.0.0/16) ←→ VPN Tunnel 2 (Backup) ←→ GCP VPC (172.16.0.0/16)<br>
+                                    ↓ BGP automatic failover ↓<br>
+                                    99.99% availability with redundant paths
+                                </p>
+                            </div>
+                            
+                            <div class="impact-metrics">
+                                <h4 class="impact-title">📈 Business Impact</h4>
+                                <ul class="impact-list">
+                                    <li class="impact-item"><strong>Secure multi-cloud communication</strong> without public internet exposure</li>
+                                    <li class="impact-item"><strong>99.99% availability</strong> through redundant tunnels</li>
+                                    <li class="impact-item"><strong>Automatic failover</strong> via BGP (< 30 seconds)</li>
+                                    <li class="impact-item"><strong>Cost savings</strong> vs managed interconnect services</li>
+                                    <li class="impact-item"><strong>Enabled hybrid architecture</strong> - workloads span both clouds</li>
+                                </ul>
+                            </div>
+                            
+                            <div style="margin-top: var(--space-lg);">
+                                <div class="tech-stack-list">
+                                    <span class="tech-badge">GCP Cloud VPN</span>
+                                    <span class="tech-badge">AWS Site-to-Site VPN</span>
+                                    <span class="tech-badge">BGP</span>
+                                    <span class="tech-badge">IPSec</span>
+                                    <span class="tech-badge">Private Networking</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- CASE 5: Canary Deployment -->
+                    <div class="case-study">
+                        <div class="case-header">
+                            <h3 class="case-title">🚀 Custom Canary Deployment System</h3>
+                            <p style="color: var(--text-secondary); font-size: 1rem; margin-top: var(--space-sm);">
+                                2024-2025 | Progressive Delivery | Automation Development
+                            </p>
+                            <div class="case-tags">
+                                <span class="case-tag">Canary Deployment</span>
+                                <span class="case-tag">Custom Code</span>
+                                <span class="case-tag">Progressive Rollout</span>
+                                <span class="case-tag">Automated Rollback</span>
+                            </div>
+                        </div>
+                        <div class="case-body">
+                            <div class="case-section">
+                                <h4 class="case-section-title">❓ Problem</h4>
+                                <p style="font-size: 1rem; line-height: 1.7; color: var(--text-secondary);">
+                                    Traditional blue-green deployments require 100% traffic switch (risky). Need gradual rollout 
+                                    with ability to automatically rollback based on metrics. Off-the-shelf tools didn't fit our 
+                                    multi-environment Kubernetes setup.
+                                </p>
+                            </div>
+                            
+                            <div class="case-section">
+                                <h4 class="case-section-title">💡 Solution</h4>
+                                <ul class="impact-list">
+                                    <li class="impact-item">Developed custom canary deployment automation from scratch</li>
+                                    <li class="impact-item">Implemented progressive traffic splitting (10% → 25% → 50% → 100%)</li>
+                                    <li class="impact-item">Built health check monitoring at each stage</li>
+                                    <li class="impact-item">Created metric-based automated rollback (error rate, latency thresholds)</li>
+                                    <li class="impact-item">Integrated with Jenkins pipelines for seamless deployment</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="diagram-placeholder">
+                                <p style="font-size: 1.125rem; font-weight: 600; margin-bottom: var(--space-md);">
+                                    🚀 Canary Deployment Flow
+                                </p>
+                                <p style="font-size: 0.9375rem; line-height: 1.6;">
+                                    Stage 1: Deploy canary (10% traffic) → Monitor metrics (5 min)<br>
+                                    Stage 2: Increase to 25% → Monitor metrics (5 min)<br>
+                                    Stage 3: Increase to 50% → Monitor metrics (10 min)<br>
+                                    Stage 4: Full rollout 100% OR auto-rollback if metrics degrade<br>
+                                    ↓ Zero-downtime progressive delivery ↓
+                                </p>
+                            </div>
+                            
+                            <div class="impact-metrics">
+                                <h4 class="impact-title">📈 Business Impact</h4>
+                                <ul class="impact-list">
+                                    <li class="impact-item"><strong>Zero failed deployments</strong> - automatic rollback prevents incidents</li>
+                                    <li class="impact-item"><strong>Reduced blast radius</strong> - issues caught at 10% traffic</li>
+                                    <li class="impact-item"><strong>Increased deployment confidence</strong> - teams ship more frequently</li>
+                                    <li class="impact-item"><strong>Custom solution</strong> - not dependent on expensive third-party tools</li>
+                                    <li class="impact-item"><strong>Saved hundreds of hours</strong> in manual deployment monitoring</li>
+                                </ul>
+                            </div>
+                            
+                            <div style="margin-top: var(--space-lg);">
+                                <div class="tech-stack-list">
+                                    <span class="tech-badge">Kubernetes</span>
+                                    <span class="tech-badge">Nginx Ingress</span>
+                                    <span class="tech-badge">Prometheus</span>
+                                    <span class="tech-badge">Custom Scripts</span>
+                                    <span class="tech-badge">Jenkins</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- CASE 6: Database Security -->
+                    <div class="case-study">
+                        <div class="case-header">
+                            <h3 class="case-title">🔒 Database Security Hardening - 61 Databases</h3>
+                            <p style="color: var(--text-secondary); font-size: 1rem; margin-top: var(--space-sm);">
+                                2023-2025 | Security Architecture | Compliance
+                            </p>
+                            <div class="case-tags">
+                                <span class="case-tag">SSL/TLS</span>
+                                <span class="case-tag">Private Networking</span>
+                                <span class="case-tag">Certificate Auth</span>
+                                <span class="case-tag">ISO 27001</span>
+                            </div>
+                        </div>
+                        <div class="case-body">
+                            <div class="case-section">
+                                <h4 class="case-section-title">❓ Problem</h4>
+                                <p style="font-size: 1rem; line-height: 1.7; color: var(--text-secondary);">
+                                    Databases exposed with public IPs, unencrypted connections, password-only authentication. 
+                                    Not compliant with ISO 27001. Vulnerability to network sniffing and unauthorized access.
+                                </p>
+                            </div>
+                            
+                            <div class="case-section">
+                                <h4 class="case-section-title">💡 Solution</h4>
+                                <ul class="impact-list">
+                                    <li class="impact-item">Migrated all 61 databases to private IP addressing</li>
+                                    <li class="impact-item">Enforced SSL/TLS encryption for all connections</li>
+                                    <li class="impact-item">Implemented certificate-based authentication</li>
+                                    <li class="impact-item">Configured Redis 7.2 with SSL certificates + password auth</li>
+                                    <li class="impact-item">Built VPC peering for secure database access</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="before-after">
+                                <div class="before-card">
+                                    <span class="before-label">❌ BEFORE</span>
+                                    <div class="metric-row">
+                                        <span class="metric-name">Network:</span>
+                                        <span class="metric-value">Public IPs</span>
+                                    </div>
+                                    <div class="metric-row">
+                                        <span class="metric-name">Encryption:</span>
+                                        <span class="metric-value">None (plaintext)</span>
+                                    </div>
+                                    <div class="metric-row">
+                                        <span class="metric-name">Auth:</span>
+                                        <span class="metric-value">Password only</span>
+                                    </div>
+                                    <div class="metric-row">
+                                        <span class="metric-name">Compliance:</span>
+                                        <span class="metric-value">Non-compliant</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="after-card">
+                                    <span class="after-label">✅ AFTER</span>
+                                    <div class="metric-row">
+                                        <span class="metric-name">Network:</span>
+                                        <span class="metric-value">Private IPs only</span>
+                                    </div>
+                                    <div class="metric-row">
+                                        <span class="metric-name">Encryption:</span>
+                                        <span class="metric-value">SSL/TLS enforced</span>
+                                    </div>
+                                    <div class="metric-row">
+                                        <span class="metric-name">Auth:</span>
+                                        <span class="metric-value">Certificate + password</span>
+                                    </div>
+                                    <div class="metric-row">
+                                        <span class="metric-name">Compliance:</span>
+                                        <span class="metric-value">ISO 27001 ✓</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="impact-metrics">
+                                <h4 class="impact-title">📈 Business Impact</h4>
+                                <ul class="impact-list">
+                                    <li class="impact-item"><strong>61 databases secured</strong> (18 MongoDB Atlas + 44 PostgreSQL)</li>
+                                    <li class="impact-item"><strong>Zero security incidents</strong> post-implementation</li>
+                                    <li class="impact-item"><strong>ISO 27001 certification</strong> achieved</li>
+                                    <li class="impact-item"><strong>Defense-in-depth</strong> - multiple security layers</li>
+                                    <li class="impact-item"><strong>Audit-ready</strong> - full encryption and access logging</li>
+                                </ul>
+                            </div>
+                            
+                            <div style="margin-top: var(--space-lg);">
+                                <div class="tech-stack-list">
+                                    <span class="tech-badge">MongoDB Atlas</span>
+                                    <span class="tech-badge">PostgreSQL</span>
+                                    <span class="tech-badge">Redis 7.2</span>
+                                    <span class="tech-badge">SSL/TLS</span>
+                                    <span class="tech-badge">VPC Peering</span>
+                                    <span class="tech-badge">Private Networking</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- CASE 7: Kong Gateway -->
+                    <div class="case-study">
+                        <div class="case-header">
+                            <h3 class="case-title">🌐 Kong Gateway - API Management at Scale</h3>
+                            <p style="color: var(--text-secondary); font-size: 1rem; margin-top: var(--space-sm);">
+                                2023-2024 | API Management | Architecture
+                            </p>
+                            <div class="case-tags">
+                                <span class="case-tag">Kong Gateway</span>
+                                <span class="case-tag">160+ APIs</span>
+                                <span class="case-tag">Rate Limiting</span>
+                                <span class="case-tag">Kubernetes</span>
+                            </div>
+                        </div>
+                        <div class="case-body">
+                            <div class="case-section">
+                                <h4 class="case-section-title">❓ Problem</h4>
+                                <p style="font-size: 1rem; line-height: 1.7; color: var(--text-secondary);">
+                                    160+ applications with direct nginx ingress - no centralized API management, rate limiting, 
+                                    or authentication layer. Difficult to enforce policies, monitor API usage, or implement 
+                                    consistent security across all services.
+                                </p>
+                            </div>
+                            
+                            <div class="case-section">
+                                <h4 class="case-section-title">💡 Solution</h4>
+                                <ul class="impact-list">
+                                    <li class="impact-item">Designed and implemented Kong Gateway as centralized API management</li>
+                                    <li class="impact-item">Replaced nginx ingress for external traffic routing</li>
+                                    <li class="impact-item">Configured rate limiting, authentication, and authorization</li>
+                                    <li class="impact-item">Built monitoring dashboards for API metrics and usage</li>
+                                    <li class="impact-item">Deployed across all environments with GitOps automation</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="impact-metrics">
+                                <h4 class="impact-title">📈 Business Impact</h4>
+                                <ul class="impact-list">
+                                    <li class="impact-item"><strong>160+ applications</strong> now managed through single gateway</li>
+                                    <li class="impact-item"><strong>Centralized rate limiting</strong> - prevent API abuse</li>
+                                    <li class="impact-item"><strong>Better observability</strong> - all API traffic visible in one place</li>
+                                    <li class="impact-item"><strong>Consistent policies</strong> - authentication, CORS, headers enforced globally</li>
+                                    <li class="impact-item"><strong>Faster troubleshooting</strong> - centralized logging and tracing</li>
+                                </ul>
+                            </div>
+                            
+                            <div style="margin-top: var(--space-lg);">
+                                <div class="tech-stack-list">
+                                    <span class="tech-badge">Kong Gateway</span>
+                                    <span class="tech-badge">Kubernetes</span>
+                                    <span class="tech-badge">Nginx Ingress</span>
+                                    <span class="tech-badge">Prometheus</span>
+                                    <span class="tech-badge">GitOps</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- CASE 8: Modern AI Tools -->
+                    <div class="case-study">
+                        <div class="case-header">
+                            <h3 class="case-title">🧠 AI Tools Integration - Team Productivity</h3>
+                            <p style="color: var(--text-secondary); font-size: 1rem; margin-top: var(--space-sm);">
+                                2024-2025 | AI Adoption | Developer Experience
+                            </p>
+                            <div class="case-tags">
+                                <span class="case-tag">Claude AI</span>
+                                <span class="case-tag">GitHub Copilot</span>
+                                <span class="case-tag">Claude Code</span>
+                                <span class="case-tag">Team Enablement</span>
+                            </div>
+                        </div>
+                        <div class="case-body">
+                            <div class="case-section">
+                                <h4 class="case-section-title">❓ Problem</h4>
+                                <p style="font-size: 1rem; line-height: 1.7; color: var(--text-secondary);">
+                                    Development and code review processes were manual and time-consuming. Needed to accelerate 
+                                    team productivity while maintaining code quality. Most companies hesitant to adopt AI tools.
+                                </p>
+                            </div>
+                            
+                            <div class="case-section">
+                                <h4 class="case-section-title">💡 Solution</h4>
+                                <ul class="impact-list">
+                                    <li class="impact-item"><strong>December 2024:</strong> Enabled Claude AI for entire team</li>
+                                    <li class="impact-item"><strong>August 2024:</strong> Onboarded QA and dev teams to GitHub Copilot</li>
+                                    <li class="impact-item"><strong>August 2025:</strong> Evaluated Claude Code for automated PR reviews in Bitbucket pipelines</li>
+                                    <li class="impact-item">Created best practices guides for AI-assisted development</li>
+                                    <li class="impact-item">Measured productivity improvements and adoption rates</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="impact-metrics">
+                                <h4 class="impact-title">📈 Business Impact</h4>
+                                <ul class="impact-list">
+                                    <li class="impact-item"><strong>Early mover advantage</strong> - adopted AI tools before most competitors</li>
+                                    <li class="impact-item"><strong>Team productivity increase</strong> through AI-assisted coding</li>
+                                    <li class="impact-item"><strong>Faster code reviews</strong> - Claude Code evaluation for automation</li>
+                                    <li class="impact-item"><strong>Knowledge democratization</strong> - junior developers learn faster</li>
+                                    <li class="impact-item"><strong>Innovation culture</strong> - team embraces new technologies</li>
+                                </ul>
+                            </div>
+                            
+                            <div style="margin-top: var(--space-lg);">
+                                <div class="tech-stack-list">
+                                    <span class="tech-badge">Claude AI</span>
+                                    <span class="tech-badge">GitHub Copilot</span>
+                                    <span class="tech-badge">Claude Code</span>
+                                    <span class="tech-badge">Bitbucket Pipelines</span>
+                                    <span class="tech-badge">AI-Assisted Development</span>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
