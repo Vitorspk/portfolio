@@ -1,0 +1,26 @@
+{
+  "name": "portfolio",
+  "version": "1.0.0",
+  "description": "Professional portfolio with automated validation",
+  "scripts": {
+    "lint": "npm run lint:html && npm run lint:css && npm run lint:js",
+    "lint:html": "html-validate index.html",
+    "lint:css": "stylelint '*.css'",
+    "lint:js": "eslint '*.js'",
+    "lint:fix": "npm run lint:css -- --fix && npm run lint:js -- --fix",
+    "validate": "npm run lint",
+    "test": "npm run validate"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Vitorspk/portfolio.git"
+  },
+  "author": "Vitor Schiavo",
+  "license": "MIT",
+  "devDependencies": {
+    "eslint": "^8.57.0",
+    "html-validate": "^8.18.0",
+    "stylelint": "^16.3.1",
+    "stylelint-config-standard": "^36.0.0"
+  }
+}
