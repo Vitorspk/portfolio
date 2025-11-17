@@ -1404,26 +1404,6 @@
                             <span>7 Companies</span>
                         </div>
                     </div>
-                    
-                    <!-- Hero CTA -->
-                    <div style="margin-top: 2rem; display: flex; gap: var(--space-md); justify-content: center; align-items: center; flex-wrap: wrap;">
-                        <a href="https://www.linkedin.com/in/vitorschiavo/" 
-                           target="_blank" 
-                           rel="noopener noreferrer"
-                           class="cta-button"
-                           style="text-decoration: none; background: rgba(255,255,255,0.2); backdrop-filter: blur(10px); border: 2px solid rgba(255,255,255,0.4);">
-                            <span>💼</span>
-                            <span>LinkedIn</span>
-                        </a>
-                        <a href="https://github.com/Vitorspk" 
-                           target="_blank" 
-                           rel="noopener noreferrer"
-                           class="cta-button"
-                           style="text-decoration: none; background: rgba(255,255,255,0.2); backdrop-filter: blur(10px); border: 2px solid rgba(255,255,255,0.4);">
-                            <span>💻</span>
-                            <span>GitHub</span>
-                        </a>
-                    </div>
                 </div>
             </section>
             
@@ -1645,31 +1625,7 @@
                             </table>
                         </div>
                     </div>
-                    
-                    <!-- Overview CTA -->
-                    <div style="text-align: center; margin-top: var(--space-2xl); padding: var(--space-2xl); background: var(--gray-50); border-radius: var(--radius-xl); border: 2px solid var(--border);">
-                        <h3 style="font-size: 1.5rem; font-weight: 700; color: var(--text-primary); margin-bottom: var(--space-md);">
-                            Ready to discuss how I can help your team?
-                        </h3>
-                        <p style="font-size: 1rem; color: var(--text-secondary); margin-bottom: var(--space-xl); max-width: 600px; margin-left: auto; margin-right: auto;">
-                            I'm available for Engineering Manager and Staff Engineer roles at cloud-native companies.
-                            Let's talk about platform engineering, FinOps, or multi-cloud architecture.
-                        </p>
-                        <div style="display: flex; gap: var(--space-lg); justify-content: center; flex-wrap: wrap;">
-                            <a href="https://www.linkedin.com/in/vitorschiavo/" 
-                               target="_blank" 
-                               rel="noopener noreferrer"
-                               class="cta-button"
-                               style="text-decoration: none; background: #0A66C2;">
-                                <span>💼</span>
-                                <span>LinkedIn Profile</span>
-                            </a>
-                            <a href="mailto:vitorspk@gmail.com" 
-                               class="cta-button"
-                               style="text-decoration: none; background: var(--success);">
-                                <span>✉️</span>
-                                <span>Email Me</span>
-                            </a>
+                </div>
                 
                 <!-- Case Studies Tab -->
                 <div id="cases" class="tab-content">
@@ -3463,7 +3419,9 @@
                         <span>💻</span>
                         <span>View GitHub Profile</span>
                     </a>
-                    <a href="/cdn-cgi/l/email-protection#e99f809d869b9a9982a98e84888085c78a8684" class="cta-button" style="background: var(--success); text-decoration: none;">
+                    <a href="mailto:vitorspk@gmail.com" 
+                       class="cta-button"
+                       style="background: var(--success); text-decoration: none;">
                         <span>✉️</span>
                         <span>Email Me</span>
                     </a>
@@ -3479,23 +3437,38 @@
         </div>
     </div>
     
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    <script>
         function showTab(event, tabName) {
-            // Remove active class from all tabs and contents
-            document.querySelectorAll('.tab').forEach(tab => tab.classList.remove('active'));
-            document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+            console.log('=== showTab called ===');
+            console.log('Tab name:', tabName);
             
-            // Add active class to clicked tab
-            event.currentTarget.classList.add('active');
+            // Get all tabs and contents
+            const allTabs = document.querySelectorAll('.tab');
+            const allContents = document.querySelectorAll('.tab-content');
             
-            // Show selected content
-            document.getElementById(tabName).classList.add('active');
+            console.log('Found', allTabs.length, 'tab buttons');
+            console.log('Found', allContents.length, 'tab contents');
             
-            // Smooth scroll to content area
-            document.querySelector('.content').scrollIntoView({ 
-                behavior: 'smooth',
-                block: 'start'
-            });
+            // Remove all active classes
+            allTabs.forEach(tab => tab.classList.remove('active'));
+            allContents.forEach(content => content.classList.remove('active'));
+            
+            // Add active to clicked button
+            if (event && event.currentTarget) {
+                event.currentTarget.classList.add('active');
+            }
+            
+            // Show target content
+            const targetContent = document.getElementById(tabName);
+            console.log('Target content element:', targetContent);
+            
+            if (targetContent) {
+                targetContent.classList.add('active');
+                targetContent.style.display = 'block'; // Force display
+                console.log('✅ Tab activated:', tabName);
+            } else {
+                console.error('❌ Tab content NOT FOUND:', tabName);
+            }
         }
         
         // Scroll to Top Button
@@ -3547,5 +3520,10 @@
             if (e.key === 'ArrowRight') {
                 currentTabIndex = (currentTabIndex + 1) % tabs.length;
                 tabs[currentTabIndex].click();
-            } else if (e.key === 'ArrowLeft') {
-                currentTabIndex = (currentTabIndex - 1 + tabs.length) % tabs.length;
+            } else if (e.key === 'ArrowLeft') {                currentTabIndex = (currentTabIndex - 1 + tabs.length) % tabs.length;
+                tabs[currentTabIndex].click();
+            }
+        });
+    </script>
+</body>
+</html>
