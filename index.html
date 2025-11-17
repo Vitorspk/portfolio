@@ -897,6 +897,135 @@
             flex-shrink: 0;
         }
         
+        /* Scroll to Top Button */
+        .scroll-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: all var(--transition-base);
+            box-shadow: var(--shadow-lg);
+            z-index: 999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .scroll-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .scroll-to-top:hover {
+            background: var(--primary-dark);
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-xl);
+        }
+        
+        /* Progress Bar */
+        .reading-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--gray-200);
+            z-index: 1001;
+        }
+        
+        .reading-progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            width: 0%;
+            transition: width 0.1s ease-out;
+        }
+        
+        /* Quick Links */
+        .quick-links {
+            background: var(--gray-50);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: var(--space-lg);
+            margin-bottom: var(--space-xl);
+        }
+        
+        .quick-links-title {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: var(--space-md);
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+        }
+        
+        .quick-links-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--space-sm);
+        }
+        
+        .quick-link {
+            display: flex;
+            align-items: center;
+            gap: var(--space-xs);
+            padding: var(--space-sm) var(--space-md);
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            color: var(--text-primary);
+            text-decoration: none;
+            font-size: 0.875rem;
+            font-weight: 600;
+            transition: all var(--transition-fast);
+        }
+        
+        .quick-link:hover {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+            transform: translateX(4px);
+        }
+        
+        .quick-link-icon {
+            font-size: 1rem;
+        }
+        
+        /* Section Anchors */
+        .section-anchor {
+            scroll-margin-top: 100px;
+        }
+        
+        /* Tab Count Badge */
+        .tab-badge {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 20px;
+            height: 20px;
+            padding: 0 6px;
+            background: var(--gray-300);
+            color: var(--gray-700);
+            border-radius: var(--radius-full);
+            font-size: 0.75rem;
+            font-weight: 700;
+            margin-left: var(--space-xs);
+        }
+        
+        .tab.active .tab-badge {
+            background: rgba(255, 255, 255, 0.3);
+            color: white;
+        }
+        
         /* Footer */
         footer {
             background: var(--gray-900);
@@ -1157,6 +1286,22 @@
                 gap: var(--space-xs);
                 align-items: flex-start;
             }
+            
+            .scroll-to-top {
+                bottom: 20px;
+                right: 20px;
+                width: 45px;
+                height: 45px;
+                font-size: 1.25rem;
+            }
+            
+            .quick-links-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .tab-badge {
+                display: none;
+            }
         }
         
         /* Print Styles */
@@ -1176,6 +1321,16 @@
     </style>
 </head>
 <body>
+    <!-- Reading Progress Bar -->
+    <div class="reading-progress">
+        <div class="reading-progress-bar" id="progressBar"></div>
+    </div>
+    
+    <!-- Scroll to Top Button -->
+    <button class="scroll-to-top" id="scrollToTop" aria-label="Scroll to top">
+        ↑
+    </button>
+    
     <div class="page-wrapper">
         <div class="container">
             <!-- Hero Section -->
@@ -1236,30 +1391,37 @@
                     <button class="tab" onclick="showTab(event, 'cases')">
                         <span class="tab-icon">📁</span>
                         <span>Case Studies</span>
+                        <span class="tab-badge">5</span>
                     </button>
                     <button class="tab" onclick="showTab(event, 'experience')">
                         <span class="tab-icon">💼</span>
                         <span>Experience</span>
+                        <span class="tab-badge">7</span>
                     </button>
                     <button class="tab" onclick="showTab(event, 'aiml')">
                         <span class="tab-icon">🤖</span>
                         <span>AI & ML</span>
+                        <span class="tab-badge">207</span>
                     </button>
                     <button class="tab" onclick="showTab(event, 'finops')">
                         <span class="tab-icon">💰</span>
                         <span>FinOps</span>
+                        <span class="tab-badge">$331K</span>
                     </button>
                     <button class="tab" onclick="showTab(event, 'technical')">
                         <span class="tab-icon">🔧</span>
                         <span>Technical</span>
+                        <span class="tab-badge">6</span>
                     </button>
                     <button class="tab" onclick="showTab(event, 'achievements')">
                         <span class="tab-icon">🏆</span>
                         <span>Achievements</span>
+                        <span class="tab-badge">10</span>
                     </button>
                     <button class="tab" onclick="showTab(event, 'skills')">
                         <span class="tab-icon">💡</span>
                         <span>Skills</span>
+                        <span class="tab-badge">50+</span>
                     </button>
                 </div>
             </nav>
@@ -1270,6 +1432,39 @@
                 <div id="overview" class="tab-content active">
                     <div class="section-header">
                         <h2 class="section-title">Executive Summary</h2>
+                    </div>
+                    
+                    <div class="quick-links">
+                        <h4 class="quick-links-title">
+                            <span>🧭</span>
+                            <span>Quick Navigation</span>
+                        </h4>
+                        <div class="quick-links-grid">
+                            <button class="quick-link" onclick="showTab(event, 'cases')">
+                                <span class="quick-link-icon">📁</span>
+                                <span>Case Studies</span>
+                            </button>
+                            <button class="quick-link" onclick="showTab(event, 'experience')">
+                                <span class="quick-link-icon">💼</span>
+                                <span>13+ Years Experience</span>
+                            </button>
+                            <button class="quick-link" onclick="showTab(event, 'aiml')">
+                                <span class="quick-link-icon">🤖</span>
+                                <span>AI & ML (207 tasks)</span>
+                            </button>
+                            <button class="quick-link" onclick="showTab(event, 'finops')">
+                                <span class="quick-link-icon">💰</span>
+                                <span>$331K Savings</span>
+                            </button>
+                            <button class="quick-link" onclick="showTab(event, 'technical')">
+                                <span class="quick-link-icon">🔧</span>
+                                <span>Technical Deep Dive</span>
+                            </button>
+                            <button class="quick-link" onclick="showTab(event, 'skills')">
+                                <span class="quick-link-icon">💡</span>
+                                <span>Skills & Proficiency</span>
+                            </button>
+                        </div>
                     </div>
                     
                     <div class="highlight-box">
@@ -3170,7 +3365,42 @@
             
             // Show selected content
             document.getElementById(tabName).classList.add('active');
+            
+            // Smooth scroll to content area
+            document.querySelector('.content').scrollIntoView({ 
+                behavior: 'smooth',
+                block: 'start'
+            });
         }
+        
+        // Scroll to Top Button
+        const scrollToTopBtn = document.getElementById('scrollToTop');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                scrollToTopBtn.classList.add('visible');
+            } else {
+                scrollToTopBtn.classList.remove('visible');
+            }
+        });
+        
+        scrollToTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+        
+        // Reading Progress Bar
+        const progressBar = document.getElementById('progressBar');
+        
+        window.addEventListener('scroll', () => {
+            const windowHeight = window.innerHeight;
+            const documentHeight = document.documentElement.scrollHeight - windowHeight;
+            const scrolled = window.pageYOffset;
+            const progress = (scrolled / documentHeight) * 100;
+            progressBar.style.width = progress + '%';
+        });
         
         // Initialize animations on load
         window.addEventListener('load', () => {
@@ -3182,6 +3412,20 @@
                     bar.style.width = width;
                 }, 100);
             });
+        });
+        
+        // Keyboard navigation - Arrow keys to switch tabs
+        let currentTabIndex = 0;
+        const tabs = document.querySelectorAll('.tab');
+        
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight') {
+                currentTabIndex = (currentTabIndex + 1) % tabs.length;
+                tabs[currentTabIndex].click();
+            } else if (e.key === 'ArrowLeft') {
+                currentTabIndex = (currentTabIndex - 1 + tabs.length) % tabs.length;
+                tabs[currentTabIndex].click();
+            }
         });
     </script>
 </body>
