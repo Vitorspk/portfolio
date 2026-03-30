@@ -13,10 +13,21 @@ function debounce(fn, ms) {
 const TAB_DEFAULT = 'overview';
 const tabNames = ['overview', 'cases', 'experience', 'aiml', 'finops', 'technical', 'achievements', 'skills'];
 
-// Cache NodeLists once — avoids repeated querySelectorAll on every tab click
-const navItems  = Array.from(document.querySelectorAll('.nav-item'));
-const mobTabs   = Array.from(document.querySelectorAll('.mobile-tab'));
-const tabPanels = Array.from(document.querySelectorAll('.tab-content'));
+// Cache NodeLists at DOMContentLoaded — safe if script is ever moved to <head>
+let navItems, mobTabs, tabPanels;
+
+document.addEventListener('DOMContentLoaded', () => {
+    navItems  = Array.from(document.querySelectorAll('.nav-item'));
+    mobTabs   = Array.from(document.querySelectorAll('.mobile-tab'));
+    tabPanels = Array.from(document.querySelectorAll('.tab-content'));
+
+    initFromHash();
+    initScrollToTop();
+    initProgressBar();
+    initBarAnimations();
+    initTablists();
+    initKeyboardNav();
+});
 
 function activateTab(tabName, pushState = true) {
     const name = tabName || TAB_DEFAULT;
@@ -25,7 +36,7 @@ function activateTab(tabName, pushState = true) {
     navItems.forEach(btn => {
         const isActive = btn.dataset.tab === name;
         btn.classList.toggle('active', isActive);
-        btn.setAttribute('aria-selected', isActive);
+        btn.setAttribute('aria-selected', isActive ? 'true' : 'false');
         btn.setAttribute('tabindex', isActive ? '0' : '-1');
     });
 
@@ -33,7 +44,7 @@ function activateTab(tabName, pushState = true) {
     mobTabs.forEach(btn => {
         const isActive = btn.dataset.tab === name;
         btn.classList.toggle('active', isActive);
-        btn.setAttribute('aria-selected', isActive);
+        btn.setAttribute('aria-selected', isActive ? 'true' : 'false');
         btn.setAttribute('tabindex', isActive ? '0' : '-1');
     });
 
@@ -41,7 +52,7 @@ function activateTab(tabName, pushState = true) {
     tabPanels.forEach(panel => {
         const isActive = panel.id === name;
         panel.classList.toggle('active', isActive);
-        panel.setAttribute('aria-hidden', !isActive);
+        panel.setAttribute('aria-hidden', isActive ? 'false' : 'true');
     });
 
     // Update URL hash without triggering a scroll jump
@@ -50,9 +61,9 @@ function activateTab(tabName, pushState = true) {
     }
 }
 
-// Delegated click handler for all nav items, mobile tabs, and quick-nav buttons
-// Note: no btn.blur() — :focus-visible suppresses the ring on mouse clicks,
-// and keyboard users need focus to stay on the activated button.
+// Delegated click handler — covers nav items, mobile tabs, and quick-nav buttons.
+// No btn.blur(): :focus-visible suppresses the ring on mouse clicks, and keyboard
+// users need focus to remain on the activated button.
 document.addEventListener('click', (e) => {
     const btn = e.target.closest('[data-tab]');
     if (!btn) return;
@@ -68,120 +79,131 @@ window.addEventListener('popstate', (e) => {
     activateTab(tab, false);
 });
 
-// Init from URL hash on load — validate against known tabs before activating
-(function initFromHash() {
+// Read active tab from URL hash on initial load
+function initFromHash() {
     const hash = location.hash.replace('#', '').trim();
     const validTab = tabNames.includes(hash) ? hash : TAB_DEFAULT;
     activateTab(validTab, false);
-})();
+}
 
 // ─── Scroll to Top Button ─────────────────────────────────────────────────────
 
-const scrollToTopBtn = document.getElementById('scrollToTop');
+function initScrollToTop() {
+    const btn = document.getElementById('scrollToTop');
+    if (!btn) return;
 
-if (scrollToTopBtn) {
     const onScroll = debounce(() => {
-        scrollToTopBtn.classList.toggle('visible', window.pageYOffset > 300);
+        btn.classList.toggle('visible', window.pageYOffset > 300);
     }, 80);
 
     window.addEventListener('scroll', onScroll, { passive: true });
-
-    scrollToTopBtn.addEventListener('click', () => {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
+    btn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 }
 
 // ─── Reading Progress Bar ─────────────────────────────────────────────────────
 
-const progressBar = document.getElementById('progressBar');
+function initProgressBar() {
+    const bar = document.getElementById('progressBar');
+    if (!bar) return;
 
-if (progressBar) {
-    const onProgress = debounce(() => {
-        const docH = document.documentElement.scrollHeight - window.innerHeight;
-        const pct = docH > 0 ? (window.pageYOffset / docH) * 100 : 0;
-        progressBar.style.width = pct + '%';
-    }, 30);
-
-    window.addEventListener('scroll', onProgress, { passive: true });
+    // rAF throttle keeps updates locked to the paint cycle
+    let rafId = null;
+    window.addEventListener('scroll', () => {
+        if (rafId) return;
+        rafId = requestAnimationFrame(() => {
+            const docH = document.documentElement.scrollHeight - window.innerHeight;
+            const pct = docH > 0 ? (window.pageYOffset / docH) * 100 : 0;
+            bar.style.width = pct + '%';
+            rafId = null;
+        });
+    }, { passive: true });
 }
 
 // ─── Metric Bar Animations (IntersectionObserver) ─────────────────────────────
 
-function animateBars(entries, observer) {
-    entries.forEach(entry => {
-        if (!entry.isIntersecting) return;
-        const bar = entry.target;
-        const target = bar.dataset.width || bar.style.width || '0%';
-        bar.style.width = '0%';
-        // Double rAF ensures the 0% paints before the CSS transition begins
-        requestAnimationFrame(() => {
-            requestAnimationFrame(() => {
+function initBarAnimations() {
+    const observer = new IntersectionObserver((entries, obs) => {
+        entries.forEach(entry => {
+            if (!entry.isIntersecting) return;
+            const bar = entry.target;
+            const target = bar.dataset.width || '0%';
+            bar.style.width = '0%';
+            // Double rAF ensures the 0% paints before the CSS transition fires
+            requestAnimationFrame(() => requestAnimationFrame(() => {
                 bar.style.width = target;
-            });
+            }));
+            obs.unobserve(bar);
         });
-        observer.unobserve(bar);
+    }, { threshold: 0.2 });
+
+    document.querySelectorAll('.bar-fill').forEach(bar => {
+        if (!bar.dataset.width) bar.dataset.width = bar.style.width || '0%';
+        bar.style.width = '0%';
+        observer.observe(bar);
     });
 }
 
-const barObserver = new IntersectionObserver(animateBars, { threshold: 0.2 });
-
-document.querySelectorAll('.bar-fill').forEach(bar => {
-    if (!bar.dataset.width) {
-        bar.dataset.width = bar.style.width || '0%';
-    }
-    bar.style.width = '0%';
-    barObserver.observe(bar);
-});
-
 // ─── Dual tablist inert/aria sync ────────────────────────────────────────────
-// sidebar-nav is hidden on mobile, mobile-tabs is hidden on desktop.
-// Use `inert` (handles both AT hiding and Tab exclusion) on whichever is off-screen.
-const sidebarNav = document.querySelector('.sidebar-nav');
-const mobileNav  = document.querySelector('.mobile-tabs');
+// sidebar-nav is visually hidden on mobile; mobile-tabs is hidden on desktop.
+// IMPORTANT: whichever is off-screen MUST be kept inert and aria-hidden so that
+// screen readers don't see two conflicting tablists controlling the same panels.
+// syncTablists() is called on init and on every breakpoint crossing.
 
-function syncTablists() {
+function initTablists() {
+    const sidebarNav = document.querySelector('.sidebar-nav');
+    const mobileNav  = document.querySelector('.mobile-tabs');
     if (!sidebarNav || !mobileNav) return;
-    const mobileVisible = window.getComputedStyle(mobileNav).display !== 'none';
-    sidebarNav.inert = mobileVisible;
-    mobileNav.inert  = !mobileVisible;
-    sidebarNav.setAttribute('aria-hidden', mobileVisible);
-    mobileNav.setAttribute('aria-hidden', !mobileVisible);
-}
 
-syncTablists();
-window.addEventListener('resize', debounce(syncTablists, 150));
+    // matchMedia fires only on breakpoint crossings — cheaper than getComputedStyle
+    // inside a resize handler which forces style recalculation every event.
+    const mq = window.matchMedia('(max-width: 768px)');
+
+    function syncTablists(e) {
+        const isMobile = typeof e === 'object' ? e.matches : mq.matches;
+        sidebarNav.inert = isMobile;
+        mobileNav.inert  = !isMobile;
+        sidebarNav.setAttribute('aria-hidden', isMobile ? 'true' : 'false');
+        mobileNav.setAttribute('aria-hidden', isMobile ? 'false' : 'true');
+    }
+
+    mq.addEventListener('change', syncTablists);
+    syncTablists();
+}
 
 // ─── Keyboard Navigation (Arrow / Home / End) ─────────────────────────────────
 
-function currentTabIndex() {
-    const hash = location.hash.replace('#', '');
-    const idx = tabNames.indexOf(hash);
-    return idx >= 0 ? idx : 0;
-}
+function initKeyboardNav() {
+    const sidebarNav = document.querySelector('.sidebar-nav');
+    const mobileNav  = document.querySelector('.mobile-tabs');
+    const containers = [sidebarNav, mobileNav].filter(Boolean);
 
-// Scoped to nav containers — does not interfere with page scrolling elsewhere
-const navContainers = [sidebarNav, mobileNav].filter(Boolean);
+    function activeIndex() {
+        // Read from cached navItems — avoids re-parsing location.hash
+        return navItems.findIndex(btn => btn.classList.contains('active'));
+    }
 
-navContainers.forEach(container => {
-    container.addEventListener('keydown', (e) => {
-        let targetIdx = -1;
-        if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
-            e.preventDefault();
-            targetIdx = (currentTabIndex() + 1) % tabNames.length;
-        } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
-            e.preventDefault();
-            targetIdx = (currentTabIndex() - 1 + tabNames.length) % tabNames.length;
-        } else if (e.key === 'Home') {
-            e.preventDefault();
-            targetIdx = 0;
-        } else if (e.key === 'End') {
-            e.preventDefault();
-            targetIdx = tabNames.length - 1;
-        }
-        if (targetIdx < 0) return;
-        activateTab(tabNames[targetIdx]);
-        // Move focus to newly active button so keyboard users keep their place
-        const target = container.querySelector(`[data-tab="${tabNames[targetIdx]}"]`);
-        if (target) target.focus();
+    containers.forEach(container => {
+        container.addEventListener('keydown', (e) => {
+            const len = tabNames.length;
+            let idx = -1;
+            if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
+                e.preventDefault();
+                idx = (activeIndex() + 1) % len;
+            } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+                e.preventDefault();
+                idx = (activeIndex() - 1 + len) % len;
+            } else if (e.key === 'Home') {
+                e.preventDefault();
+                idx = 0;
+            } else if (e.key === 'End') {
+                e.preventDefault();
+                idx = len - 1;
+            }
+            if (idx < 0) return;
+            activateTab(tabNames[idx]);
+            // Move focus to the newly active button so keyboard users keep their place
+            const target = container.querySelector(`[data-tab="${tabNames[idx]}"]`);
+            if (target) target.focus();
+        });
     });
-});
+}
