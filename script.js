@@ -45,13 +45,14 @@ function activateTab(tabName, pushState = true) {
 }
 
 // Delegated click handler for all nav items and mobile tabs (uses data-tab attribute)
+// Note: no btn.blur() — :focus-visible suppresses the ring on mouse clicks,
+// and keyboard users need focus to stay on the activated button.
 document.addEventListener('click', (e) => {
     const btn = e.target.closest('[data-tab]');
     if (!btn) return;
     const tab = btn.dataset.tab;
     if (!tabNames.includes(tab)) return;
     activateTab(tab);
-    btn.blur();
 });
 
 // Browser back/forward
@@ -137,12 +138,26 @@ function currentTabIndex() {
     return idx >= 0 ? idx : 0;
 }
 
+// ─── Dual tablist aria-hidden sync ───────────────────────────────────────────
+// sidebar-nav is hidden on mobile, mobile-tabs is hidden on desktop.
+// Whichever is visually hidden should also be aria-hidden so screen readers
+// don't announce both tablist groups.
+const sidebarNav  = document.querySelector('.sidebar-nav');
+const mobileTabs  = document.querySelector('.mobile-tabs');
+
+function syncTablists() {
+    if (!sidebarNav || !mobileTabs) return;
+    const mobileVisible = window.getComputedStyle(mobileTabs).display !== 'none';
+    sidebarNav.setAttribute('aria-hidden', mobileVisible);
+    mobileTabs.setAttribute('aria-hidden', !mobileVisible);
+}
+
+syncTablists();
+window.addEventListener('resize', debounce(syncTablists, 150));
+
 // Scope arrow key navigation to the nav containers so it doesn't
 // hijack page scrolling when focus is elsewhere.
-const navContainers = [
-    document.querySelector('.sidebar-nav'),
-    document.querySelector('.mobile-tabs'),
-].filter(Boolean);
+const navContainers = [sidebarNav, mobileTabs].filter(Boolean);
 
 navContainers.forEach(container => {
     container.addEventListener('keydown', (e) => {
