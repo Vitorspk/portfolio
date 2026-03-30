@@ -13,28 +13,34 @@ function debounce(fn, ms) {
 const TAB_DEFAULT = 'overview';
 const tabNames = ['overview', 'cases', 'experience', 'aiml', 'finops', 'technical', 'achievements', 'skills'];
 
+// Cache NodeLists once — avoids repeated querySelectorAll on every tab click
+const navItems  = Array.from(document.querySelectorAll('.nav-item'));
+const mobTabs   = Array.from(document.querySelectorAll('.mobile-tab'));
+const tabPanels = Array.from(document.querySelectorAll('.tab-content'));
+
 function activateTab(tabName, pushState = true) {
     const name = tabName || TAB_DEFAULT;
 
     // Sidebar nav items
-    document.querySelectorAll('.nav-item').forEach(btn => {
+    navItems.forEach(btn => {
         const isActive = btn.dataset.tab === name;
         btn.classList.toggle('active', isActive);
         btn.setAttribute('aria-selected', isActive);
+        btn.setAttribute('tabindex', isActive ? '0' : '-1');
     });
 
     // Mobile tab strip
-    document.querySelectorAll('.mobile-tab').forEach(btn => {
+    mobTabs.forEach(btn => {
         const isActive = btn.dataset.tab === name;
         btn.classList.toggle('active', isActive);
         btn.setAttribute('aria-selected', isActive);
+        btn.setAttribute('tabindex', isActive ? '0' : '-1');
     });
 
     // Content panels
-    document.querySelectorAll('.tab-content').forEach(panel => {
+    tabPanels.forEach(panel => {
         const isActive = panel.id === name;
         panel.classList.toggle('active', isActive);
-        panel.style.display = '';
         panel.setAttribute('aria-hidden', !isActive);
     });
 
@@ -44,7 +50,7 @@ function activateTab(tabName, pushState = true) {
     }
 }
 
-// Delegated click handler for all nav items and mobile tabs (uses data-tab attribute)
+// Delegated click handler for all nav items, mobile tabs, and quick-nav buttons
 // Note: no btn.blur() — :focus-visible suppresses the ring on mouse clicks,
 // and keyboard users need focus to stay on the activated button.
 document.addEventListener('click', (e) => {
@@ -107,7 +113,7 @@ function animateBars(entries, observer) {
         const bar = entry.target;
         const target = bar.dataset.width || bar.style.width || '0%';
         bar.style.width = '0%';
-        // rAF ensures the 0% is painted before the transition begins
+        // Double rAF ensures the 0% paints before the CSS transition begins
         requestAnimationFrame(() => {
             requestAnimationFrame(() => {
                 bar.style.width = target;
@@ -117,12 +123,9 @@ function animateBars(entries, observer) {
     });
 }
 
-const barObserver = new IntersectionObserver(animateBars, {
-    threshold: 0.2,
-});
+const barObserver = new IntersectionObserver(animateBars, { threshold: 0.2 });
 
 document.querySelectorAll('.bar-fill').forEach(bar => {
-    // Stash the target width so we can animate from 0 on scroll-in
     if (!bar.dataset.width) {
         bar.dataset.width = bar.style.width || '0%';
     }
@@ -130,7 +133,25 @@ document.querySelectorAll('.bar-fill').forEach(bar => {
     barObserver.observe(bar);
 });
 
-// ─── Keyboard Navigation (Arrow Keys) ────────────────────────────────────────
+// ─── Dual tablist inert/aria sync ────────────────────────────────────────────
+// sidebar-nav is hidden on mobile, mobile-tabs is hidden on desktop.
+// Use `inert` (handles both AT hiding and Tab exclusion) on whichever is off-screen.
+const sidebarNav = document.querySelector('.sidebar-nav');
+const mobileNav  = document.querySelector('.mobile-tabs');
+
+function syncTablists() {
+    if (!sidebarNav || !mobileNav) return;
+    const mobileVisible = window.getComputedStyle(mobileNav).display !== 'none';
+    sidebarNav.inert = mobileVisible;
+    mobileNav.inert  = !mobileVisible;
+    sidebarNav.setAttribute('aria-hidden', mobileVisible);
+    mobileNav.setAttribute('aria-hidden', !mobileVisible);
+}
+
+syncTablists();
+window.addEventListener('resize', debounce(syncTablists, 150));
+
+// ─── Keyboard Navigation (Arrow / Home / End) ─────────────────────────────────
 
 function currentTabIndex() {
     const hash = location.hash.replace('#', '');
@@ -138,26 +159,8 @@ function currentTabIndex() {
     return idx >= 0 ? idx : 0;
 }
 
-// ─── Dual tablist aria-hidden sync ───────────────────────────────────────────
-// sidebar-nav is hidden on mobile, mobile-tabs is hidden on desktop.
-// Whichever is visually hidden should also be aria-hidden so screen readers
-// don't announce both tablist groups.
-const sidebarNav  = document.querySelector('.sidebar-nav');
-const mobileTabs  = document.querySelector('.mobile-tabs');
-
-function syncTablists() {
-    if (!sidebarNav || !mobileTabs) return;
-    const mobileVisible = window.getComputedStyle(mobileTabs).display !== 'none';
-    sidebarNav.setAttribute('aria-hidden', mobileVisible);
-    mobileTabs.setAttribute('aria-hidden', !mobileVisible);
-}
-
-syncTablists();
-window.addEventListener('resize', debounce(syncTablists, 150));
-
-// Scope arrow key navigation to the nav containers so it doesn't
-// hijack page scrolling when focus is elsewhere.
-const navContainers = [sidebarNav, mobileTabs].filter(Boolean);
+// Scoped to nav containers — does not interfere with page scrolling elsewhere
+const navContainers = [sidebarNav, mobileNav].filter(Boolean);
 
 navContainers.forEach(container => {
     container.addEventListener('keydown', (e) => {
@@ -168,10 +171,16 @@ navContainers.forEach(container => {
         } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
             e.preventDefault();
             targetIdx = (currentTabIndex() - 1 + tabNames.length) % tabNames.length;
+        } else if (e.key === 'Home') {
+            e.preventDefault();
+            targetIdx = 0;
+        } else if (e.key === 'End') {
+            e.preventDefault();
+            targetIdx = tabNames.length - 1;
         }
         if (targetIdx < 0) return;
         activateTab(tabNames[targetIdx]);
-        // Move focus to the newly active button so keyboard users don't lose their place
+        // Move focus to newly active button so keyboard users keep their place
         const target = container.querySelector(`[data-tab="${tabNames[targetIdx]}"]`);
         if (target) target.focus();
     });

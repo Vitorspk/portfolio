@@ -104,6 +104,7 @@ body {
 p, li, td, th {
     overflow-wrap: break-word;
     word-break: break-word;
+    hyphens: auto;
 }
 
 a {
