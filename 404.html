@@ -118,14 +118,14 @@
         <div class="path" id="current-path" aria-label="Requested path">(unknown path)</div>
         <div class="actions">
             <a href="/portfolio/" class="btn btn-primary">Go home</a>
-            <button type="button" class="btn btn-secondary">Go back</button>
+            <button type="button" id="go-back-btn" class="btn btn-secondary">Go back</button>
         </div>
     </div>
     <script>
         const el = document.getElementById('current-path');
-        if (el) el.textContent = location.pathname;
+        if (el) el.textContent = location.pathname + location.search;
 
-        document.querySelector('.btn-secondary').addEventListener('click', function () {
+        document.getElementById('go-back-btn').addEventListener('click', function () {
             if (document.referrer && document.referrer.startsWith(location.origin)) {
                 history.back();
             } else {
