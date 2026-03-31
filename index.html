@@ -295,7 +295,7 @@
                                 <strong>AI/ML Operations:</strong> 207 tasks across production ML systems — face recognition, content moderation<br>
                                 <strong>vLLM Production Infra:</strong> Gemma 3 12B running across 3 GPU providers; cut cold start from 10 min to 3 min, 6 GPU profiles, EU multi-DC failover<br>
                                 <strong>Fallback Router:</strong> ~150-line FastAPI reverse proxy chaining RunPod (568ms) → Cloud Run (1.9s) → GKE MIG (7.7s), deployed on GKE PRD<br>
-                                <strong>GitOps at Scale:</strong> ArgoCD across 4 GKE clusters (dev · stg · prd · sdx) with Argo Rollouts for canary delivery<br>
+                                <strong>GitOps at Scale:</strong> ArgoCD 9-phase rollout across 4 GKE clusters (dev · stg · prd · sdx) with Argo Rollouts for canary delivery<br>
                                 <strong>GKE Infrastructure as Code:</strong> Terraform + Shared VPC, split into reusable modules, <code>prevent_destroy</code> on critical network resources<br>
                                 <strong>AI Tooling:</strong> Claude AI, GitHub Copilot, Claude Code — CLAUDE.md standards across all repos<br>
                                 <strong>Networking:</strong> mTLS with Cloudflare, AWS-GCP HA VPN, mutual auth everywhere<br>
@@ -647,8 +647,8 @@
                             <div class="impact-metrics">
                                 <h4 class="impact-title">Business Impact</h4>
                                 <ul class="impact-list">
-                                    <li class="impact-item"><strong>No failed deployments since rollout</strong> — automatic rollback catches issues at 10% traffic before they reach everyone</li>
-                                    <li class="impact-item"><strong>Problems surface at 10% traffic</strong>, not 100% — the blast radius is contained by design</li>
+                                    <li class="impact-item"><strong>No failed deployments since rollout</strong> — issues surface at 10% traffic and trigger automatic rollback before reaching everyone</li>
+                                    <li class="impact-item"><strong>Deployment frequency increased</strong> — teams ship more often because the cost of a bad release dropped dramatically</li>
                                     <li class="impact-item"><strong>No third-party tooling dependency</strong> — built from scratch to fit the existing setup</li>
                                 </ul>
                             </div>
@@ -1201,7 +1201,7 @@
                                 <strong>Production LLM infrastructure:</strong> Gemma 3 12B serving via vLLM across 3 GPU providers with automatic failover<br>
                                 <strong>6 GPU profiles validated:</strong> RTX 4090 · RTX 5090 · RTX A6000 · RTX 6000 Ada · L40S · A100 SXM 80GB<br>
                                 <strong>Cold start engineering:</strong> 10 min → 3 min — pre-baked Docker images, model warm-up, Tier 1 + Tier 2 boot optimizations<br>
-                                <strong>AI tooling:</strong> Rolled out Claude AI (Dec 2024) and GitHub Copilot (Aug 2024) to the team; evaluated Claude Code for automated PR reviews<br>
+                                <strong>AI tooling:</strong> Rolled out Claude AI (Dec 2024) and GitHub Copilot (Aug 2024) to the team; runs automated PR reviews in CI with Claude Code<br>
                                 <strong>MLOps expertise:</strong> Content moderation (YOLO), intelligent autoscaling (VPA/HPA/KEDA), security automation
                             </div>
                         </div>
@@ -1483,7 +1483,7 @@
                         </div>
                         <div class="feature-card">
                             <h4 class="feature-title">🤖 AI Early Adopter</h4>
-                            <p class="feature-description">Rolled out Claude AI (Dec 2024) and GitHub Copilot (Aug 2024) to the team, then evaluated Claude Code for automated PR reviews in Bitbucket pipelines. Most of this happened before it was common practice at peer companies.</p>
+                            <p class="feature-description">Rolled out Claude AI (Dec 2024) and GitHub Copilot (Aug 2024) to the team, then runs automated PR reviews in CI with Claude Code in Bitbucket pipelines. Most of this happened before it was common practice at peer companies.</p>
                         </div>
                     </div>
                 </div>
