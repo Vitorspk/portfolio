@@ -36,9 +36,9 @@ portfolio/
 ├── .htmlvalidate.json  # HTML Validate config
 └── .github/
     └── workflows/
-        ├── validate-pr.yml       # HTML/CSS/JS linting on PRs
-        ├── claude-review.yml     # AI code review on PRs
-        └── claude-code.yml       # @claude mentions in issues/PRs
+        ├── validate-pr.yml         # HTML/CSS/JS linting on PRs
+        ├── claude-code-review.yml  # AI code review on PRs
+        └── claude.yml              # @claude mentions in issues/PRs
 ```
 
 ---
@@ -154,8 +154,8 @@ docs/<name>     ← documentation only
 | Workflow | Trigger | What it does |
 |----------|---------|--------------|
 | `validate-pr.yml` | PR opened/updated | Lints HTML, CSS, JS; checks file sizes and security; posts a summary comment |
-| `claude-review.yml` | PR opened/updated | AI code review via Claude Code Action; posts detailed feedback as a PR comment |
-| `claude-code.yml` | `@claude` mention in issue/PR comment | Runs Claude Code on demand |
+| `claude-code-review.yml` | PR opened/updated | AI code review via Claude Code Action; posts detailed feedback as a PR comment |
+| `claude.yml` | `@claude` mention in issue/PR comment | Runs Claude Code on demand |
 | GitHub Pages | Push to `master` | Auto-deploys to `vitorspk.github.io/portfolio/` (~1 min propagation) |
 
 ---

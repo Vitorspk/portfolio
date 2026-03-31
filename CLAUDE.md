@@ -106,8 +106,8 @@ Fix all linting errors before pushing. The CI workflow will block the PR check i
 | File | Trigger | Purpose |
 |------|---------|---------|
 | `validate-pr.yml` | PR | HTML/CSS/JS lint, file sizes, security checks |
-| `claude-review.yml` | PR | AI code review, posts feedback as PR comment |
-| `claude-code.yml` | `@claude` mention | On-demand Claude Code in issues/PRs |
+| `claude-code-review.yml` | PR | AI code review, posts feedback as PR comment |
+| `claude.yml` | `@claude` mention | On-demand Claude Code in issues/PRs |
 
 When working on a PR:
 1. Wait for `claude-review` to complete
