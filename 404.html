@@ -9,17 +9,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&display=swap" rel="stylesheet">
+    <!-- Design tokens imported from the shared stylesheet — do not duplicate values here -->
+    <link rel="stylesheet" href="/portfolio/styles.css">
     <style>
-        :root {
-            --primary:       #3b82f6;
-            --bg-base:       #0a0f1e;
-            --bg-elevated:   #1e293b;
-            --text-primary:  #f1f5f9;
-            --text-secondary:#94a3b8;
-            --text-muted:    #64748b;
-            --border:        rgba(255,255,255,0.07);
-        }
-
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
         body {
@@ -123,7 +115,7 @@
         <div class="code" aria-label="Error 404">404</div>
         <h1 class="title">Page not found</h1>
         <p class="desc">This URL doesn't exist or may have been moved.</p>
-        <div class="path" id="current-path">(unknown path)</div>
+        <div class="path" id="current-path" aria-label="Requested path">(unknown path)</div>
         <div class="actions">
             <a href="/portfolio/" class="btn btn-primary">Go home</a>
             <button type="button" class="btn btn-secondary">Go back</button>
@@ -134,7 +126,7 @@
         if (el) el.textContent = location.pathname;
 
         document.querySelector('.btn-secondary').addEventListener('click', function () {
-            if (history.length > 1) {
+            if (document.referrer && document.referrer.startsWith(location.origin)) {
                 history.back();
             } else {
                 location.href = '/portfolio/';
