@@ -5,11 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>404 — Page Not Found | Vitor Schiavo</title>
     <meta name="robots" content="noindex">
+    <!-- data:, suppresses the browser's automatic /favicon.ico request on the error page -->
     <link rel="icon" href="data:,">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&display=swap" rel="stylesheet">
-    <!-- Design tokens imported from the shared stylesheet — do not duplicate values here -->
+    <!-- Design tokens imported from the shared stylesheet — do not duplicate values here.
+         /portfolio/ prefix matches the GitHub Pages deployment path for this repo. -->
     <link rel="stylesheet" href="/portfolio/styles.css">
     <style>
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -125,13 +127,18 @@
         const el = document.getElementById('current-path');
         if (el) el.textContent = location.pathname + location.search;
 
-        document.getElementById('go-back-btn').addEventListener('click', function () {
-            if (document.referrer && document.referrer.startsWith(location.origin)) {
-                history.back();
-            } else {
-                location.href = '/portfolio/';
-            }
-        });
+        // Use history.length > 1 as primary guard (more reliable than referrer,
+        // which can be stripped by privacy settings / Referrer-Policy headers).
+        const backBtn = document.getElementById('go-back-btn');
+        if (backBtn) {
+            backBtn.addEventListener('click', function () {
+                if (history.length > 1) {
+                    history.back();
+                } else {
+                    location.href = '/portfolio/';
+                }
+            });
+        }
     </script>
 </body>
 </html>
