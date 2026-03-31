@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>404 — Page Not Found | Vitor Schiavo</title>
     <meta name="robots" content="noindex">
+    <link rel="icon" href="data:,">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&display=swap" rel="stylesheet">
@@ -122,23 +123,23 @@
         <div class="code" aria-label="Error 404">404</div>
         <h1 class="title">Page not found</h1>
         <p class="desc">This URL doesn't exist or may have been moved.</p>
-        <div class="path" id="current-path">/404</div>
+        <div class="path" id="current-path">(unknown path)</div>
         <div class="actions">
             <a href="/portfolio/" class="btn btn-primary">Go home</a>
-            <button type="button" onclick="goBack()" class="btn btn-secondary">Go back</button>
+            <button type="button" class="btn btn-secondary">Go back</button>
         </div>
     </div>
     <script>
         const el = document.getElementById('current-path');
         if (el) el.textContent = location.pathname;
 
-        function goBack() {
+        document.querySelector('.btn-secondary').addEventListener('click', function () {
             if (history.length > 1) {
                 history.back();
             } else {
                 location.href = '/portfolio/';
             }
-        }
+        });
     </script>
 </body>
 </html>
