@@ -857,7 +857,7 @@
                                     <li class="impact-item"><strong>4 GKE clusters deployed</strong> in a single automated pipeline run</li>
                                     <li class="impact-item"><strong>Zero manual provisioning</strong> — new environments created from variable files only</li>
                                     <li class="impact-item"><strong>Production safeguards</strong> — <code>prevent_destroy</code> prevents accidental loss of critical network infrastructure</li>
-                                    <li class="impact-item"><strong>Validated Shared VPC + Cloud NAT</strong> — all service projects route egress through a centralised NAT gateway</li>
+                                    <li class="impact-item"><strong>Validated Shared VPC + Cloud NAT</strong> — all service projects route egress through a centralized NAT gateway</li>
                                 </ul>
                             </div>
                             <div class="tech-stack-list">
@@ -901,7 +901,7 @@
                                     <li class="impact-item">Routes through a <strong>provider chain</strong>: RunPod (primary) → Cloud Run GPU (secondary) → GKE MIG (tertiary)</li>
                                     <li class="impact-item">Each provider has a configurable <strong>mock-failure flag</strong> for testing without real outages</li>
                                     <li class="impact-item">Returns HTTP 503 with <strong>per-provider error diagnostics</strong> when all providers fail</li>
-                                    <li class="impact-item">Containerised (linux/amd64) and deployed to <strong>GKE PRD cluster</strong></li>
+                                    <li class="impact-item">Containerized (linux/amd64) and deployed to <strong>GKE PRD cluster</strong></li>
                                     <li class="impact-item">All 4 failure scenarios validated end-to-end in production</li>
                                 </ul>
                             </div>
@@ -1028,7 +1028,7 @@
                             <div class="impact-metrics">
                                 <h4 class="impact-title">SRE Principles Applied</h4>
                                 <ul class="impact-list">
-                                    <li class="impact-item"><strong>MTTR minimised</strong> — both incidents resolved within the same business day</li>
+                                    <li class="impact-item"><strong>MTTR minimized</strong> — both incidents resolved within the same business day</li>
                                     <li class="impact-item"><strong>Blameless post-mortems</strong> — root causes documented, systemic fixes implemented</li>
                                     <li class="impact-item"><strong>Monitoring gaps closed</strong> — external dependency health checks added after each incident</li>
                                 </ul>
@@ -1043,7 +1043,7 @@
                         </div>
                     </div>
 
-                    <!-- Case 10 — AI Tools -->
+                    <!-- Case 13 — AI Tools -->
                     <div class="case-study">
                         <div class="case-header">
                             <div>
@@ -1220,7 +1220,7 @@
                                 </thead>
                                 <tbody>
                                     <tr><td><strong>LLM Production Infrastructure</strong></td><td>50+</td><td>vLLM 0.15.1, Gemma 3 12B, RunPod, Cloud Run GPU, GKE MIG</td></tr>
-                                    <tr><td><strong>Content Moderation</strong></td><td>20</td><td>YOLO object detection, GPU-optimised services</td></tr>
+                                    <tr><td><strong>Content Moderation</strong></td><td>20</td><td>YOLO object detection, GPU-optimized services</td></tr>
                                     <tr><td><strong>Security Automation</strong></td><td>29</td><td>OWASP ZAP, Trivy, SonarQube, npm audit</td></tr>
                                     <tr><td><strong>Intelligent Autoscaling</strong></td><td>15</td><td>VPA, HPA, MPA, KEDA</td></tr>
                                     <tr><td><strong>Modern AI Tools</strong></td><td>5</td><td>Claude AI, GitHub Copilot, Claude Code</td></tr>
@@ -1236,7 +1236,7 @@
                         </div>
                         <div class="feature-card">
                             <h4 class="feature-title">🎬 Content Moderation AI</h4>
-                            <p class="feature-description">Managed 20 tasks for AI-powered content screening. YOLO object detection and GPU-optimised services for video analysis. MLOps for child safety and age-assurance systems at production scale.</p>
+                            <p class="feature-description">Managed 20 tasks for AI-powered content screening. YOLO object detection and GPU-optimized services for video analysis. MLOps for child safety and age-assurance systems at production scale.</p>
                         </div>
                         <div class="feature-card">
                             <h4 class="feature-title">⚡ Intelligent Infrastructure</h4>
@@ -1279,7 +1279,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr><td><strong>RunPod Serverless</strong></td><td>RTX 5090 · RTX A6000 · RTX 6000 Ada · L40S</td><td>568 ms</td><td>Ada Lovelace / Ampere</td><td>Primary — cost-optimised burst</td></tr>
+                                    <tr><td><strong>RunPod Serverless</strong></td><td>RTX 5090 · RTX A6000 · RTX 6000 Ada · L40S</td><td>568 ms</td><td>Ada Lovelace / Ampere</td><td>Primary — cost-optimized burst</td></tr>
                                     <tr><td><strong>Cloud Run GPU</strong></td><td>NVIDIA L4</td><td>1.9 s (warm) · 41 s (cold)</td><td>Ada Lovelace</td><td>Secondary — managed serverless</td></tr>
                                     <tr><td><strong>GKE MIG (GCP)</strong></td><td>L40S · A100 SXM 80GB</td><td>7.7 s</td><td>Ada / Ampere</td><td>Dedicated — high-throughput</td></tr>
                                 </tbody>
@@ -1429,7 +1429,7 @@
                         </div>
                         <div class="feature-card">
                             <h4 class="feature-title">☁️ Cloud Functions Gen1 → Gen2 Migration</h4>
-                            <p class="feature-description">Migrated <strong>60+ Cloud Functions</strong> across HTTP and Pub/Sub triggers from Gen1 to Gen2. Delivered in 4 phases: DEV HTTP → DEV Pub/Sub → STG HTTP → STG Pub/Sub, with production pilot of 4 non-critical functions followed by 6-sprint plan for 16 critical high-traffic functions (10k+ invocations each). Standardised Jenkins pipelines and runtime updates. Deprecated Go 1.16 runtime replaced urgently.</p>
+                            <p class="feature-description">Migrated <strong>60+ Cloud Functions</strong> across HTTP and Pub/Sub triggers from Gen1 to Gen2. Delivered in 4 phases: DEV HTTP → DEV Pub/Sub → STG HTTP → STG Pub/Sub, with production pilot of 4 non-critical functions followed by 6-sprint plan for 16 critical high-traffic functions (10k+ invocations each). Standardized Jenkins pipelines and runtime updates. Deprecated Go 1.16 runtime replaced urgently.</p>
                         </div>
                         <div class="feature-card">
                             <h4 class="feature-title">🖥️ Automated GPU VM Provisioning (GCP)</h4>
