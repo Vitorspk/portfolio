@@ -169,7 +169,7 @@ docs/<name>     ← documentation only
 - All scroll listeners are `{ passive: true }`
 - Reading progress bar uses `requestAnimationFrame` throttling
 - Metric bars use `IntersectionObserver` — only animate when in viewport
-- Fonts loaded with `font-display: swap` — no render-blocking text
+- Fonts loaded with `display=swap` on the Google Fonts URL (`font-display: swap`) — no render-blocking text
 - All CSS transitions use explicit property lists, not `transition: all`
 - `inert` attribute removes off-screen nav from accessibility tree (better than `display:none` hacks)
 

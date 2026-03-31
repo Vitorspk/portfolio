@@ -110,7 +110,7 @@ Fix all linting errors before pushing. The CI workflow will block the PR check i
 | `claude.yml` | `@claude` mention | On-demand Claude Code in issues/PRs |
 
 When working on a PR:
-1. Wait for `claude-review` to complete
+1. Wait for `claude-code-review` to complete
 2. Fix every **bug** and **blocking issue** identified
 3. Fix **minor** issues where the fix is clear and low-risk
 4. Push fixes and repeat until the review says "ready to merge" or "no issues"
