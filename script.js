@@ -11,15 +11,18 @@ function debounce(fn, ms) {
 // ─── Tab Navigation ───────────────────────────────────────────────────────────
 
 const TAB_DEFAULT = 'overview';
-// Derived from the DOM so adding a new section to index.html automatically works —
-// HTML is the single source of truth for which tabs exist.
-const tabNames = Array.from(
-    document.querySelectorAll('[role="tabpanel"]'),
-    p => p.id
-);
 
-// All DOM-dependent setup runs after the document is ready
+// All DOM-dependent setup runs after the document is ready.
+// tabNames is derived here (not at module level) so the code is safe if
+// the script tag is ever moved to <head> with defer.
 document.addEventListener('DOMContentLoaded', () => {
+    // Derive tab order from DOM — HTML is the single source of truth.
+    // Adding a new section to index.html automatically includes it here.
+    const tabNames = Array.from(
+        document.querySelectorAll('[role="tabpanel"]'),
+        p => p.id
+    );
+
     // Cache NodeLists once
     const navItems  = Array.from(document.querySelectorAll('.nav-item'));
     const mobTabs   = Array.from(document.querySelectorAll('.mobile-tab'));
