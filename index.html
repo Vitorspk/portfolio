@@ -95,7 +95,7 @@
                 <button id="tab-cases" type="button" role="tab" class="nav-item" data-tab="cases" aria-selected="false" aria-controls="cases" tabindex="-1">
                     <span class="nav-icon" aria-hidden="true">📁</span>
                     <span class="nav-label">Case Studies</span>
-                    <span class="nav-badge">8</span>
+                    <span class="nav-badge">10</span>
                 </button>
 
                 <button id="tab-experience" type="button" role="tab" class="nav-item" data-tab="experience" aria-selected="false" aria-controls="experience" tabindex="-1">
@@ -119,7 +119,7 @@
                 <button id="tab-technical" type="button" role="tab" class="nav-item" data-tab="technical" aria-selected="false" aria-controls="technical" tabindex="-1">
                     <span class="nav-icon" aria-hidden="true">🔧</span>
                     <span class="nav-label">Technical</span>
-                    <span class="nav-badge">6</span>
+                    <span class="nav-badge">8</span>
                 </button>
 
                 <button id="tab-achievements" type="button" role="tab" class="nav-item" data-tab="achievements" aria-selected="false" aria-controls="achievements" tabindex="-1">
@@ -293,10 +293,12 @@
                                 <strong>7+ years</strong> in SRE/Platform Engineering roles (2018–present)<br>
                                 <strong>$331K/year</strong> documented cloud cost savings (compute + storage optimization)<br>
                                 <strong>AI/ML Operations:</strong> 207 tasks managing production ML systems (face recognition, content moderation)<br>
+                                <strong>vLLM Production Infra:</strong> Multi-GPU fleet (RTX 5090, A6000, L40S, A100) — cold start 10 min → 3 min<br>
+                                <strong>GitOps at Scale:</strong> ArgoCD managing 4 GKE clusters (dev · stg · prd · sdx) with full audit trail<br>
                                 <strong>Modern AI Adoption:</strong> Claude AI, GitHub Copilot, Claude Code for automated PR reviews<br>
                                 <strong>Advanced Networking:</strong> mTLS with Cloudflare, AWS-GCP HA VPN, zero-trust architecture<br>
-                                <strong>Security Excellence:</strong> 61 databases secured + 29 automated pentest/scanning tasks<br>
-                                <strong>Progressive Delivery:</strong> Custom canary deployment with automated rollback<br>
+                                <strong>Security Excellence:</strong> 61 databases secured + incident response (xmrig cryptominer on GKE PRD)<br>
+                                <strong>Cloud Functions Migration:</strong> 60+ functions Gen1 → Gen2 (HTTP + Pub/Sub) with zero downtime<br>
                                 <strong>Scale:</strong> 160+ applications, 863 infrastructure assets, 99.9% uptime SLO
                             </div>
                         </div>
@@ -367,7 +369,7 @@
                 <div id="cases" class="tab-content section-anchor" role="tabpanel" aria-labelledby="tab-cases" tabindex="-1" aria-hidden="true">
                     <div class="section-header">
                         <h2 class="section-title">Case Studies &amp; Projects</h2>
-                        <p class="section-subtitle">Real-world problems solved with measurable impact — documented with before/after metrics and technical details.</p>
+                        <p class="section-subtitle">10 real-world problems solved with measurable impact — documented with before/after metrics and technical details.</p>
                     </div>
 
                     <!-- Case 1 -->
@@ -751,7 +753,111 @@
                         </div>
                     </div>
 
-                    <!-- Case 8 -->
+                    <!-- Case 8 — ArgoCD GitOps -->
+                    <div class="case-study">
+                        <div class="case-header">
+                            <div>
+                                <h3 class="case-title">🔄 ArgoCD GitOps — Multi-Cluster Continuous Delivery</h3>
+                                <p class="case-date">2025 · GitOps · Kubernetes Multi-Cluster</p>
+                                <div class="case-tags">
+                                    <span class="case-tag">ArgoCD</span>
+                                    <span class="case-tag">GitOps</span>
+                                    <span class="case-tag">GKE Multi-Cluster</span>
+                                    <span class="case-tag">Helm</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="case-body">
+                            <div class="case-section">
+                                <h4 class="case-section-title">❓ Problem</h4>
+                                <p style="font-size:0.9375rem;line-height:1.75;color:var(--text-secondary);">
+                                    Deployments across four GKE clusters (dev, staging, production, sandbox) were manual, inconsistent, and error-prone. No single source of truth for cluster state, no audit trail, and high risk of configuration drift across environments.
+                                </p>
+                            </div>
+                            <div class="case-section">
+                                <h4 class="case-section-title">💡 Solution — 6-Phase Implementation</h4>
+                                <ul class="impact-list">
+                                    <li class="impact-item"><strong>Phase 1 — Foundation:</strong> Deployed ArgoCD on management cluster with RBAC and SSO</li>
+                                    <li class="impact-item"><strong>Phase 2 — Cluster Registration:</strong> Connected all four GKE clusters (dev/stg/prd/sdx) as ArgoCD targets</li>
+                                    <li class="impact-item"><strong>Phase 3 — App of Apps:</strong> Structured Helm chart repository with environment-specific value overrides</li>
+                                    <li class="impact-item"><strong>Phase 4 — Sync Policies:</strong> Configured automated sync with prune and self-heal enabled for non-prod</li>
+                                    <li class="impact-item"><strong>Phase 5 — Notifications:</strong> Integrated Slack alerts for sync failures and health degradation</li>
+                                    <li class="impact-item"><strong>Phase 6 — Progressive Promotion:</strong> Automated promotion pipeline dev → stg → prd with manual gate on production</li>
+                                </ul>
+                            </div>
+                            <div class="impact-metrics">
+                                <h4 class="impact-title">Business Impact</h4>
+                                <ul class="impact-list">
+                                    <li class="impact-item"><strong>4 clusters</strong> managed as a single GitOps fleet (dev · stg · prd · sdx)</li>
+                                    <li class="impact-item"><strong>Zero configuration drift</strong> — Git is the single source of truth</li>
+                                    <li class="impact-item"><strong>Full audit trail</strong> — every change tracked as a Git commit</li>
+                                    <li class="impact-item"><strong>Faster rollbacks</strong> — revert a Git commit, cluster reconciles automatically</li>
+                                    <li class="impact-item"><strong>Developer self-service</strong> — engineers deploy via PR, no kubectl access needed</li>
+                                </ul>
+                            </div>
+                            <div class="tech-stack-list">
+                                <span class="tech-badge">ArgoCD</span>
+                                <span class="tech-badge">GKE</span>
+                                <span class="tech-badge">Helm</span>
+                                <span class="tech-badge">GitOps</span>
+                                <span class="tech-badge">Terraform</span>
+                                <span class="tech-badge">Slack Notifications</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Case 9 — xmrig security incident -->
+                    <div class="case-study">
+                        <div class="case-header">
+                            <div>
+                                <h3 class="case-title">🛡️ Cryptomining Incident Response — xmrig on GKE PRD</h3>
+                                <p class="case-date">2025 · Security Incident · GKE Production</p>
+                                <div class="case-tags">
+                                    <span class="case-tag">Incident Response</span>
+                                    <span class="case-tag">Supply Chain</span>
+                                    <span class="case-tag">GKE Security</span>
+                                    <span class="case-tag">Threat Detection</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="case-body">
+                            <div class="case-section">
+                                <h4 class="case-section-title">❓ Problem</h4>
+                                <p style="font-size:0.9375rem;line-height:1.75;color:var(--text-secondary);">
+                                    xmrig (Monero cryptominer) detected running on a GKE production node. The miner was injected via a compromised frontend dependency — a supply-chain attack through an npm package. The workload was consuming node CPU, masking legitimate service degradation.
+                                </p>
+                            </div>
+                            <div class="case-section">
+                                <h4 class="case-section-title">💡 Detection &amp; Response</h4>
+                                <ul class="impact-list">
+                                    <li class="impact-item"><strong>Detection:</strong> Anomalous CPU spike on GKE production node triggered alert</li>
+                                    <li class="impact-item"><strong>Triage:</strong> Identified xmrig process inside a frontend container via node-level inspection</li>
+                                    <li class="impact-item"><strong>Root cause:</strong> Compromised npm dependency injected miner code into frontend bundle</li>
+                                    <li class="impact-item"><strong>Containment:</strong> Isolated and cordoned the affected node; restarted workloads on clean nodes</li>
+                                    <li class="impact-item"><strong>Remediation:</strong> Updated all vulnerable frontend libraries; pinned dependency versions</li>
+                                    <li class="impact-item"><strong>Hardening:</strong> Added npm audit to CI pipeline; implemented Trivy image scanning pre-deploy</li>
+                                </ul>
+                            </div>
+                            <div class="impact-metrics">
+                                <h4 class="impact-title">Business Impact</h4>
+                                <ul class="impact-list">
+                                    <li class="impact-item"><strong>Zero data exfiltration</strong> — miner targeted CPU only, contained quickly</li>
+                                    <li class="impact-item"><strong>Full remediation</strong> in under 4 hours from detection to clean deployment</li>
+                                    <li class="impact-item"><strong>Supply-chain hardening</strong> — Trivy + npm audit now gates every production deploy</li>
+                                    <li class="impact-item"><strong>Post-mortem published</strong> — team trained on dependency pinning and supply-chain risks</li>
+                                </ul>
+                            </div>
+                            <div class="tech-stack-list">
+                                <span class="tech-badge">GKE</span>
+                                <span class="tech-badge">Trivy</span>
+                                <span class="tech-badge">npm audit</span>
+                                <span class="tech-badge">Incident Response</span>
+                                <span class="tech-badge">Supply Chain Security</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Case 10 — AI Tools -->
                     <div class="case-study">
                         <div class="case-header">
                             <div>
@@ -948,6 +1054,50 @@
                             <p class="feature-description">Implemented VPA/HPA/MPA/KEDA for ML-driven autoscaling. Systems optimize themselves using machine learning predictions, not manual rules.</p>
                         </div>
                     </div>
+
+                    <div class="card">
+                        <h3 class="card-title"><span class="card-icon">🖥️</span> vLLM Production Infrastructure — Multi-GPU at Scale</h3>
+                        <p style="font-size:0.9375rem;line-height:1.75;color:var(--text-secondary);margin-bottom:var(--space-md);">
+                            Built and operated production-grade vLLM infrastructure serving large language models across multiple GPU tiers. Designed for cost efficiency, low latency, and automatic failover.
+                        </p>
+                        <div class="grid-2">
+                            <div class="feature-card">
+                                <h4 class="feature-title">🔥 Cold Start Optimization</h4>
+                                <p class="feature-description"><strong>10 minutes → 3 minutes</strong> cold start reduction on vLLM GPU instances. Optimized model loading, container pre-warming strategies, and startup sequences on GKE MIG and RunPod Serverless.</p>
+                            </div>
+                            <div class="feature-card">
+                                <h4 class="feature-title">🌐 Intelligent Fallback Router</h4>
+                                <p class="feature-description">Built routing layer that selects the optimal GPU provider in real time based on latency and availability. Automatically routes between RunPod, Cloud Run, and GKE MIG with measurable SLA improvements.</p>
+                            </div>
+                        </div>
+                        <div class="table-container" style="margin-top:var(--space-md);">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th scope="col">GPU Provider</th>
+                                        <th scope="col">Hardware</th>
+                                        <th scope="col">Avg Latency</th>
+                                        <th scope="col">Use Case</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr><td><strong>RunPod Serverless</strong></td><td>RTX 5090 / RTX A6000 / RTX 6000 Ada</td><td>568 ms</td><td>Primary — cost-optimized burst</td></tr>
+                                    <tr><td><strong>Cloud Run GPU</strong></td><td>NVIDIA L4</td><td>1.9 s (warm) / 41 s (cold)</td><td>Secondary — managed serverless</td></tr>
+                                    <tr><td><strong>GKE MIG (GCP)</strong></td><td>L40S / A100 SXM 80GB</td><td>7.7 s</td><td>Dedicated — high-throughput</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="tech-stack-list" style="margin-top:var(--space-md);">
+                            <span class="tech-badge">vLLM</span>
+                            <span class="tech-badge">RunPod Serverless</span>
+                            <span class="tech-badge">Cloud Run GPU (L4)</span>
+                            <span class="tech-badge">GKE MIG</span>
+                            <span class="tech-badge">RTX 5090</span>
+                            <span class="tech-badge">RTX A6000</span>
+                            <span class="tech-badge">L40S</span>
+                            <span class="tech-badge">A100 SXM 80GB</span>
+                        </div>
+                    </div>
                 </div>
 
                 <!-- FINOPS -->
@@ -1047,7 +1197,7 @@
                 <div id="technical" class="tab-content section-anchor" role="tabpanel" aria-labelledby="tab-technical" tabindex="-1" aria-hidden="true">
                     <div class="section-header">
                         <h2 class="section-title">Advanced Technical Implementations</h2>
-                        <p class="section-subtitle">Cutting-edge networking, security, and deployment strategies that distinguish Staff/Principal Engineer level work.</p>
+                        <p class="section-subtitle">Cutting-edge networking, security, deployment, and platform migration work that distinguishes Staff/Principal Engineer level execution.</p>
                     </div>
                     <div class="grid-3">
                         <div class="feature-card">
@@ -1073,6 +1223,14 @@
                         <div class="feature-card">
                             <h4 class="feature-title">🛡️ Zero-Trust Architecture</h4>
                             <p class="feature-description">Comprehensive zero-trust network with encrypted communication, mutual authentication, and service mesh implementation.</p>
+                        </div>
+                        <div class="feature-card">
+                            <h4 class="feature-title">☁️ Cloud Functions Gen1 → Gen2 Migration</h4>
+                            <p class="feature-description">Migrated <strong>60+ Cloud Functions</strong> from Gen1 to Gen2 across HTTP trigger and Pub/Sub architectures. Improved cold start performance, longer execution timeouts, and concurrency support. Zero downtime migration with canary traffic shifting.</p>
+                        </div>
+                        <div class="feature-card">
+                            <h4 class="feature-title">🖥️ Automated GPU VM Provisioning (GCP)</h4>
+                            <p class="feature-description">Built fully automated provisioning pipeline for GPU VMs on GCP to run vLLM workloads. Terraform modules for instance lifecycle, startup scripts for model pre-loading, and auto-shutdown on idle to minimize cost.</p>
                         </div>
                     </div>
                 </div>
