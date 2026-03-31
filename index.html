@@ -1008,11 +1008,11 @@
                         </div>
                         <div class="case-body">
                             <div class="case-section">
-                                <h4 class="case-section-title">Incident A — Plasmic Loader [P1]: verifymyage.de + .co.uk returning HTTP 500</h4>
+                                <h4 class="case-section-title">Incident A — Third-Party CMS Loader [P1]: HTTP 500 across two regional markets</h4>
                                 <ul class="impact-list">
                                     <li class="impact-item"><strong>Impact:</strong> 100% of page loads returning HTTP 500 from 13:08 UTC — full production outage across two regional markets</li>
-                                    <li class="impact-item"><strong>Root cause:</strong> Plasmic Loader API dependency had an outage; all pages failed server-side rendering</li>
-                                    <li class="impact-item"><strong>Response:</strong> Identified dependency failure, implemented emergency static fallback, coordinated with Plasmic support</li>
+                                    <li class="impact-item"><strong>Root cause:</strong> Third-party CMS API dependency had an outage; all pages failed server-side rendering</li>
+                                    <li class="impact-item"><strong>Response:</strong> Identified dependency failure, implemented emergency static fallback, and escalated to vendor support</li>
                                     <li class="impact-item"><strong>Resolution:</strong> Service restored; added circuit-breaker pattern and health monitoring for external CMS dependencies</li>
                                 </ul>
                             </div>
