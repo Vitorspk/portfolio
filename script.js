@@ -70,9 +70,10 @@ document.addEventListener('DOMContentLoaded', () => {
             history.pushState({ tab: name }, '', `#${name}`);
         }
 
-        // Scroll main content area to top so users start at the top of the new panel
+        // Scroll main content area to top so users start at the top of the new panel.
+        // scrollTo with behavior:'instant' is explicit and bypasses smooth scroll-behavior.
         const mainContent = document.querySelector('.main-content');
-        if (mainContent && pushState) mainContent.scrollTop = 0;
+        if (mainContent && pushState) mainContent.scrollTo({ top: 0, behavior: 'instant' });
 
         // Move focus to the active panel when the tab was activated by keyboard
         // within the tablist (not on URL load or programmatic navigation).
@@ -141,16 +142,23 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // ─── Metric Bar Animations (IntersectionObserver) ─────────────────────────
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
     const barObserver = new IntersectionObserver((entries, obs) => {
         entries.forEach(entry => {
             if (!entry.isIntersecting) return;
             const bar = entry.target;
             const target = bar.dataset.width || '0%';
-            bar.style.width = '0%';
-            // Double rAF ensures 0% paints before the CSS transition fires
-            requestAnimationFrame(() => requestAnimationFrame(() => {
+            if (prefersReducedMotion) {
+                // Respect user motion preference — set final width immediately
                 bar.style.width = target;
-            }));
+            } else {
+                bar.style.width = '0%';
+                // Double rAF ensures 0% paints before the CSS transition fires
+                requestAnimationFrame(() => requestAnimationFrame(() => {
+                    bar.style.width = target;
+                }));
+            }
             obs.unobserve(bar);
         });
     }, { threshold: 0.2 });

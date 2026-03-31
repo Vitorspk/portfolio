@@ -175,7 +175,7 @@ a:hover {
     cursor: pointer;
     opacity: 0;
     visibility: hidden;
-    transition: all var(--t-base);
+    transition: color var(--t-base), background-color var(--t-base), border-color var(--t-base), opacity var(--t-base), transform var(--t-base), box-shadow var(--t-base);
     box-shadow: var(--shadow-lg);
     z-index: 999;
     display: flex;
@@ -320,7 +320,7 @@ a:hover {
     font-size: 0.875rem;
     font-weight: 500;
     cursor: pointer;
-    transition: all var(--t-fast);
+    transition: color var(--t-fast), background-color var(--t-fast), border-color var(--t-fast), opacity var(--t-fast), transform var(--t-fast), box-shadow var(--t-fast);
     border: none;
     background: transparent;
     width: 100%;
@@ -369,7 +369,7 @@ a:hover {
     color: var(--text-muted);
     border-radius: var(--radius-full);
     border: 1px solid var(--border);
-    transition: all var(--t-fast);
+    transition: color var(--t-fast), background-color var(--t-fast), border-color var(--t-fast), opacity var(--t-fast), transform var(--t-fast), box-shadow var(--t-fast);
 }
 
 .nav-item.active .nav-badge {
@@ -397,7 +397,7 @@ a:hover {
     font-size: 0.8125rem;
     font-weight: 500;
     text-decoration: none;
-    transition: all var(--t-fast);
+    transition: color var(--t-fast), background-color var(--t-fast), border-color var(--t-fast), opacity var(--t-fast), transform var(--t-fast), box-shadow var(--t-fast);
 }
 
 .sidebar-contact-link:hover {
@@ -526,7 +526,7 @@ a:hover {
     font-weight: 600;
     cursor: pointer;
     text-decoration: none;
-    transition: all var(--t-base);
+    transition: color var(--t-base), background-color var(--t-base), border-color var(--t-base), opacity var(--t-base), transform var(--t-base), box-shadow var(--t-base);
     box-shadow: 0 0 0 1px rgba(59,130,246,0.3), var(--shadow-md);
 }
 
@@ -550,7 +550,7 @@ a:hover {
     font-weight: 600;
     cursor: pointer;
     text-decoration: none;
-    transition: all var(--t-base);
+    transition: color var(--t-base), background-color var(--t-base), border-color var(--t-base), opacity var(--t-base), transform var(--t-base), box-shadow var(--t-base);
 }
 
 .btn-ghost:hover {
@@ -672,7 +672,7 @@ a:hover {
     cursor: pointer;
     white-space: nowrap;
     border-bottom: 2px solid transparent;
-    transition: all var(--t-fast);
+    transition: color var(--t-fast), background-color var(--t-fast), border-color var(--t-fast), opacity var(--t-fast), transform var(--t-fast), box-shadow var(--t-fast);
     flex-shrink: 0;
 }
 
@@ -783,7 +783,7 @@ a:hover {
     border: 1px solid var(--border);
     border-radius: var(--radius-xl);
     padding: var(--space-xl) var(--space-lg);
-    transition: all var(--t-base);
+    transition: color var(--t-base), background-color var(--t-base), border-color var(--t-base), opacity var(--t-base), transform var(--t-base), box-shadow var(--t-base);
     cursor: default;
     position: relative;
     overflow: hidden;
@@ -899,7 +899,7 @@ a:hover {
     border: 1px solid var(--border);
     border-radius: var(--radius-lg);
     padding: var(--space-xl);
-    transition: all var(--t-base);
+    transition: color var(--t-base), background-color var(--t-base), border-color var(--t-base), opacity var(--t-base), transform var(--t-base), box-shadow var(--t-base);
     position: relative;
     overflow: hidden;
 }
@@ -1353,7 +1353,7 @@ tr:last-child td {
     font-size: 0.8125rem;
     font-weight: 600;
     color: var(--text-secondary);
-    transition: all var(--t-fast);
+    transition: color var(--t-fast), background-color var(--t-fast), border-color var(--t-fast), opacity var(--t-fast), transform var(--t-fast), box-shadow var(--t-fast);
 }
 
 .tech-badge:hover {
@@ -1442,7 +1442,7 @@ tr:last-child td {
     font-size: 0.8125rem;
     font-weight: 600;
     cursor: pointer;
-    transition: all var(--t-fast);
+    transition: color var(--t-fast), background-color var(--t-fast), border-color var(--t-fast), opacity var(--t-fast), transform var(--t-fast), box-shadow var(--t-fast);
     width: 100%;
     text-align: left;
 }
@@ -1515,7 +1515,7 @@ footer {
     font-size: 0.875rem;
     font-weight: 600;
     text-decoration: none;
-    transition: all var(--t-base);
+    transition: color var(--t-base), background-color var(--t-base), border-color var(--t-base), opacity var(--t-base), transform var(--t-base), box-shadow var(--t-base);
 }
 
 .footer-link:hover {
@@ -1654,6 +1654,19 @@ footer {
 
     .quick-links-grid {
         grid-template-columns: 1fr;
+    }
+}
+
+/* ============================================================
+   REDUCED MOTION
+   ============================================================ */
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
     }
 }
 
