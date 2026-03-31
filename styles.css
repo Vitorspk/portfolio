@@ -1455,7 +1455,7 @@ tr:last-child td {
     font-weight: 700;
     position: absolute;
     left: 0;
-    top: 3px;
+    top: 0.15em;
 }
 
 /* ============================================================
