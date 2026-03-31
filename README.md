@@ -29,8 +29,12 @@ portfolio/
 ├── styles.css          # Design system + layout + components
 ├── script.js           # Tab navigation, accessibility, animations
 ├── 404.html            # Custom error page (auto-served by GitHub Pages)
+├── README.md           # This file
+├── CLAUDE.md           # AI assistant instructions
+├── LICENSE             # MIT license
 ├── VALIDATION.md       # Local linting setup guide
 ├── package.json        # Dev dependencies (linters only)
+├── package-lock.json
 ├── .eslintrc.json      # ESLint config
 ├── .stylelintrc.json   # Stylelint config
 ├── .htmlvalidate.json  # HTML Validate config
