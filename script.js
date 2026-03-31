@@ -11,6 +11,10 @@ function debounce(fn, ms) {
 // ─── Tab Navigation ───────────────────────────────────────────────────────────
 
 const TAB_DEFAULT = 'overview';
+// Tracks the currently active tab — used by keyboard navigation to derive
+// the current index without re-parsing location.hash (which may be stale
+// when pushState=false, e.g., on initial load with no fragment).
+let activeTab = TAB_DEFAULT;
 
 // All DOM-dependent setup runs after the document is ready.
 // tabNames is derived here (not at module level) so the code is safe if
@@ -32,6 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function activateTab(tabName, pushState = true) {
         const name = tabName || TAB_DEFAULT;
+        activeTab = name; // keep module-level tracker in sync
 
         // Sidebar nav items
         navItems.forEach(btn => {
@@ -177,9 +182,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     navContainers.forEach(container => {
         container.addEventListener('keydown', (e) => {
-            // Derive active index from hash — avoids sidebar/mobile list coupling
-            const currentIdx = tabNames.indexOf(location.hash.replace('#', ''));
-            const idx = currentIdx >= 0 ? currentIdx : 0;
+            // Use module-level activeTab tracker — avoids stale location.hash
+            // when pushState=false (e.g., initial load with no URL fragment)
+            const idx = tabNames.indexOf(activeTab);
             const len = tabNames.length;
             let targetIdx = -1;
 
