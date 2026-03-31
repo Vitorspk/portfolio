@@ -49,16 +49,16 @@ portfolio/
 
 ## Sections (tabs)
 
-| Tab ID | Content |
-|--------|---------|
-| `overview` | Intro, metrics, quick-links |
-| `experience` | Work history timeline |
-| `skills` | Technical skills with proficiency bars |
-| `projects` | Featured infrastructure projects |
-| `cases` | Deep-dive case studies (FinOps, mTLS, HA VPN) |
-| `certifications` | Cloud certifications |
-| `aiml` | AI/ML operations work |
-| `contact` | Contact form and links |
+| Tab ID | Label | Content |
+|--------|-------|---------|
+| `overview` | Overview | Intro, metrics, quick-links |
+| `cases` | Case Studies | Deep-dive case studies (FinOps, mTLS, HA VPN) |
+| `experience` | Experience | Work history timeline |
+| `aiml` | AI & ML | AI/ML operations work |
+| `finops` | FinOps | Cloud cost optimisation and FinOps practice |
+| `technical` | Technical | Technical deep-dives and architecture |
+| `achievements` | Achievements | Key wins, certifications, metrics |
+| `skills` | Skills | Technical skills with proficiency bars |
 
 ---
 
@@ -169,7 +169,7 @@ docs/<name>     ← documentation only
 - All scroll listeners are `{ passive: true }`
 - Reading progress bar uses `requestAnimationFrame` throttling
 - Metric bars use `IntersectionObserver` — only animate when in viewport
-- Fonts loaded with `display=swap` — no render-blocking text
+- Fonts loaded with `font-display: swap` — no render-blocking text
 - All CSS transitions use explicit property lists, not `transition: all`
 - `inert` attribute removes off-screen nav from accessibility tree (better than `display:none` hacks)
 
