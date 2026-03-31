@@ -133,6 +133,12 @@
                     <span class="nav-label">Skills</span>
                     <span class="nav-badge">50+</span>
                 </button>
+
+                <button id="tab-projects" type="button" role="tab" class="nav-item" data-tab="projects" aria-selected="false" aria-controls="projects" tabindex="-1">
+                    <span class="nav-icon" aria-hidden="true">🛠️</span>
+                    <span class="nav-label">Projects</span>
+                    <span class="nav-badge">4</span>
+                </button>
             </nav>
 
             <div class="sidebar-footer">
@@ -172,6 +178,7 @@
                 <button id="mobile-tab-technical" type="button" role="tab" class="mobile-tab" data-tab="technical" aria-selected="false" aria-controls="technical" tabindex="-1"><span aria-hidden="true">🔧</span> Technical</button>
                 <button id="mobile-tab-achievements" type="button" role="tab" class="mobile-tab" data-tab="achievements" aria-selected="false" aria-controls="achievements" tabindex="-1"><span aria-hidden="true">🏆</span> Wins</button>
                 <button id="mobile-tab-skills" type="button" role="tab" class="mobile-tab" data-tab="skills" aria-selected="false" aria-controls="skills" tabindex="-1"><span aria-hidden="true">💡</span> Skills</button>
+                <button id="mobile-tab-projects" type="button" role="tab" class="mobile-tab" data-tab="projects" aria-selected="false" aria-controls="projects" tabindex="-1"><span aria-hidden="true">🛠️</span> Projects</button>
             </nav>
 
             <!-- Hero -->
@@ -391,7 +398,7 @@
                         <div class="case-body">
                             <div class="case-section">
                                 <h4 class="case-section-title">❓ Problem</h4>
-                                <p style="font-size:0.9375rem;line-height:1.75;color:var(--text-secondary);">
+                                <p class="case-description">
                                     Cloud storage costs growing exponentially — spending <strong>$12,874/month</strong> on 360 TiB, all in expensive Standard storage. No lifecycle management, no archival strategy, no deletion policies.
                                 </p>
                             </div>
@@ -457,7 +464,7 @@
                         <div class="case-body">
                             <div class="case-section">
                                 <h4 class="case-section-title">❓ Problem</h4>
-                                <p style="font-size:0.9375rem;line-height:1.75;color:var(--text-secondary);">
+                                <p class="case-description">
                                     Airflow deployment massively over-provisioned: 100 pods (50 dev + 50 prod), 20 CPUs, 200 GB RAM across 7 nodes costing $1,513/month. Most pods idle 90% of the time.
                                 </p>
                             </div>
@@ -524,7 +531,7 @@
                         <div class="case-body">
                             <div class="case-section">
                                 <h4 class="case-section-title">❓ Problem</h4>
-                                <p style="font-size:0.9375rem;line-height:1.75;color:var(--text-secondary);">
+                                <p class="case-description">
                                     Standard TLS only authenticates server to client. Required mutual authentication where both client and server verify identity using certificates — critical for API security and ISO 27001 compliance.
                                 </p>
                             </div>
@@ -581,7 +588,7 @@
                         <div class="case-body">
                             <div class="case-section">
                                 <h4 class="case-section-title">❓ Problem</h4>
-                                <p style="font-size:0.9375rem;line-height:1.75;color:var(--text-secondary);">
+                                <p class="case-description">
                                     Needed secure, reliable communication between AWS and GCP for hybrid workloads. Public internet routing unacceptable for sensitive data. Required redundancy for high availability.
                                 </p>
                             </div>
@@ -630,7 +637,7 @@
                         <div class="case-body">
                             <div class="case-section">
                                 <h4 class="case-section-title">❓ Problem</h4>
-                                <p style="font-size:0.9375rem;line-height:1.75;color:var(--text-secondary);">
+                                <p class="case-description">
                                     Traditional blue-green deployments require 100% traffic switch — risky. Off-the-shelf tools didn't fit our multi-environment Kubernetes setup. Needed gradual rollout with automatic metric-based rollback.
                                 </p>
                             </div>
@@ -679,7 +686,7 @@
                         <div class="case-body">
                             <div class="case-section">
                                 <h4 class="case-section-title">❓ Problem</h4>
-                                <p style="font-size:0.9375rem;line-height:1.75;color:var(--text-secondary);">
+                                <p class="case-description">
                                     Databases exposed with public IPs, unencrypted connections, password-only authentication. Non-compliant with ISO 27001. Vulnerable to network sniffing and unauthorized access.
                                 </p>
                             </div>
@@ -733,7 +740,7 @@
                         <div class="case-body">
                             <div class="case-section">
                                 <h4 class="case-section-title">❓ Problem</h4>
-                                <p style="font-size:0.9375rem;line-height:1.75;color:var(--text-secondary);">
+                                <p class="case-description">
                                     160+ applications with direct nginx ingress — no centralized API management, rate limiting, or authentication layer. Difficult to enforce policies or monitor API usage consistently.
                                 </p>
                             </div>
@@ -773,7 +780,7 @@
                         <div class="case-body">
                             <div class="case-section">
                                 <h4 class="case-section-title">❓ Problem</h4>
-                                <p style="font-size:0.9375rem;line-height:1.75;color:var(--text-secondary);">
+                                <p class="case-description">
                                     Deployments across four GKE clusters (dev · stg · prd · sdx) were manual, inconsistent, and error-prone. No single source of truth for cluster state, no audit trail, and high risk of configuration drift between environments. Teams required kubectl access to deploy — no self-service model existed.
                                 </p>
                             </div>
@@ -833,7 +840,7 @@
                         <div class="case-body">
                             <div class="case-section">
                                 <h4 class="case-section-title">❓ Problem</h4>
-                                <p style="font-size:0.9375rem;line-height:1.75;color:var(--text-secondary);">
+                                <p class="case-description">
                                     GKE clusters and the underlying network infrastructure were provisioned manually with no IaC. No consistent multi-environment strategy, no prevent-destroy protection on critical network resources, and Terraform configuration was monolithic — impossible to reuse across environments.
                                 </p>
                             </div>
@@ -890,7 +897,7 @@
                         <div class="case-body">
                             <div class="case-section">
                                 <h4 class="case-section-title">❓ Problem</h4>
-                                <p style="font-size:0.9375rem;line-height:1.75;color:var(--text-secondary);">
+                                <p class="case-description">
                                     Production LLM serving relied on a single GPU provider (RunPod). A provider outage or GPU supply constraint would bring down the entire inference capability with no fallback. Each provider had different latency profiles — no routing logic existed to exploit this.
                                 </p>
                             </div>
@@ -958,7 +965,7 @@
                         <div class="case-body">
                             <div class="case-section">
                                 <h4 class="case-section-title">❓ Problem</h4>
-                                <p style="font-size:0.9375rem;line-height:1.75;color:var(--text-secondary);">
+                                <p class="case-description">
                                     xmrig (Monero cryptominer) detected running on a GKE production node. The miner was injected via a compromised frontend npm dependency — a supply-chain attack that bypassed standard code review. The workload was silently consuming node CPU, masking legitimate service degradation with no immediate visible symptoms.
                                 </p>
                             </div>
@@ -1088,15 +1095,15 @@
 
                     <div class="timeline">
                         <div class="timeline-item">
-                            <div class="timeline-company">Verifymy</div>
+                            <div class="timeline-company">VerifyMy</div>
                             <div class="timeline-role">Site Reliability Engineer</div>
                             <div class="timeline-period">
-                                Jun 2021 – Present · 4.5 years
+                                Jun 2021 – Present · 4 years 10 months
                                 <span class="timeline-current-badge"><span class="status-dot" aria-hidden="true"></span> Current</span>
                             </div>
                             <p class="timeline-description">
-                                <strong>London, UK (Remote)</strong> — Leading platform engineering and FinOps at a child safety tech company.<br><br>
-                                Led $331K annual cloud cost optimization ($148K storage + $183K compute) · Manage 160+ applications across 4 Kubernetes environments · Implemented mTLS with Cloudflare and AWS-GCP HA VPN · Secured 61 databases (SSL/TLS, private IPs, cert auth) · Built 65+ Jenkins CI/CD pipelines with 98%+ first-deploy success · Developed custom canary deployment automation · Led ISO 27001 compliance · Designed Kong Gateway for 160+ APIs · Completed 1,562 Jira tasks with 100% completion rate<br><br>
+                                <strong>London, UK (Remote)</strong> — Platform engineering and FinOps at a child safety tech company (safeguarding children and society online).<br><br>
+                                Led $331K annual cloud cost optimization ($148K storage + $183K compute) · Manage 160+ applications across 4 Kubernetes environments (versions 1.22 → 1.33) · mTLS with Cloudflare and AWS-GCP HA VPN · Secured 61 databases (SSL/TLS, private IPs, cert auth) · Secret rotation policies and audit logging across all environments · Built 65+ Jenkins CI/CD pipelines with 98%+ first-deploy success · Custom canary deployment automation with metric-based rollback · Led ISO 27001 compliance (certification achieved) · OWASP ZAP + SonarQube automated security scanning pipeline · Kong Gateway for 160+ APIs · Completed 1,562 Jira tasks with 100% completion rate<br><br>
                                 <strong>Stack:</strong> GCP (expert), AWS, Kubernetes, Jenkins, Kong, Prometheus, Grafana, MongoDB Atlas, PostgreSQL, Redis, Terraform, GitHub Actions
                             </p>
                         </div>
@@ -1104,10 +1111,10 @@
                         <div class="timeline-item">
                             <div class="timeline-company">Intelipost</div>
                             <div class="timeline-role">Site Reliability Engineer</div>
-                            <div class="timeline-period">Feb 2020 – Jun 2021 · 1.5 years</div>
+                            <div class="timeline-period">Feb 2020 – Jun 2021 · 1 year 5 months</div>
                             <p class="timeline-description">
-                                <strong>São Paulo, Brazil</strong> — Partnered with development teams to expand infrastructure knowledge and promote DevOps culture.<br><br>
-                                Deep AWS work (EC2, EKS, VPC, CloudFormation, cost optimization) · Enhanced system reliability · Reduced application response times · Expanded observability scope<br><br>
+                                <strong>São Paulo, Brazil</strong> — Worked closely with development teams to expand infrastructure knowledge and promote DevOps culture across a logistics tech company.<br><br>
+                                Deep AWS work (EC2, EKS, VPC, CloudFormation, cost optimization) · Implemented mechanisms to improve system reliability from ideation through delivery · Reduced application response times for end users · Expanded observability scope and promoted monitoring awareness among developers<br><br>
                                 <strong>Stack:</strong> AWS (Expert), GCP, PostgreSQL, Python, CloudFormation
                             </p>
                         </div>
@@ -1115,10 +1122,10 @@
                         <div class="timeline-item">
                             <div class="timeline-company">Dasa</div>
                             <div class="timeline-role">Site Reliability Engineer</div>
-                            <div class="timeline-period">Jan 2018 – Feb 2020 · 2+ years</div>
+                            <div class="timeline-period">Jan 2018 – Feb 2020 · 2 years 2 months</div>
                             <p class="timeline-description">
                                 <strong>São Paulo, Brazil</strong> — Critical operations at Brazil's largest integrated healthcare network.<br><br>
-                                Deep Azure expertise: Web Apps, AKS, API Management Gateway, ExpressRoute, VNet peering · Multi-cloud operations (AWS + Azure) · Incident management and crisis response<br><br>
+                                Incident management and crisis response · Designed and improved cloud architecture with focus on performance and reliability · Helped teams gain visibility into running services · Deep Azure expertise: Web Apps, AKS, API Management Gateway, ExpressRoute, VNet peering · Multi-cloud operations (AWS + Azure)<br><br>
                                 <strong>Stack:</strong> Azure (Expert: Web Apps, AKS, API Gateway, ExpressRoute), AWS, GCP, Elasticsearch
                             </p>
                         </div>
@@ -1128,9 +1135,9 @@
                             <div class="timeline-role">Software Developer</div>
                             <div class="timeline-period">Jul 2017 – Dec 2017 · 6 months</div>
                             <p class="timeline-description">
-                                <strong>Barueri, São Paulo</strong> — Developed APIs using Axway Cloud Platform for Dasa Group clients.<br><br>
-                                Virtualized and exposed REST and SOAP APIs · Business logic via Policy Studio · IBM ESB integration<br><br>
-                                <strong>Stack:</strong> Axway Cloud Platform, API Gateway, Azure, REST/SOAP, IBM ESB
+                                <strong>Barueri, São Paulo</strong> — Built APIs using Axway Cloud Platform (API Gateway + API Management) for Dasa Group clients, covering both backend and frontend REST/SOAP APIs.<br><br>
+                                Business logic via Policy Studio · IBM ESB integration for flexible application integration<br><br>
+                                <strong>Stack:</strong> Axway Cloud Platform, API Gateway, Policy Studio, IBM ESB, Azure, REST/SOAP
                             </p>
                         </div>
 
@@ -1139,37 +1146,48 @@
                             <div class="timeline-role">Software Developer</div>
                             <div class="timeline-period">Jan 2017 – Jul 2017 · 7 months</div>
                             <p class="timeline-description">
-                                <strong>Americana, SP</strong> — Web service application development with modern Java stack.<br><br>
-                                <strong>Stack:</strong> SOAP, RESTful, Spring MVC, Maven, Git, Hibernate, Spring Data, Jenkins
+                                <strong>Americana, SP</strong> — Web service application development with continuous integration.<br><br>
+                                REST and SOAP web services · GitLab-based version control · CI with Jenkins<br><br>
+                                <strong>Stack:</strong> SOAP, RESTful, Spring MVC, Maven, Git, GitLab, Hibernate, Spring Data, Jenkins
                             </p>
                         </div>
 
                         <div class="timeline-item">
                             <div class="timeline-company">Microdata Sistemas</div>
-                            <div class="timeline-role">Java Developer → Systems Analyst</div>
-                            <div class="timeline-period">Nov 2014 – Dec 2016 · 2 years</div>
+                            <div class="timeline-role">Java Developer</div>
+                            <div class="timeline-period">Jan 2016 – Dec 2016 · 1 year</div>
                             <p class="timeline-description">
-                                <strong>Americana, SP</strong> — Web services, e-commerce, and enterprise software development. Delphi developer and SQL Server analyst with some iOS/Android work.<br><br>
-                                <strong>Stack:</strong> Java, Web Services, Delphi, SQL Server, iOS, Android
+                                <strong>Americana, SP</strong> — Web services and e-commerce development in Java.<br><br>
+                                <strong>Stack:</strong> Java, Web Services, E-Commerce
+                            </p>
+                        </div>
+
+                        <div class="timeline-item">
+                            <div class="timeline-company">Microdata Sistemas</div>
+                            <div class="timeline-role">Systems Analyst</div>
+                            <div class="timeline-period">Nov 2014 – Dec 2015 · 1 year 2 months</div>
+                            <p class="timeline-description">
+                                <strong>Americana, SP</strong> — Delphi developer and SQL Server analyst in a Windows-based enterprise software environment. Customer support, bug treatment, and software improvements. Some iOS/Android work for special projects.<br><br>
+                                <strong>Stack:</strong> Delphi, SQL Server, iOS, Android
                             </p>
                         </div>
 
                         <div class="timeline-item">
                             <div class="timeline-company">GZ Sistemas</div>
                             <div class="timeline-role">Junior IT Support Analyst</div>
-                            <div class="timeline-period">Mar 2013 – Jul 2014 · 1.5 years</div>
+                            <div class="timeline-period">Mar 2013 – Jul 2014 · 1 year 5 months</div>
                             <p class="timeline-description">
-                                <strong>Jundiaí, SP</strong> — Customer service, error treatment, and enterprise software for accounting/financial retail sector.<br><br>
-                                <strong>Stack:</strong> Java, C#, Linux (Fedora), Network &amp; Database administration
+                                <strong>Jundiaí, SP</strong> — Customer service and enterprise software support for accounting and financial retail sector. Hands-on with network connections, database administration, and Linux environments.<br><br>
+                                <strong>Stack:</strong> Java, C#, Linux (Fedora 14), Network &amp; Database administration
                             </p>
                         </div>
 
                         <div class="timeline-item">
                             <div class="timeline-company">Coca-Cola FEMSA</div>
                             <div class="timeline-role">Administrative Assistant &amp; Supervisor</div>
-                            <div class="timeline-period">Feb 2012 – Mar 2013 · 1+ year</div>
+                            <div class="timeline-period">Feb 2012 – Mar 2013 · 1 year 2 months</div>
                             <p class="timeline-description">
-                                <strong>Jundiaí, SP</strong> — Team supervision, monthly closing sheets for delivery operations, performance reporting, freight service coordination.
+                                <strong>Jundiaí, SP</strong> — Supervised delivery officials, monthly closing sheets for delivery operations, daily performance reporting for freight service providers.
                             </p>
                         </div>
                     </div>
@@ -1180,8 +1198,49 @@
                             📊 <strong>2012–2014:</strong> Operations and IT support (Coca-Cola, GZ Sistemas)<br>
                             💻 <strong>2014–2017:</strong> Software development (Microdata, PRÓPONTO, Dasa)<br>
                             ☁️ <strong>2018–2020:</strong> SRE/Cloud Engineering (Dasa, Intelipost)<br>
-                            🚀 <strong>2021–Present:</strong> Platform Engineering leadership with FinOps mastery (Verifymy)<br><br>
-                            <strong>13+ years total · 7+ years SRE/Platform · Tri-cloud expert (GCP + AWS + Azure) · Full-stack understanding from dev background</strong>
+                            🚀 <strong>2021–Present:</strong> Platform Engineering leadership with FinOps mastery (VerifyMy)<br><br>
+                            <strong>13+ years total · 7+ years SRE/Platform · Tri-cloud expert (GCP + AWS + Azure) · Full-stack background from dev roles</strong>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <h3 class="card-title"><span class="card-icon">🎓</span> Education</h3>
+                        <div class="timeline">
+                            <div class="timeline-item">
+                                <div class="timeline-company">Wyden Educacional</div>
+                                <div class="timeline-role">MBA — Software Engineering</div>
+                                <div class="timeline-period">2015 – 2016</div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-company">Anhanguera Educacional</div>
+                                <div class="timeline-role">Higher Education — Analysis and Systems Development</div>
+                                <div class="timeline-period">2012 – 2014</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="grid-2">
+                        <div class="card">
+                            <h3 class="card-title"><span class="card-icon">📜</span> Certifications</h3>
+                            <ul class="impact-list">
+                                <li class="impact-item"><strong>Google Cloud Platform Fundamentals:</strong> Core Infrastructure</li>
+                                <li class="impact-item"><strong>Logging, Monitoring and Observability</strong> in Google Cloud</li>
+                                <li class="impact-item"><strong>Desenvolvimento Ágil com Java</strong> Avançado</li>
+                                <li class="impact-item"><strong>Programando em TypeScript</strong></li>
+                                <li class="impact-item"><strong>SQL Fundamentals</strong> — Certificate of Completion</li>
+                            </ul>
+                        </div>
+                        <div class="card">
+                            <h3 class="card-title"><span class="card-icon">🌐</span> Languages &amp; Publications</h3>
+                            <ul class="impact-list">
+                                <li class="impact-item"><strong>Portuguese</strong> — Native</li>
+                                <li class="impact-item"><strong>Spanish</strong> — Full Professional</li>
+                                <li class="impact-item"><strong>English</strong> — Elementary</li>
+                            </ul>
+                            <div class="publication-block">
+                                <p class="publication-label">Publication</p>
+                                <p class="publication-title">Management Cloud Computing</p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -1246,7 +1305,7 @@
 
                     <div class="card">
                         <h3 class="card-title"><span class="card-icon">🖥️</span> vLLM Production Infrastructure — Full Journey</h3>
-                        <p style="font-size:0.9375rem;line-height:1.75;color:var(--text-secondary);margin-bottom:var(--space-md);">
+                        <p class="case-description case-description--mb">
                             Built and ran production LLM serving for <strong>Gemma 3 12B (GGUF Q4)</strong> via vLLM 0.15.1 — started on a single GCP VM and grew it into a multi-provider, multi-GPU setup with automatic failover and profile-driven GPU selection.
                         </p>
                         <div class="grid-2">
@@ -1729,6 +1788,248 @@
                             </div>
                         </div>
                     </div>
+                </div>
+
+                <!-- PROJECTS -->
+                <div id="projects" class="tab-content section-anchor" role="tabpanel" aria-labelledby="tab-projects" tabindex="-1" aria-hidden="true">
+                    <div class="section-header">
+                        <h2 class="section-title">Personal Projects</h2>
+                        <p class="section-subtitle">Side projects built outside of work — full production systems with real users, real infrastructure, and real constraints.</p>
+                    </div>
+
+                    <!-- Pokemon GO Payment -->
+                    <div class="case-study">
+                        <div class="case-header">
+                            <div>
+                                <h3 class="case-title">🎮 Pokémon GO Friend Code — Subscription SaaS</h3>
+                                <p class="case-date">2025–2026 · Full-Stack · Next.js · GCP · Multi-payment</p>
+                                <div class="case-tags">
+                                    <span class="case-tag">Next.js 16</span>
+                                    <span class="case-tag">TypeScript</span>
+                                    <span class="case-tag">Cloud Run</span>
+                                    <span class="case-tag">Cloud SQL</span>
+                                    <span class="case-tag">Stripe</span>
+                                    <span class="case-tag">Mercado Pago</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="case-body">
+                            <div class="case-section">
+                                <h4 class="case-section-title">What it does</h4>
+                                <p class="case-description">
+                                    A subscription service for Pokémon GO players to have their trainer codes automatically submitted to community listing sites daily. Users pick a plan, pay, and their code gets submitted every day without any manual action.
+                                </p>
+                            </div>
+                            <div class="case-section">
+                                <h4 class="case-section-title">How it's built</h4>
+                                <ul class="impact-list">
+                                    <li class="impact-item">Full-stack Next.js 16 App Router with Server Components, Server Actions, and Docker multi-stage build deployed to Cloud Run (scale to zero)</li>
+                                    <li class="impact-item">Dual payment gateway: <strong>Mercado Pago</strong> for PT/BRL subscribers, <strong>Stripe</strong> for EN+ES/USD — same codebase, locale-driven routing via middleware</li>
+                                    <li class="impact-item">i18n with <code>/pt</code>, <code>/en</code>, <code>/es</code> subpaths; Accept-Language middleware auto-redirects on first visit</li>
+                                    <li class="impact-item">Webhook state machine with idempotent processing and <code>submission_logs</code> table tracking every payment event</li>
+                                    <li class="impact-item">Zero static credentials: GCP Secret Manager at runtime, Workload Identity Federation for GitHub → GCP auth in CI</li>
+                                    <li class="impact-item">Admin panel (server-side HMAC-SHA256 sessions) for subscription management and webhook inspection</li>
+                                    <li class="impact-item">Email confirmations via Resend with React Email templates · Database migrations via Drizzle ORM</li>
+                                </ul>
+                            </div>
+                            <div class="impact-metrics">
+                                <h4 class="impact-title">Technical highlights</h4>
+                                <ul class="impact-list">
+                                    <li class="impact-item"><strong>Cloud Run southamerica-east1</strong> — auto-scales, HTTPS via custom domain (pokemongofriendscode.com)</li>
+                                    <li class="impact-item"><strong>Workload Identity Federation</strong> — no long-lived service account keys in CI; GitHub Actions exchanges OIDC tokens with GCP</li>
+                                    <li class="impact-item"><strong>Tested</strong> with Jest (unit/integration) and Playwright (E2E)</li>
+                                </ul>
+                            </div>
+                            <div class="tech-stack-list">
+                                <span class="tech-badge">Next.js 16</span>
+                                <span class="tech-badge">React 19</span>
+                                <span class="tech-badge">TypeScript</span>
+                                <span class="tech-badge">Tailwind CSS 4</span>
+                                <span class="tech-badge">Drizzle ORM</span>
+                                <span class="tech-badge">Cloud SQL (PostgreSQL)</span>
+                                <span class="tech-badge">Cloud Run</span>
+                                <span class="tech-badge">GCP Secret Manager</span>
+                                <span class="tech-badge">Stripe</span>
+                                <span class="tech-badge">Mercado Pago</span>
+                                <span class="tech-badge">Resend</span>
+                                <span class="tech-badge">Workload Identity Federation</span>
+                                <span class="tech-badge">GitHub Actions</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Pokemon GO GCP Automation -->
+                    <div class="case-study">
+                        <div class="case-header">
+                            <div>
+                                <h3 class="case-title">🤖 Pokémon GO GCP — Automated Code Submission Engine</h3>
+                                <p class="case-date">2025–2026 · Backend Automation · Cloud Run Jobs · Web Scraping</p>
+                                <div class="case-tags">
+                                    <span class="case-tag">Node.js</span>
+                                    <span class="case-tag">Puppeteer</span>
+                                    <span class="case-tag">Playwright</span>
+                                    <span class="case-tag">Cloud Run Jobs</span>
+                                    <span class="case-tag">Cloud Scheduler</span>
+                                    <span class="case-tag">Terraform</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="case-body">
+                            <div class="case-section">
+                                <h4 class="case-section-title">What it does</h4>
+                                <p class="case-description">
+                                    The automation backend for the subscription service. A scheduled Cloud Run Job that reads active trainer codes from Cloud SQL and submits them to two community sites daily at 15:00 BRT — fully headless, with no manual intervention.
+                                </p>
+                            </div>
+                            <div class="case-section">
+                                <h4 class="case-section-title">How it's built</h4>
+                                <ul class="impact-list">
+                                    <li class="impact-item">Two independent scrapers: <strong>Puppeteer + stealth plugin</strong> for pokemongofriendcodes.com, <strong>Playwright</strong> for pogocodes.com (React-based form)</li>
+                                    <li class="impact-item">React controlled component workaround on pogocodes.com — dispatches input events with <code>bubbles: true</code> to trigger synthetic event handlers</li>
+                                    <li class="impact-item">Verification step after each submission: navigates to the listings page to confirm the code actually appears</li>
+                                    <li class="impact-item">Batch processing (3 codes simultaneously) with configurable delays per action type to avoid rate limiting</li>
+                                    <li class="impact-item">Database-driven: codes sourced from Cloud SQL <code>trainer_codes</code> table (single source of truth, synced from payment webhooks)</li>
+                                    <li class="impact-item">Complete Terraform IaC for Cloud SQL, Cloud Run Jobs, Cloud Scheduler, Secret Manager, and IAM</li>
+                                </ul>
+                            </div>
+                            <div class="impact-metrics">
+                                <h4 class="impact-title">Technical highlights</h4>
+                                <ul class="impact-list">
+                                    <li class="impact-item"><strong>Cost: ~$0/month</strong> — within GCP free tier for scheduled job execution</li>
+                                    <li class="impact-item"><strong>Rate limit detection</strong> — pokemongofriendcodes.com blocks re-submissions within 24h; script detects and stops gracefully</li>
+                                    <li class="impact-item"><strong>Cloud Monitoring alerts</strong> on exit code ≠ 0 — failed job execution pages the owner</li>
+                                </ul>
+                            </div>
+                            <div class="tech-stack-list">
+                                <span class="tech-badge">Node.js</span>
+                                <span class="tech-badge">Puppeteer</span>
+                                <span class="tech-badge">Playwright</span>
+                                <span class="tech-badge">Cloud Run Jobs</span>
+                                <span class="tech-badge">Cloud Scheduler</span>
+                                <span class="tech-badge">Cloud SQL</span>
+                                <span class="tech-badge">GCP Secret Manager</span>
+                                <span class="tech-badge">Terraform</span>
+                                <span class="tech-badge">Workload Identity Federation</span>
+                                <span class="tech-badge">GitHub Actions</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- AmigoSecreto Android -->
+                    <div class="case-study">
+                        <div class="case-header">
+                            <div>
+                                <h3 class="case-title">🎁 AmigoSecreto — Android App (Google Play)</h3>
+                                <p class="case-date">2024–2026 · Android · Kotlin · MVVM · Google Play</p>
+                                <div class="case-tags">
+                                    <span class="case-tag">Kotlin</span>
+                                    <span class="case-tag">Android SDK 35</span>
+                                    <span class="case-tag">MVVM</span>
+                                    <span class="case-tag">Hilt</span>
+                                    <span class="case-tag">Room</span>
+                                    <span class="case-tag">Google Play</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="case-body">
+                            <div class="case-section">
+                                <h4 class="case-section-title">What it does</h4>
+                                <p class="case-description">
+                                    A fully-featured Android app for organizing Secret Santa draws. Supports multiple groups, exclusion rules, wish lists, secure reveal, and sharing results via WhatsApp, Telegram, SMS, or Email. Available on Google Play.
+                                </p>
+                            </div>
+                            <div class="case-section">
+                                <h4 class="case-section-title">How it's built</h4>
+                                <ul class="impact-list">
+                                    <li class="impact-item">Fully migrated to <strong>Kotlin</strong> (from Java) with MVVM architecture — AndroidViewModel + LiveData + Repository pattern</li>
+                                    <li class="impact-item"><strong>Hilt</strong> for dependency injection · <strong>Coroutines</strong> for async database operations on IO thread</li>
+                                    <li class="impact-item">Room ORM with dual-layer database (Room + legacy DAOs coexist; eager Room initialization ensures migrations complete first)</li>
+                                    <li class="impact-item">Backtracking draw algorithm extracted to pure function (<code>SorteioEngine.kt</code>) — testable, no side effects, handles impossible constraint scenarios gracefully</li>
+                                    <li class="impact-item">Batch queries with INNER JOIN to eliminate N+1 problem on wish list counts · All DB writes in atomic transactions</li>
+                                    <li class="impact-item">Edge-to-Edge layout (Android 15), PDF export (PDFKit), QR code generation, local notifications, backup/restore as JSON</li>
+                                    <li class="impact-item">GitHub Actions CI/CD: push to master → internal Play track; tag <code>v3.x</code> → production track</li>
+                                </ul>
+                            </div>
+                            <div class="impact-metrics">
+                                <h4 class="impact-title">Technical highlights</h4>
+                                <ul class="impact-list">
+                                    <li class="impact-item"><strong>297 unit tests</strong> + Espresso integration tests · <code>UnconfinedTestDispatcher</code> for deterministic coroutine testing</li>
+                                    <li class="impact-item"><strong>Min SDK 21</strong> (Android 5.0+) · Target SDK 35 (Android 15) · R8 minification in release builds</li>
+                                    <li class="impact-item">Spoiler protection on WhatsApp sharing — 30 blank lines before the assignment to prevent previews from revealing the result</li>
+                                </ul>
+                            </div>
+                            <div class="tech-stack-list">
+                                <span class="tech-badge">Kotlin</span>
+                                <span class="tech-badge">Android SDK 35</span>
+                                <span class="tech-badge">MVVM</span>
+                                <span class="tech-badge">Hilt</span>
+                                <span class="tech-badge">Room ORM</span>
+                                <span class="tech-badge">Coroutines</span>
+                                <span class="tech-badge">Material Design 3</span>
+                                <span class="tech-badge">LiveData</span>
+                                <span class="tech-badge">JUnit 4</span>
+                                <span class="tech-badge">Espresso</span>
+                                <span class="tech-badge">GitHub Actions</span>
+                                <span class="tech-badge">Google Play</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Secret Santa iOS -->
+                    <div class="case-study">
+                        <div class="case-header">
+                            <div>
+                                <h3 class="case-title">🍎 Secret Santa — iOS App (SwiftUI)</h3>
+                                <p class="case-date">2025–2026 · iOS 17+ · Swift · SwiftUI · SwiftData</p>
+                                <div class="case-tags">
+                                    <span class="case-tag">Swift</span>
+                                    <span class="case-tag">SwiftUI</span>
+                                    <span class="case-tag">SwiftData</span>
+                                    <span class="case-tag">iOS 17+</span>
+                                    <span class="case-tag">Zero dependencies</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="case-body">
+                            <div class="case-section">
+                                <h4 class="case-section-title">What it does</h4>
+                                <p class="case-description">
+                                    The iOS counterpart to AmigoSecreto — same product concept rebuilt natively in Swift and SwiftUI for iPhone. Multiple groups, exclusion rules, wish lists, secure reveal, QR codes, PDF export, and local notifications. Zero external dependencies.
+                                </p>
+                            </div>
+                            <div class="case-section">
+                                <h4 class="case-section-title">How it's built</h4>
+                                <ul class="impact-list">
+                                    <li class="impact-item"><strong>SwiftUI + SwiftData</strong> only — no third-party packages; persistence, UI, PDF, QR codes, and notifications all via native Apple frameworks</li>
+                                    <li class="impact-item">MVVM via SwiftData's <code>@Query</code> and <code>@Environment(\.modelContext)</code> — no separate ViewModel classes needed</li>
+                                    <li class="impact-item">JSON serialization workaround for many-to-many relationships (SwiftData limitation) — exclusions and draw pairs stored as <code>Data</code> fields with computed property decoders</li>
+                                    <li class="impact-item">Backtracking draw algorithm with 200-attempt limit — same logic as Android, adapted for Swift</li>
+                                    <li class="impact-item"><code>SequentialShareView</code> — workaround for iOS limitation that prevents opening multiple URL schemes simultaneously; shows sequential buttons for WhatsApp, SMS, Email</li>
+                                    <li class="impact-item">6-page onboarding, draw history, statistics, backup/restore with JSON forward compatibility</li>
+                                </ul>
+                            </div>
+                            <div class="impact-metrics">
+                                <h4 class="impact-title">Technical highlights</h4>
+                                <ul class="impact-list">
+                                    <li class="impact-item"><strong>30+ unit tests</strong> using Swift Testing framework (<code>@Suite</code>, <code>@Test</code>)</li>
+                                    <li class="impact-item"><strong>iOS 17+ minimum</strong> — uses <code>ContentUnavailableView</code>, <code>@Bindable</code>, and other modern APIs throughout</li>
+                                    <li class="impact-item">PDF generation via <code>UIGraphicsPDFRenderer</code> · QR codes via Core Image <code>CIQRCodeGenerator</code> · haptic feedback on reveal</li>
+                                </ul>
+                            </div>
+                            <div class="tech-stack-list">
+                                <span class="tech-badge">Swift 5.9</span>
+                                <span class="tech-badge">SwiftUI</span>
+                                <span class="tech-badge">SwiftData</span>
+                                <span class="tech-badge">iOS 17+</span>
+                                <span class="tech-badge">PDFKit</span>
+                                <span class="tech-badge">Core Image</span>
+                                <span class="tech-badge">UNUserNotificationCenter</span>
+                                <span class="tech-badge">Swift Testing</span>
+                                <span class="tech-badge">Xcode 15</span>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
 
             </main>
