@@ -785,10 +785,10 @@
                                     <li class="impact-item"><strong>Phase 2:</strong> Configured ArgoCD Applications and AppProjects with RBAC boundaries per team and namespace</li>
                                     <li class="impact-item"><strong>Phase 3:</strong> Multi-cluster registration — all four GKE clusters (dev · stg · prd · sdx) as ArgoCD targets with cluster credentials stored in Secrets</li>
                                     <li class="impact-item"><strong>Phase 4:</strong> CI/CD pipeline integration — GitHub Actions image updater for automatic image tag propagation, branch promotion dev → stg → prd</li>
-                                    <li class="impact-item"><strong>Phase 5 (in progress):</strong> SSO/OIDC with Google Workspace + RBAC policies per team</li>
-                                    <li class="impact-item"><strong>Phase 6 (in progress):</strong> Prometheus metrics + Grafana dashboards for GitOps observability</li>
+                                    <li class="impact-item"><strong>Phase 5:</strong> SSO/OIDC with Google Workspace + RBAC policies per team</li>
+                                    <li class="impact-item"><strong>Phase 6:</strong> Prometheus metrics + Grafana dashboards for GitOps observability</li>
                                     <li class="impact-item"><strong>Phase 7:</strong> Incremental migration of existing workloads — audited all namespaces, converted to Helm charts, enabled self-heal and prune on non-prod</li>
-                                    <li class="impact-item"><strong>Phase 8 (in progress):</strong> Progressive delivery with Argo Rollouts — canary deployments with traffic splitting and automated rollback</li>
+                                    <li class="impact-item"><strong>Phase 8:</strong> Progressive delivery with Argo Rollouts — canary deployments with traffic splitting and automated rollback</li>
                                 </ul>
                             </div>
                             <div class="impact-metrics">
@@ -1017,12 +1017,12 @@
                                 </ul>
                             </div>
                             <div class="case-section">
-                                <h4 class="case-section-title">Incident B — Experian PRD 401: Password Rotation Causing Auth Failure</h4>
+                                <h4 class="case-section-title">Incident B — Partner API [P2]: Credential Rotation Causing Auth Failure</h4>
                                 <ul class="impact-list">
-                                    <li class="impact-item"><strong>Impact:</strong> All Experian authentication calls returning 401 from ~14:30 UTC after partner-side password rotation</li>
-                                    <li class="impact-item"><strong>Root cause:</strong> Experian rotated credentials without coordinated notification; old password revoked mid-day</li>
+                                    <li class="impact-item"><strong>Impact:</strong> All partner authentication calls returning 401 from ~14:30 UTC after partner-side password rotation</li>
+                                    <li class="impact-item"><strong>Root cause:</strong> Partner rotated credentials without coordinated notification; old password revoked mid-day</li>
                                     <li class="impact-item"><strong>Response:</strong> Diagnosed authentication failure from logs, obtained new credentials, updated GCP Secret Manager, triggered rolling restart</li>
-                                    <li class="impact-item"><strong>Hardening:</strong> Established credential rotation runbook and pre-agreed notification SLA with Experian</li>
+                                    <li class="impact-item"><strong>Hardening:</strong> Established credential rotation runbook and pre-agreed notification SLA with partner</li>
                                 </ul>
                             </div>
                             <div class="impact-metrics">
