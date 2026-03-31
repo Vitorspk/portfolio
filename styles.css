@@ -85,6 +85,25 @@
     border-radius: 3px;
 }
 
+/* Skip navigation — visually hidden until focused by keyboard users */
+.skip-link {
+    position: absolute;
+    top: -100%;
+    left: var(--space-md);
+    z-index: 9999;
+    padding: var(--space-sm) var(--space-md);
+    background: var(--primary);
+    color: #fff;
+    font-weight: 600;
+    border-radius: var(--radius-md);
+    text-decoration: none;
+    transition: top 0.15s;
+}
+
+.skip-link:focus {
+    top: var(--space-md);
+}
+
 html {
     scroll-behavior: smooth;
     -webkit-text-size-adjust: 100%;
