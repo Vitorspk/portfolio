@@ -398,7 +398,7 @@
                         <div class="case-body">
                             <div class="case-section">
                                 <h4 class="case-section-title">❓ Problem</h4>
-                                <p style="font-size:0.9375rem;line-height:1.75;color:var(--text-secondary);">
+                                <p class="case-description">
                                     Cloud storage costs growing exponentially — spending <strong>$12,874/month</strong> on 360 TiB, all in expensive Standard storage. No lifecycle management, no archival strategy, no deletion policies.
                                 </p>
                             </div>
@@ -464,7 +464,7 @@
                         <div class="case-body">
                             <div class="case-section">
                                 <h4 class="case-section-title">❓ Problem</h4>
-                                <p style="font-size:0.9375rem;line-height:1.75;color:var(--text-secondary);">
+                                <p class="case-description">
                                     Airflow deployment massively over-provisioned: 100 pods (50 dev + 50 prod), 20 CPUs, 200 GB RAM across 7 nodes costing $1,513/month. Most pods idle 90% of the time.
                                 </p>
                             </div>
@@ -531,7 +531,7 @@
                         <div class="case-body">
                             <div class="case-section">
                                 <h4 class="case-section-title">❓ Problem</h4>
-                                <p style="font-size:0.9375rem;line-height:1.75;color:var(--text-secondary);">
+                                <p class="case-description">
                                     Standard TLS only authenticates server to client. Required mutual authentication where both client and server verify identity using certificates — critical for API security and ISO 27001 compliance.
                                 </p>
                             </div>
@@ -588,7 +588,7 @@
                         <div class="case-body">
                             <div class="case-section">
                                 <h4 class="case-section-title">❓ Problem</h4>
-                                <p style="font-size:0.9375rem;line-height:1.75;color:var(--text-secondary);">
+                                <p class="case-description">
                                     Needed secure, reliable communication between AWS and GCP for hybrid workloads. Public internet routing unacceptable for sensitive data. Required redundancy for high availability.
                                 </p>
                             </div>
@@ -637,7 +637,7 @@
                         <div class="case-body">
                             <div class="case-section">
                                 <h4 class="case-section-title">❓ Problem</h4>
-                                <p style="font-size:0.9375rem;line-height:1.75;color:var(--text-secondary);">
+                                <p class="case-description">
                                     Traditional blue-green deployments require 100% traffic switch — risky. Off-the-shelf tools didn't fit our multi-environment Kubernetes setup. Needed gradual rollout with automatic metric-based rollback.
                                 </p>
                             </div>
@@ -686,7 +686,7 @@
                         <div class="case-body">
                             <div class="case-section">
                                 <h4 class="case-section-title">❓ Problem</h4>
-                                <p style="font-size:0.9375rem;line-height:1.75;color:var(--text-secondary);">
+                                <p class="case-description">
                                     Databases exposed with public IPs, unencrypted connections, password-only authentication. Non-compliant with ISO 27001. Vulnerable to network sniffing and unauthorized access.
                                 </p>
                             </div>
@@ -740,7 +740,7 @@
                         <div class="case-body">
                             <div class="case-section">
                                 <h4 class="case-section-title">❓ Problem</h4>
-                                <p style="font-size:0.9375rem;line-height:1.75;color:var(--text-secondary);">
+                                <p class="case-description">
                                     160+ applications with direct nginx ingress — no centralized API management, rate limiting, or authentication layer. Difficult to enforce policies or monitor API usage consistently.
                                 </p>
                             </div>
@@ -780,7 +780,7 @@
                         <div class="case-body">
                             <div class="case-section">
                                 <h4 class="case-section-title">❓ Problem</h4>
-                                <p style="font-size:0.9375rem;line-height:1.75;color:var(--text-secondary);">
+                                <p class="case-description">
                                     Deployments across four GKE clusters (dev · stg · prd · sdx) were manual, inconsistent, and error-prone. No single source of truth for cluster state, no audit trail, and high risk of configuration drift between environments. Teams required kubectl access to deploy — no self-service model existed.
                                 </p>
                             </div>
@@ -840,7 +840,7 @@
                         <div class="case-body">
                             <div class="case-section">
                                 <h4 class="case-section-title">❓ Problem</h4>
-                                <p style="font-size:0.9375rem;line-height:1.75;color:var(--text-secondary);">
+                                <p class="case-description">
                                     GKE clusters and the underlying network infrastructure were provisioned manually with no IaC. No consistent multi-environment strategy, no prevent-destroy protection on critical network resources, and Terraform configuration was monolithic — impossible to reuse across environments.
                                 </p>
                             </div>
@@ -897,7 +897,7 @@
                         <div class="case-body">
                             <div class="case-section">
                                 <h4 class="case-section-title">❓ Problem</h4>
-                                <p style="font-size:0.9375rem;line-height:1.75;color:var(--text-secondary);">
+                                <p class="case-description">
                                     Production LLM serving relied on a single GPU provider (RunPod). A provider outage or GPU supply constraint would bring down the entire inference capability with no fallback. Each provider had different latency profiles — no routing logic existed to exploit this.
                                 </p>
                             </div>
@@ -965,7 +965,7 @@
                         <div class="case-body">
                             <div class="case-section">
                                 <h4 class="case-section-title">❓ Problem</h4>
-                                <p style="font-size:0.9375rem;line-height:1.75;color:var(--text-secondary);">
+                                <p class="case-description">
                                     xmrig (Monero cryptominer) detected running on a GKE production node. The miner was injected via a compromised frontend npm dependency — a supply-chain attack that bypassed standard code review. The workload was silently consuming node CPU, masking legitimate service degradation with no immediate visible symptoms.
                                 </p>
                             </div>
@@ -1237,9 +1237,9 @@
                                 <li class="impact-item"><strong>Spanish</strong> — Full Professional</li>
                                 <li class="impact-item"><strong>English</strong> — Elementary</li>
                             </ul>
-                            <div style="margin-top:var(--space-md);padding-top:var(--space-md);border-top:1px solid var(--border);">
-                                <p style="font-size:0.875rem;font-weight:600;color:var(--text-primary);margin-bottom:var(--space-xs);">Publication</p>
-                                <p style="font-size:0.875rem;color:var(--text-secondary);">Management Cloud Computing</p>
+                            <div class="publication-block">
+                                <p class="publication-label">Publication</p>
+                                <p class="publication-title">Management Cloud Computing</p>
                             </div>
                         </div>
                     </div>
@@ -1305,7 +1305,7 @@
 
                     <div class="card">
                         <h3 class="card-title"><span class="card-icon">🖥️</span> vLLM Production Infrastructure — Full Journey</h3>
-                        <p style="font-size:0.9375rem;line-height:1.75;color:var(--text-secondary);margin-bottom:var(--space-md);">
+                        <p class="case-description" style="margin-bottom:var(--space-md);">
                             Built and ran production LLM serving for <strong>Gemma 3 12B (GGUF Q4)</strong> via vLLM 0.15.1 — started on a single GCP VM and grew it into a multi-provider, multi-GPU setup with automatic failover and profile-driven GPU selection.
                         </p>
                         <div class="grid-2">
@@ -1816,7 +1816,7 @@
                         <div class="case-body">
                             <div class="case-section">
                                 <h4 class="case-section-title">What it does</h4>
-                                <p style="font-size:0.9375rem;line-height:1.75;color:var(--text-secondary);">
+                                <p class="case-description">
                                     A subscription service for Pokémon GO players to have their trainer codes automatically submitted to community listing sites daily. Users pick a plan, pay, and their code gets submitted every day without any manual action.
                                 </p>
                             </div>
@@ -1877,7 +1877,7 @@
                         <div class="case-body">
                             <div class="case-section">
                                 <h4 class="case-section-title">What it does</h4>
-                                <p style="font-size:0.9375rem;line-height:1.75;color:var(--text-secondary);">
+                                <p class="case-description">
                                     The automation backend for the subscription service. A scheduled Cloud Run Job that reads active trainer codes from Cloud SQL and submits them to two community sites daily at 15:00 BRT — fully headless, with no manual intervention.
                                 </p>
                             </div>
@@ -1934,7 +1934,7 @@
                         <div class="case-body">
                             <div class="case-section">
                                 <h4 class="case-section-title">What it does</h4>
-                                <p style="font-size:0.9375rem;line-height:1.75;color:var(--text-secondary);">
+                                <p class="case-description">
                                     A fully-featured Android app for organizing Secret Santa draws. Supports multiple groups, exclusion rules, wish lists, secure reveal, and sharing results via WhatsApp, Telegram, SMS, or Email. Available on Google Play.
                                 </p>
                             </div>
@@ -1993,7 +1993,7 @@
                         <div class="case-body">
                             <div class="case-section">
                                 <h4 class="case-section-title">What it does</h4>
-                                <p style="font-size:0.9375rem;line-height:1.75;color:var(--text-secondary);">
+                                <p class="case-description">
                                     The iOS counterpart to AmigoSecreto — same product concept rebuilt natively in Swift and SwiftUI for iPhone. Multiple groups, exclusion rules, wish lists, secure reveal, QR codes, PDF export, and local notifications. Zero external dependencies.
                                 </p>
                             </div>
