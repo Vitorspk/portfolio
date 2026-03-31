@@ -1279,6 +1279,10 @@ tr:last-child td {
     color: var(--text-secondary);
 }
 
+.case-description--mb {
+    margin-bottom: var(--space-md);
+}
+
 .publication-block {
     margin-top: var(--space-md);
     padding-top: var(--space-md);
