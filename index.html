@@ -293,7 +293,7 @@
                                 <strong>7+ years</strong> in SRE/Platform Engineering roles (2018–present)<br>
                                 <strong>$331K/year</strong> documented cloud cost savings (compute + storage optimization)<br>
                                 <strong>AI/ML Operations:</strong> 207 tasks managing production ML systems (face recognition, content moderation)<br>
-                                <strong>vLLM Production Infra:</strong> Multi-GPU fleet (RTX 5090, A6000, L40S, A100) — cold start 10 min → 3 min<br>
+                                <strong>vLLM Production Infra:</strong> Multi-GPU fleet (RTX 5090, A6000, 6000 Ada, L40S, A100) — cold start 10 min → 3 min<br>
                                 <strong>GitOps at Scale:</strong> ArgoCD managing 4 GKE clusters (dev · stg · prd · sdx) with full audit trail<br>
                                 <strong>Modern AI Adoption:</strong> Claude AI, GitHub Copilot, Claude Code for automated PR reviews<br>
                                 <strong>Advanced Networking:</strong> mTLS with Cloudflare, AWS-GCP HA VPN, zero-trust architecture<br>
@@ -778,7 +778,7 @@
                                 <h4 class="case-section-title">💡 Solution — 6-Phase Implementation</h4>
                                 <ul class="impact-list">
                                     <li class="impact-item"><strong>Phase 1 — Foundation:</strong> Deployed ArgoCD on management cluster with RBAC and SSO</li>
-                                    <li class="impact-item"><strong>Phase 2 — Cluster Registration:</strong> Connected all four GKE clusters (dev/stg/prd/sdx) as ArgoCD targets</li>
+                                    <li class="impact-item"><strong>Phase 2 — Cluster Registration:</strong> Connected all four GKE clusters (dev · stg · prd · sdx) as ArgoCD targets</li>
                                     <li class="impact-item"><strong>Phase 3 — App of Apps:</strong> Structured Helm chart repository with environment-specific value overrides</li>
                                     <li class="impact-item"><strong>Phase 4 — Sync Policies:</strong> Configured automated sync with prune and self-heal enabled for non-prod</li>
                                     <li class="impact-item"><strong>Phase 5 — Notifications:</strong> Integrated Slack alerts for sync failures and health degradation</li>
@@ -1087,13 +1087,14 @@
                                 </tbody>
                             </table>
                         </div>
-                        <div class="tech-stack-list" style="margin-top:var(--space-md);">
+                        <div class="tech-stack-list">
                             <span class="tech-badge">vLLM</span>
                             <span class="tech-badge">RunPod Serverless</span>
                             <span class="tech-badge">Cloud Run GPU (L4)</span>
                             <span class="tech-badge">GKE MIG</span>
                             <span class="tech-badge">RTX 5090</span>
                             <span class="tech-badge">RTX A6000</span>
+                            <span class="tech-badge">RTX 6000 Ada</span>
                             <span class="tech-badge">L40S</span>
                             <span class="tech-badge">A100 SXM 80GB</span>
                         </div>
