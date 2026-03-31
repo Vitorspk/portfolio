@@ -1258,7 +1258,7 @@ tr:last-child td {
 }
 
 .case-section {
-    margin-bottom: var(--space-xl);
+    margin-bottom: var(--space-lg);
 }
 
 .case-section-title {
@@ -1267,7 +1267,7 @@ tr:last-child td {
     color: var(--text-muted);
     text-transform: uppercase;
     letter-spacing: 0.07em;
-    margin-bottom: var(--space-md);
+    margin-bottom: var(--space-sm);
     display: flex;
     align-items: center;
     gap: var(--space-xs);
@@ -1422,9 +1422,10 @@ tr:last-child td {
 
 .impact-metrics {
     background: var(--bg-elevated);
-    padding: var(--space-lg);
+    padding: var(--space-md) var(--space-lg);
     border-radius: var(--radius-lg);
     border-left: 3px solid var(--success);
+    margin-bottom: var(--space-md);
 }
 
 .impact-title {
@@ -1441,21 +1442,20 @@ tr:last-child td {
 }
 
 .impact-item {
-    padding: 6px 0;
+    padding: 3px 0 3px 1.25rem;
     color: var(--text-secondary);
-    display: flex;
-    align-items: flex-start;
-    gap: var(--space-sm);
     font-size: 0.9rem;
-    line-height: 1.5;
+    line-height: 1.6;
+    position: relative;
 }
 
 .impact-item::before {
     content: '→';
     color: var(--success);
     font-weight: 700;
-    flex-shrink: 0;
-    margin-top: 1px;
+    position: absolute;
+    left: 0;
+    top: 3px;
 }
 
 /* ============================================================
