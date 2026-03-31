@@ -670,7 +670,10 @@ a:hover {
     scrollbar-width: none;
     background: var(--bg-surface);
     border-bottom: 1px solid var(--border);
-    padding: 0 var(--space-md);
+
+    /* Safe-area insets prevent tab labels from clipping behind the notch/island in landscape */
+    padding: 0 max(var(--space-md), env(safe-area-inset-right))
+               0 max(var(--space-md), env(safe-area-inset-left));
     gap: 0;
     position: sticky;
 
@@ -678,8 +681,6 @@ a:hover {
     top: var(--header-h);
     z-index: 400;
 
-    /* Allow content-area to scroll independently */
-    -webkit-overflow-scrolling: touch;
 }
 
 .mobile-tabs::-webkit-scrollbar { display: none; }
@@ -703,8 +704,7 @@ a:hover {
     transition: color var(--t-fast), background-color var(--t-fast), border-color var(--t-fast), opacity var(--t-fast), transform var(--t-fast), box-shadow var(--t-fast);
     flex-shrink: 0;
 
-    /* Eliminate 300ms tap delay on mobile browsers */
-    touch-action: manipulation;
+    /* touch-action: manipulation inherited from global button rule */
 }
 
 .mobile-tab:hover {
@@ -1575,8 +1575,7 @@ footer {
 
 @media (width <= 768px) {
     .section-anchor {
-        /* topbar (64px) + mobile-tabs (48px) + 8px breathing room */
-        scroll-margin-top: 120px;
+        scroll-margin-top: calc(var(--header-h) + var(--mobile-tabs-h) + 8px);
     }
 }
 
@@ -1611,8 +1610,7 @@ footer {
     .main-content {
         margin-left: 0;
 
-        /* Push content below topbar + mobile-tabs combined height */
-        padding-top: 0;
+        /* No extra padding needed — sticky topbar and tabs handle their own offset */
     }
 
     .hero {
