@@ -36,6 +36,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function activateTab(tabName, pushState = true) {
         const name = tabName || TAB_DEFAULT;
+
+        // Guard: if the tab is already active, skip the update and don't push a
+        // duplicate history entry (clicking the active tab shouldn't add Back steps)
+        if (name === activeTab && pushState) return;
+
         activeTab = name; // keep module-level tracker in sync
 
         // Sidebar nav items
@@ -63,6 +68,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (pushState) {
             history.pushState({ tab: name }, '', `#${name}`);
+        }
+
+        // Scroll main content area to top so users start at the top of the new panel
+        const mainContent = document.querySelector('.main-content');
+        if (mainContent && pushState) mainContent.scrollTop = 0;
+
+        // Move focus to the active panel when the tab was activated by keyboard
+        // within the tablist (not on URL load or programmatic navigation).
+        // tabindex="-1" on panels allows programmatic focus without entering tab order.
+        const focused = document.activeElement;
+        if (focused && focused.closest('[role="tablist"]')) {
+            const panel = tabPanels.find(p => p.id === name);
+            if (panel) panel.focus();
         }
     }
 
