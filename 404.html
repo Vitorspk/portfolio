@@ -96,7 +96,7 @@
 
         .btn-primary {
             background: var(--primary);
-            color: #fff;
+            color: var(--on-primary, #fff);
         }
 
         .btn-secondary {
@@ -111,7 +111,7 @@
     </style>
 </head>
 <body>
-    <div class="container">
+    <main class="container">
         <div class="code" aria-label="Error 404">404</div>
         <h1 class="title">Page not found</h1>
         <p class="desc">This URL doesn't exist or may have been moved.</p>
@@ -120,7 +120,7 @@
             <a href="/portfolio/" class="btn btn-primary">Go home</a>
             <button type="button" id="go-back-btn" class="btn btn-secondary">Go back</button>
         </div>
-    </div>
+    </main>
     <script>
         const el = document.getElementById('current-path');
         if (el) el.textContent = location.pathname + location.search;
