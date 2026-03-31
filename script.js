@@ -11,7 +11,12 @@ function debounce(fn, ms) {
 // ─── Tab Navigation ───────────────────────────────────────────────────────────
 
 const TAB_DEFAULT = 'overview';
-const tabNames = ['overview', 'cases', 'experience', 'aiml', 'finops', 'technical', 'achievements', 'skills'];
+// Derived from the DOM so adding a new section to index.html automatically works —
+// HTML is the single source of truth for which tabs exist.
+const tabNames = Array.from(
+    document.querySelectorAll('[role="tabpanel"]'),
+    p => p.id
+);
 
 // All DOM-dependent setup runs after the document is ready
 document.addEventListener('DOMContentLoaded', () => {
@@ -82,7 +87,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const scrollToTopBtn = document.getElementById('scrollToTop');
     if (scrollToTopBtn) {
         const onScroll = debounce(() => {
-            scrollToTopBtn.classList.toggle('visible', window.pageYOffset > 300);
+            scrollToTopBtn.classList.toggle('visible', window.scrollY > 300);
         }, 80);
         window.addEventListener('scroll', onScroll, { passive: true });
         scrollToTopBtn.addEventListener('click', () => {
@@ -90,7 +95,11 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // ─── Reading Progress Bar (rAF throttled) ─────────────────────────────────
+    // ─── Reading Progress Bar ─────────────────────────────────────────────────
+    // rAF throttle is used here (instead of debounce) because the progress bar
+    // is a purely visual element that should update as smoothly as possible —
+    // locking updates to the paint cycle via rAF produces better visual fidelity
+    // than a fixed debounce interval which may skip or batch frames.
     const progressBar = document.getElementById('progressBar');
     if (progressBar) {
         let rafId = null;
@@ -98,7 +107,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (rafId) return;
             rafId = requestAnimationFrame(() => {
                 const docH = document.documentElement.scrollHeight - window.innerHeight;
-                const pct = docH > 0 ? (window.pageYOffset / docH) * 100 : 0;
+                const pct = docH > 0 ? (window.scrollY / docH) * 100 : 0;
                 progressBar.style.width = pct + '%';
                 rafId = null;
             });
