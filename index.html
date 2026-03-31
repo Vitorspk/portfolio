@@ -192,7 +192,7 @@
                     <h1>Platform &amp; Reliability<br><span>Engineering Expert</span></h1>
 
                     <p class="hero-subtitle">
-                        13+ years in infrastructure, the last 7 focused on SRE and platform work — Kubernetes
+                        13+ years in infrastructure, the last 7 focused on SRE and platform work: Kubernetes
                         multi-cluster management, mTLS, HA VPN, and $331K in documented cloud cost savings.
                     </p>
 
@@ -299,12 +299,12 @@
                                 <strong>13+ years</strong> total experience (support → development → SRE → platform engineering leadership)<br>
                                 <strong>7+ years</strong> in SRE/Platform Engineering roles (2018–present)<br>
                                 <strong>$331K/year</strong> documented cloud cost savings (compute + storage optimization)<br>
-                                <strong>AI/ML Operations:</strong> 207 tasks across production ML systems — face recognition, content moderation<br>
+                                <strong>AI/ML Operations:</strong> 207 tasks across production ML systems (face recognition, content moderation)<br>
                                 <strong>vLLM Production Infra:</strong> Gemma 3 12B running across 3 GPU providers; cut cold start from 10 min to 3 min, 6 GPU profiles, EU multi-DC failover<br>
                                 <strong>Fallback Router:</strong> ~150-line FastAPI reverse proxy chaining RunPod (568ms) → Cloud Run (1.9s) → GKE MIG (7.7s), deployed on GKE PRD<br>
                                 <strong>GitOps at Scale:</strong> ArgoCD 9-phase rollout across 4 GKE clusters (dev · stg · prd · sdx) with Argo Rollouts for canary delivery<br>
                                 <strong>GKE Infrastructure as Code:</strong> Terraform + Shared VPC, split into reusable modules, <code>prevent_destroy</code> on critical network resources<br>
-                                <strong>AI Tooling:</strong> Claude AI, GitHub Copilot, Claude Code — CLAUDE.md standards across all repos<br>
+                                <strong>AI Tooling:</strong> Claude AI, GitHub Copilot, Claude Code; CLAUDE.md standards across all repos<br>
                                 <strong>Networking:</strong> mTLS with Cloudflare, AWS-GCP HA VPN, mutual auth everywhere<br>
                                 <strong>Security:</strong> 61 databases locked down · handled xmrig supply-chain incident · P1 outage management<br>
                                 <strong>Cloud Functions Migration:</strong> 60+ functions Gen1 → Gen2 (HTTP + Pub/Sub), deprecated Go 1.16 runtime replaced<br>
@@ -378,7 +378,7 @@
                 <div id="cases" class="tab-content section-anchor" role="tabpanel" aria-labelledby="tab-cases" tabindex="-1" aria-hidden="true">
                     <div class="section-header">
                         <h2 class="section-title">Case Studies &amp; Projects</h2>
-                        <p class="section-subtitle">13 real-world problems solved with measurable impact — documented with before/after metrics and technical details.</p>
+                        <p class="section-subtitle">13 real-world problems solved with measurable impact, documented with before/after metrics and technical details.</p>
                     </div>
 
                     <!-- Case 1 -->
@@ -399,7 +399,7 @@
                             <div class="case-section">
                                 <h4 class="case-section-title">❓ Problem</h4>
                                 <p class="case-description">
-                                    Cloud storage costs growing exponentially — spending <strong>$12,874/month</strong> on 360 TiB, all in expensive Standard storage. No lifecycle management, no archival strategy, no deletion policies.
+                                    Cloud storage costs growing exponentially. Spending <strong>$12,874/month</strong> on 360 TiB, all in expensive Standard storage. No lifecycle management, no archival strategy, no deletion policies.
                                 </p>
                             </div>
                             <div class="case-section">
@@ -434,8 +434,8 @@
                                 <ul class="impact-list">
                                     <li class="impact-item"><strong>94.2% storage reduction</strong> (360 TiB → 21 TiB)</li>
                                     <li class="impact-item"><strong>$444K saved over 3 years</strong> with zero data loss</li>
-                                    <li class="impact-item"><strong>Fully automated lifecycle</strong> — archival and deletion run on their own once the policies are in place</li>
-                                    <li class="impact-item"><strong>Maintained performance</strong> — hot data still in Standard class</li>
+                                    <li class="impact-item"><strong>Fully automated lifecycle</strong>: archival and deletion run on their own once the policies are in place</li>
+                                    <li class="impact-item"><strong>Maintained performance</strong>: hot data still in Standard class</li>
                                 </ul>
                             </div>
                             <div class="tech-stack-list">
@@ -500,7 +500,7 @@
                                 <h4 class="impact-title">Business Impact</h4>
                                 <ul class="impact-list">
                                     <li class="impact-item">86% reduction in pods, CPU, and memory allocation</li>
-                                    <li class="impact-item">Zero performance degradation — all DAGs running normally</li>
+                                    <li class="impact-item">Zero performance degradation; all DAGs running normally</li>
                                     <li class="impact-item">Freed up 6 nodes for other workloads</li>
                                 </ul>
                             </div>
@@ -532,16 +532,16 @@
                             <div class="case-section">
                                 <h4 class="case-section-title">❓ Problem</h4>
                                 <p class="case-description">
-                                    Standard TLS only authenticates server to client. Required mutual authentication where both client and server verify identity using certificates — critical for API security and ISO 27001 compliance.
+                                    Standard TLS only authenticates server to client. Required mutual authentication where both client and server verify identity using certificates, critical for API security and ISO 27001 compliance.
                                 </p>
                             </div>
                             <div class="case-section">
                                 <h4 class="case-section-title">💡 Solution</h4>
                                 <ul class="impact-list">
-                                    <li class="impact-item">Set up Cloudflare for Mutual TLS — both sides now present certificates, not just the server</li>
+                                    <li class="impact-item">Set up Cloudflare for Mutual TLS; both sides now present certificates, not just the server</li>
                                     <li class="impact-item">Generated and distributed client certificates to each authorized service</li>
                                     <li class="impact-item">Added certificate revocation and rotation so compromised certs can be killed immediately</li>
-                                    <li class="impact-item">Every request is verified by certificate — no implicit trust based on network position</li>
+                                    <li class="impact-item">Every request is verified by certificate, with no implicit trust based on network position</li>
                                     <li class="impact-item">Automated the certificate lifecycle so rotation doesn't require manual steps</li>
                                 </ul>
                             </div>
@@ -555,7 +555,7 @@
                             <div class="impact-metrics">
                                 <h4 class="impact-title">Business Impact</h4>
                                 <ul class="impact-list">
-                                    <li class="impact-item"><strong>Every request authenticated by certificate</strong> — nothing gets through on network position alone</li>
+                                    <li class="impact-item"><strong>Every request authenticated by certificate</strong>; nothing gets through on network position alone</li>
                                     <li class="impact-item"><strong>ISO 27001 compliance</strong> requirement satisfied</li>
                                     <li class="impact-item"><strong>Protection against</strong> MITM attacks and API abuse</li>
                                     <li class="impact-item"><strong>Instant revocation</strong> if certificate is compromised</li>
@@ -596,10 +596,10 @@
                                 <h4 class="case-section-title">💡 Solution</h4>
                                 <ul class="impact-list">
                                     <li class="impact-item">Built HA VPN between AWS and GCP with redundant tunnels on both sides</li>
-                                    <li class="impact-item">Configured BGP so failover is automatic — no manual intervention when a tunnel drops</li>
+                                    <li class="impact-item">Configured BGP so failover is automatic, with no manual intervention when a tunnel drops</li>
                                     <li class="impact-item">Assigned private IPs and set up internal routing tables so traffic never touches the public internet</li>
                                     <li class="impact-item">All inter-cloud traffic encrypted end-to-end over IPSec</li>
-                                    <li class="impact-item">Added monitoring and alerts for tunnel health — know before it affects workloads</li>
+                                    <li class="impact-item">Added monitoring and alerts for tunnel health so issues are caught before they affect workloads</li>
                                 </ul>
                             </div>
                             <div class="impact-metrics">
@@ -638,25 +638,25 @@
                             <div class="case-section">
                                 <h4 class="case-section-title">❓ Problem</h4>
                                 <p class="case-description">
-                                    Traditional blue-green deployments require 100% traffic switch — risky. Off-the-shelf tools didn't fit our multi-environment Kubernetes setup. Needed gradual rollout with automatic metric-based rollback.
+                                    Traditional blue-green deployments require a 100% traffic switch, which is risky. Off-the-shelf tools didn't fit our multi-environment Kubernetes setup. Needed gradual rollout with automatic metric-based rollback.
                                 </p>
                             </div>
                             <div class="case-section">
                                 <h4 class="case-section-title">💡 Solution</h4>
                                 <ul class="impact-list">
-                                    <li class="impact-item">Wrote custom canary deployment automation from scratch — off-the-shelf tools didn't fit the multi-environment setup</li>
+                                    <li class="impact-item">Wrote custom canary deployment automation from scratch; off-the-shelf tools didn't fit the multi-environment setup</li>
                                     <li class="impact-item">Progressive traffic split: 10% → 25% → 50% → 100%, with a gate at each stage</li>
                                     <li class="impact-item">Health checks run at each stage before traffic advances</li>
                                     <li class="impact-item">Automatic rollback kicks in when error rate or latency crosses defined thresholds</li>
-                                    <li class="impact-item">Wired into Jenkins pipelines — works the same way for every team</li>
+                                    <li class="impact-item">Wired into Jenkins pipelines, works the same way for every team</li>
                                 </ul>
                             </div>
                             <div class="impact-metrics">
                                 <h4 class="impact-title">Business Impact</h4>
                                 <ul class="impact-list">
-                                    <li class="impact-item"><strong>No failed deployments since rollout</strong> — issues surface at 10% traffic and trigger automatic rollback before reaching everyone</li>
-                                    <li class="impact-item"><strong>Deployment frequency increased</strong> — teams ship more often because the cost of a bad release dropped dramatically</li>
-                                    <li class="impact-item"><strong>No third-party tooling dependency</strong> — built from scratch to fit the existing setup</li>
+                                    <li class="impact-item"><strong>No failed deployments since rollout</strong>: issues surface at 10% traffic and trigger automatic rollback before reaching everyone</li>
+                                    <li class="impact-item"><strong>Deployment frequency increased</strong>: teams ship more often because the cost of a bad release dropped dramatically</li>
+                                    <li class="impact-item"><strong>No third-party tooling dependency</strong>: built from scratch to fit the existing setup</li>
                                 </ul>
                             </div>
                             <div class="tech-stack-list">
@@ -741,15 +741,15 @@
                             <div class="case-section">
                                 <h4 class="case-section-title">❓ Problem</h4>
                                 <p class="case-description">
-                                    160+ applications with direct nginx ingress — no centralized API management, rate limiting, or authentication layer. Difficult to enforce policies or monitor API usage consistently.
+                                    160+ applications with direct nginx ingress and no centralized API management, rate limiting, or authentication layer. Difficult to enforce policies or monitor API usage consistently.
                                 </p>
                             </div>
                             <div class="impact-metrics">
                                 <h4 class="impact-title">Business Impact</h4>
                                 <ul class="impact-list">
-                                    <li class="impact-item"><strong>160+ applications</strong> now go through a single gateway — one place to enforce policy</li>
+                                    <li class="impact-item"><strong>160+ applications</strong> now go through a single gateway, giving one place to enforce policy</li>
                                     <li class="impact-item"><strong>Rate limiting</strong> configured centrally; no per-service implementation needed</li>
-                                    <li class="impact-item"><strong>Auth, CORS, and headers</strong> applied globally — developers don't handle this per app</li>
+                                    <li class="impact-item"><strong>Auth, CORS, and headers</strong> applied globally; developers don't handle this per app</li>
                                     <li class="impact-item"><strong>Centralized logging and tracing</strong> cuts troubleshooting time significantly</li>
                                 </ul>
                             </div>
@@ -781,32 +781,32 @@
                             <div class="case-section">
                                 <h4 class="case-section-title">❓ Problem</h4>
                                 <p class="case-description">
-                                    Deployments across four GKE clusters (dev · stg · prd · sdx) were manual, inconsistent, and error-prone. No single source of truth for cluster state, no audit trail, and high risk of configuration drift between environments. Teams required kubectl access to deploy — no self-service model existed.
+                                    Deployments across four GKE clusters (dev · stg · prd · sdx) were manual, inconsistent, and error-prone. No single source of truth for cluster state, no audit trail, and high risk of configuration drift between environments. Teams needed kubectl access to deploy with no self-service model in place.
                                 </p>
                             </div>
                             <div class="case-section">
                                 <h4 class="case-section-title">💡 Solution — 9-Phase Implementation</h4>
                                 <ul class="impact-list">
                                     <li class="impact-item"><strong>Phase 0:</strong> Installed ArgoCD on GKE PRD cluster via Helm with production-grade values</li>
-                                    <li class="impact-item"><strong>Phase 1:</strong> Defined GitOps repository structure — apps/environments/charts hierarchy with Helm chart templates and per-env value overrides</li>
+                                    <li class="impact-item"><strong>Phase 1:</strong> Defined GitOps repository structure: apps/environments/charts hierarchy with Helm chart templates and per-env value overrides</li>
                                     <li class="impact-item"><strong>Phase 2:</strong> Configured ArgoCD Applications and AppProjects with RBAC boundaries per team and namespace</li>
-                                    <li class="impact-item"><strong>Phase 3:</strong> Multi-cluster registration — all four GKE clusters (dev · stg · prd · sdx) as ArgoCD targets with cluster credentials stored in Secrets</li>
-                                    <li class="impact-item"><strong>Phase 4:</strong> CI/CD pipeline integration — GitHub Actions image updater for automatic image tag propagation, branch promotion dev → stg → prd</li>
+                                    <li class="impact-item"><strong>Phase 3:</strong> Multi-cluster registration; all four GKE clusters (dev · stg · prd · sdx) as ArgoCD targets with cluster credentials stored in Secrets</li>
+                                    <li class="impact-item"><strong>Phase 4:</strong> CI/CD pipeline integration via GitHub Actions image updater for automatic image tag propagation, branch promotion dev → stg → prd</li>
                                     <li class="impact-item"><strong>Phase 5:</strong> SSO/OIDC with Google Workspace + RBAC policies per team</li>
                                     <li class="impact-item"><strong>Phase 6:</strong> Prometheus metrics + Grafana dashboards for GitOps observability</li>
-                                    <li class="impact-item"><strong>Phase 7:</strong> Incremental migration of existing workloads — audited all namespaces, converted to Helm charts, enabled self-heal and prune on non-prod</li>
-                                    <li class="impact-item"><strong>Phase 8:</strong> Progressive delivery with Argo Rollouts — canary deployments with traffic splitting and automated rollback</li>
+                                    <li class="impact-item"><strong>Phase 7:</strong> Incremental migration of existing workloads; audited all namespaces, converted to Helm charts, enabled self-heal and prune on non-prod</li>
+                                    <li class="impact-item"><strong>Phase 8:</strong> Progressive delivery with Argo Rollouts, canary deployments with traffic splitting and automated rollback</li>
                                 </ul>
                             </div>
                             <div class="impact-metrics">
                                 <h4 class="impact-title">Business Impact</h4>
                                 <ul class="impact-list">
                                     <li class="impact-item"><strong>4 GKE clusters</strong> managed as a single GitOps fleet (dev · stg · prd · sdx)</li>
-                                    <li class="impact-item"><strong>Zero configuration drift</strong> — Git is the single source of truth; ArgoCD self-heals deviations automatically</li>
-                                    <li class="impact-item"><strong>Full audit trail</strong> — every deployment change tracked as a signed Git commit</li>
-                                    <li class="impact-item"><strong>Instant rollback</strong> — revert a Git commit, cluster reconciles within seconds</li>
-                                    <li class="impact-item"><strong>Developer self-service</strong> — engineers deploy via PR, zero kubectl access required</li>
-                                    <li class="impact-item"><strong>Automated promotion</strong> — GitHub Actions image updater pushes new tags across environments without manual YAML edits</li>
+                                    <li class="impact-item"><strong>Zero configuration drift</strong>: Git is the single source of truth; ArgoCD self-heals deviations automatically</li>
+                                    <li class="impact-item"><strong>Full audit trail</strong>: every deployment change tracked as a signed Git commit</li>
+                                    <li class="impact-item"><strong>Instant rollback</strong>: revert a Git commit and the cluster reconciles within seconds</li>
+                                    <li class="impact-item"><strong>Developer self-service</strong>: engineers deploy via PR, zero kubectl access required</li>
+                                    <li class="impact-item"><strong>Automated promotion</strong>: GitHub Actions image updater pushes new tags across environments without manual YAML edits</li>
                                 </ul>
                             </div>
                             <div class="tech-stack-list">
@@ -841,7 +841,7 @@
                             <div class="case-section">
                                 <h4 class="case-section-title">❓ Problem</h4>
                                 <p class="case-description">
-                                    GKE clusters and the underlying network infrastructure were provisioned manually with no IaC. No consistent multi-environment strategy, no prevent-destroy protection on critical network resources, and Terraform configuration was monolithic — impossible to reuse across environments.
+                                    GKE clusters and the underlying network infrastructure were provisioned manually with no IaC. No consistent multi-environment strategy, no prevent-destroy protection on critical network resources, and Terraform configuration was monolithic and impossible to reuse across environments.
                                 </p>
                             </div>
                             <div class="case-section">
@@ -853,18 +853,18 @@
                                     <li class="impact-item"><strong>Phase 4 — Modular Terraform:</strong> Refactored from monolithic inline resources to reusable modules; converted root config to module calls with environment-specific variable files</li>
                                     <li class="impact-item"><strong>Phase 5 — CI/CD Automation:</strong> GitHub Actions workflows for terraform plan on PR and terraform apply on merge; separate workflows per environment</li>
                                     <li class="impact-item"><strong>Phase 6 — GKE Cluster Deployment:</strong> Deployed all four GKE clusters (dev · stg · prd · sdx) using the automated pipelines</li>
-                                    <li class="impact-item"><strong>Phase 7 — Safety Guardrails:</strong> Added <code>prevent_destroy = true</code> lifecycle blocks on VPC, subnets, and Cloud NAT — protects against accidental terraform destroy</li>
+                                    <li class="impact-item"><strong>Phase 7 — Safety Guardrails:</strong> Added <code>prevent_destroy = true</code> lifecycle blocks on VPC, subnets, and Cloud NAT to protect against accidental terraform destroy</li>
                                     <li class="impact-item"><strong>Phase 8 — Documentation:</strong> Architecture diagrams, operational runbooks, and module documentation for knowledge transfer</li>
                                 </ul>
                             </div>
                             <div class="impact-metrics">
                                 <h4 class="impact-title">Business Impact</h4>
                                 <ul class="impact-list">
-                                    <li class="impact-item"><strong>100% infrastructure as code</strong> — every network and cluster resource managed via Terraform</li>
+                                    <li class="impact-item"><strong>100% infrastructure as code</strong>: every network and cluster resource managed via Terraform</li>
                                     <li class="impact-item"><strong>4 GKE clusters deployed</strong> in a single automated pipeline run</li>
-                                    <li class="impact-item"><strong>Zero manual provisioning</strong> — new environments created from variable files only</li>
-                                    <li class="impact-item"><strong>Production safeguards</strong> — <code>prevent_destroy</code> prevents accidental loss of critical network infrastructure</li>
-                                    <li class="impact-item"><strong>Validated Shared VPC + Cloud NAT</strong> — all service projects route egress through a centralized NAT gateway</li>
+                                    <li class="impact-item"><strong>Zero manual provisioning</strong>: new environments created from variable files only</li>
+                                    <li class="impact-item"><strong>Production safeguards</strong>: <code>prevent_destroy</code> prevents accidental loss of critical network infrastructure</li>
+                                    <li class="impact-item"><strong>Validated Shared VPC + Cloud NAT</strong>: all service projects route egress through a centralized NAT gateway</li>
                                 </ul>
                             </div>
                             <div class="tech-stack-list">
@@ -898,7 +898,7 @@
                             <div class="case-section">
                                 <h4 class="case-section-title">❓ Problem</h4>
                                 <p class="case-description">
-                                    Production LLM serving relied on a single GPU provider (RunPod). A provider outage or GPU supply constraint would bring down the entire inference capability with no fallback. Each provider had different latency profiles — no routing logic existed to exploit this.
+                                    Production LLM serving relied on a single GPU provider (RunPod). A provider outage or GPU supply constraint would bring down the entire inference capability with no fallback. Each provider had different latency profiles and no routing logic existed to exploit this.
                                 </p>
                             </div>
                             <div class="case-section">
@@ -931,9 +931,9 @@
                                 <h4 class="impact-title">Business Impact</h4>
                                 <ul class="impact-list">
                                     <li class="impact-item"><strong>Eliminated single point of failure</strong> for production LLM inference</li>
-                                    <li class="impact-item"><strong>3x redundancy</strong> — service survives any single provider failure transparently</li>
-                                    <li class="impact-item"><strong>Measurable SLAs per provider</strong> — RunPod 568ms · Cloud Run warm 1.9s · MIG 7.7s</li>
-                                    <li class="impact-item"><strong>Fully validated</strong> — all 4 failure scenarios tested in GKE PRD production environment</li>
+                                    <li class="impact-item"><strong>3x redundancy</strong>: service survives any single provider failure transparently</li>
+                                    <li class="impact-item"><strong>Measurable SLAs per provider</strong>: RunPod 568ms · Cloud Run warm 1.9s · MIG 7.7s</li>
+                                    <li class="impact-item"><strong>Fully validated</strong>: all 4 failure scenarios tested in GKE PRD production environment</li>
                                 </ul>
                             </div>
                             <div class="tech-stack-list">
@@ -966,7 +966,7 @@
                             <div class="case-section">
                                 <h4 class="case-section-title">❓ Problem</h4>
                                 <p class="case-description">
-                                    xmrig (Monero cryptominer) detected running on a GKE production node. The miner was injected via a compromised frontend npm dependency — a supply-chain attack that bypassed standard code review. The workload was silently consuming node CPU, masking legitimate service degradation with no immediate visible symptoms.
+                                    xmrig (Monero cryptominer) detected running on a GKE production node. The miner was injected via a compromised frontend npm dependency, a supply-chain attack that bypassed standard code review. The workload was silently consuming node CPU, masking legitimate service degradation with no immediate visible symptoms.
                                 </p>
                             </div>
                             <div class="case-section">
@@ -983,10 +983,10 @@
                             <div class="impact-metrics">
                                 <h4 class="impact-title">Business Impact</h4>
                                 <ul class="impact-list">
-                                    <li class="impact-item"><strong>Zero data exfiltration</strong> — miner targeted CPU only, no credentials or data accessed</li>
+                                    <li class="impact-item"><strong>Zero data exfiltration</strong>: miner targeted CPU only, no credentials or data accessed</li>
                                     <li class="impact-item"><strong>Full remediation</strong> in under 4 hours from first alert to clean production deployment</li>
-                                    <li class="impact-item"><strong>Supply-chain hardening</strong> — npm audit + Trivy scanning now gates every production build</li>
-                                    <li class="impact-item"><strong>Post-mortem and team training</strong> — dependency pinning, supply-chain threat model published internally</li>
+                                    <li class="impact-item"><strong>Supply-chain hardening</strong>: npm audit + Trivy scanning now gates every production build</li>
+                                    <li class="impact-item"><strong>Post-mortem and team training</strong>: dependency pinning, supply-chain threat model published internally</li>
                                 </ul>
                             </div>
                             <div class="tech-stack-list">
@@ -1017,7 +1017,7 @@
                             <div class="case-section">
                                 <h4 class="case-section-title">Incident A — Third-Party CMS Loader [P1]: HTTP 500 across two regional markets</h4>
                                 <ul class="impact-list">
-                                    <li class="impact-item"><strong>Impact:</strong> 100% of page loads returning HTTP 500 from 13:08 UTC — full production outage across two regional markets</li>
+                                    <li class="impact-item"><strong>Impact:</strong> 100% of page loads returning HTTP 500 from 13:08 UTC; full production outage across two regional markets</li>
                                     <li class="impact-item"><strong>Root cause:</strong> Third-party CMS API dependency had an outage; all pages failed server-side rendering</li>
                                     <li class="impact-item"><strong>Response:</strong> Identified dependency failure, implemented emergency static fallback, and escalated to vendor support</li>
                                     <li class="impact-item"><strong>Resolution:</strong> Service restored; added circuit-breaker pattern and health monitoring for external CMS dependencies</li>
@@ -1035,9 +1035,9 @@
                             <div class="impact-metrics">
                                 <h4 class="impact-title">SRE Principles Applied</h4>
                                 <ul class="impact-list">
-                                    <li class="impact-item"><strong>MTTR minimized</strong> — both incidents resolved within the same business day</li>
-                                    <li class="impact-item"><strong>Blameless post-mortems</strong> — root causes documented, systemic fixes implemented</li>
-                                    <li class="impact-item"><strong>Monitoring gaps closed</strong> — external dependency health checks added after each incident</li>
+                                    <li class="impact-item"><strong>MTTR minimized</strong>: both incidents resolved within the same business day</li>
+                                    <li class="impact-item"><strong>Blameless post-mortems</strong>: root causes documented, systemic fixes implemented</li>
+                                    <li class="impact-item"><strong>Monitoring gaps closed</strong>: external dependency health checks added after each incident</li>
                                 </ul>
                             </div>
                             <div class="tech-stack-list">
@@ -1077,9 +1077,9 @@
                             <div class="impact-metrics">
                                 <h4 class="impact-title">Business Impact</h4>
                                 <ul class="impact-list">
-                                    <li class="impact-item"><strong>Adopted AI tools early</strong> — Claude AI in Dec 2024, Copilot in Aug 2024, before most teams in the org</li>
-                                    <li class="impact-item"><strong>Automated PR reviews</strong> via Claude Code — reviewers spend time on logic, not style</li>
-                                    <li class="impact-item"><strong>Junior developers ramp up faster</strong> — AI-assisted development reduces the gap between seniors and juniors on routine tasks</li>
+                                    <li class="impact-item"><strong>Adopted AI tools early</strong>: Claude AI in Dec 2024, Copilot in Aug 2024, before most teams in the org</li>
+                                    <li class="impact-item"><strong>Automated PR reviews</strong> via Claude Code; reviewers spend time on logic, not style</li>
+                                    <li class="impact-item"><strong>Junior developers ramp up faster</strong>: AI-assisted development reduces the gap between seniors and juniors on routine tasks</li>
                                 </ul>
                             </div>
                         </div>
@@ -1090,7 +1090,7 @@
                 <div id="experience" class="tab-content section-anchor" role="tabpanel" aria-labelledby="tab-experience" tabindex="-1" aria-hidden="true">
                     <div class="section-header">
                         <h2 class="section-title">Professional Experience</h2>
-                        <p class="section-subtitle">13+ years across 9 roles — from IT Support to Platform Engineering leadership.</p>
+                        <p class="section-subtitle">13+ years across 9 roles, from IT Support to Platform Engineering leadership.</p>
                     </div>
 
                     <div class="timeline">
@@ -1102,7 +1102,7 @@
                                 <span class="timeline-current-badge"><span class="status-dot" aria-hidden="true"></span> Current</span>
                             </div>
                             <p class="timeline-description">
-                                <strong>London, UK (Remote)</strong> — Platform engineering and FinOps at a child safety tech company (safeguarding children and society online).<br><br>
+                                <strong>London, UK (Remote)</strong>. Platform engineering and FinOps at a child safety tech company (safeguarding children and society online).<br><br>
                                 Led $331K annual cloud cost optimization ($148K storage + $183K compute) · Manage 160+ applications across 4 Kubernetes environments (versions 1.22 → 1.33) · mTLS with Cloudflare and AWS-GCP HA VPN · Secured 61 databases (SSL/TLS, private IPs, cert auth) · Secret rotation policies and audit logging across all environments · Built 65+ Jenkins CI/CD pipelines with 98%+ first-deploy success · Custom canary deployment automation with metric-based rollback · Led ISO 27001 compliance (certification achieved) · OWASP ZAP + SonarQube automated security scanning pipeline · Kong Gateway for 160+ APIs · Completed 1,562 Jira tasks with 100% completion rate<br><br>
                                 <strong>Stack:</strong> GCP (expert), AWS, Kubernetes, Jenkins, Kong, Prometheus, Grafana, MongoDB Atlas, PostgreSQL, Redis, Terraform, GitHub Actions
                             </p>
@@ -1113,7 +1113,7 @@
                             <div class="timeline-role">Site Reliability Engineer</div>
                             <div class="timeline-period">Feb 2020 – Jun 2021 · 1 year 5 months</div>
                             <p class="timeline-description">
-                                <strong>São Paulo, Brazil</strong> — Worked closely with development teams to expand infrastructure knowledge and promote DevOps culture across a logistics tech company.<br><br>
+                                <strong>São Paulo, Brazil</strong>. Worked closely with development teams to expand infrastructure knowledge and promote DevOps culture across a logistics tech company.<br><br>
                                 Deep AWS work (EC2, EKS, VPC, CloudFormation, cost optimization) · Implemented mechanisms to improve system reliability from ideation through delivery · Reduced application response times for end users · Expanded observability scope and promoted monitoring awareness among developers<br><br>
                                 <strong>Stack:</strong> AWS (Expert), GCP, PostgreSQL, Python, CloudFormation
                             </p>
@@ -1124,7 +1124,7 @@
                             <div class="timeline-role">Site Reliability Engineer</div>
                             <div class="timeline-period">Jan 2018 – Feb 2020 · 2 years 2 months</div>
                             <p class="timeline-description">
-                                <strong>São Paulo, Brazil</strong> — Critical operations at Brazil's largest integrated healthcare network.<br><br>
+                                <strong>São Paulo, Brazil</strong>. Critical operations at Brazil's largest integrated healthcare network.<br><br>
                                 Incident management and crisis response · Designed and improved cloud architecture with focus on performance and reliability · Helped teams gain visibility into running services · Deep Azure expertise: Web Apps, AKS, API Management Gateway, ExpressRoute, VNet peering · Multi-cloud operations (AWS + Azure)<br><br>
                                 <strong>Stack:</strong> Azure (Expert: Web Apps, AKS, API Gateway, ExpressRoute), AWS, GCP, Elasticsearch
                             </p>
@@ -1135,7 +1135,7 @@
                             <div class="timeline-role">Software Developer</div>
                             <div class="timeline-period">Jul 2017 – Dec 2017 · 6 months</div>
                             <p class="timeline-description">
-                                <strong>Barueri, São Paulo</strong> — Built APIs using Axway Cloud Platform (API Gateway + API Management) for Dasa Group clients, covering both backend and frontend REST/SOAP APIs.<br><br>
+                                <strong>Barueri, São Paulo</strong>. Built APIs using Axway Cloud Platform (API Gateway + API Management) for Dasa Group clients, covering both backend and frontend REST/SOAP APIs.<br><br>
                                 Business logic via Policy Studio · IBM ESB integration for flexible application integration<br><br>
                                 <strong>Stack:</strong> Axway Cloud Platform, API Gateway, Policy Studio, IBM ESB, Azure, REST/SOAP
                             </p>
@@ -1146,7 +1146,7 @@
                             <div class="timeline-role">Software Developer</div>
                             <div class="timeline-period">Jan 2017 – Jul 2017 · 7 months</div>
                             <p class="timeline-description">
-                                <strong>Americana, SP</strong> — Web service application development with continuous integration.<br><br>
+                                <strong>Americana, SP</strong>. Web service application development with continuous integration.<br><br>
                                 REST and SOAP web services · GitLab-based version control · CI with Jenkins<br><br>
                                 <strong>Stack:</strong> SOAP, RESTful, Spring MVC, Maven, Git, GitLab, Hibernate, Spring Data, Jenkins
                             </p>
@@ -1157,7 +1157,7 @@
                             <div class="timeline-role">Java Developer</div>
                             <div class="timeline-period">Jan 2016 – Dec 2016 · 1 year</div>
                             <p class="timeline-description">
-                                <strong>Americana, SP</strong> — Web services and e-commerce development in Java.<br><br>
+                                <strong>Americana, SP</strong>. Web services and e-commerce development in Java.<br><br>
                                 <strong>Stack:</strong> Java, Web Services, E-Commerce
                             </p>
                         </div>
@@ -1167,7 +1167,7 @@
                             <div class="timeline-role">Systems Analyst</div>
                             <div class="timeline-period">Nov 2014 – Dec 2015 · 1 year 2 months</div>
                             <p class="timeline-description">
-                                <strong>Americana, SP</strong> — Delphi developer and SQL Server analyst in a Windows-based enterprise software environment. Customer support, bug treatment, and software improvements. Some iOS/Android work for special projects.<br><br>
+                                <strong>Americana, SP</strong>. Delphi developer and SQL Server analyst in a Windows-based enterprise software environment. Customer support, bug treatment, and software improvements. Some iOS/Android work for special projects.<br><br>
                                 <strong>Stack:</strong> Delphi, SQL Server, iOS, Android
                             </p>
                         </div>
@@ -1177,7 +1177,7 @@
                             <div class="timeline-role">Junior IT Support Analyst</div>
                             <div class="timeline-period">Mar 2013 – Jul 2014 · 1 year 5 months</div>
                             <p class="timeline-description">
-                                <strong>Jundiaí, SP</strong> — Customer service and enterprise software support for accounting and financial retail sector. Hands-on with network connections, database administration, and Linux environments.<br><br>
+                                <strong>Jundiaí, SP</strong>. Customer service and enterprise software support for accounting and financial retail sector. Hands-on with network connections, database administration, and Linux environments.<br><br>
                                 <strong>Stack:</strong> Java, C#, Linux (Fedora 14), Network &amp; Database administration
                             </p>
                         </div>
@@ -1187,7 +1187,7 @@
                             <div class="timeline-role">Administrative Assistant &amp; Supervisor</div>
                             <div class="timeline-period">Feb 2012 – Mar 2013 · 1 year 2 months</div>
                             <p class="timeline-description">
-                                <strong>Jundiaí, SP</strong> — Supervised delivery officials, monthly closing sheets for delivery operations, daily performance reporting for freight service providers.
+                                <strong>Jundiaí, SP</strong>. Supervised delivery officials, monthly closing sheets for delivery operations, daily performance reporting for freight service providers.
                             </p>
                         </div>
                     </div>
@@ -1259,7 +1259,7 @@
                                 <strong>207 AI-related tasks</strong> (13.3% of total work across all engineering)<br>
                                 <strong>Production LLM infrastructure:</strong> Gemma 3 12B serving via vLLM across 3 GPU providers with automatic failover<br>
                                 <strong>6 GPU profiles validated:</strong> RTX 4090 · RTX 5090 · RTX A6000 · RTX 6000 Ada · L40S · A100 SXM 80GB<br>
-                                <strong>Cold start engineering:</strong> 10 min → 3 min — pre-baked Docker images, model warm-up, Tier 1 + Tier 2 boot optimizations<br>
+                                <strong>Cold start engineering:</strong> 10 min → 3 min via pre-baked Docker images, model warm-up, and Tier 1 + Tier 2 boot optimizations<br>
                                 <strong>AI tooling:</strong> Rolled out Claude AI (Dec 2024) and GitHub Copilot (Aug 2024) to the team; runs automated PR reviews in CI with Claude Code<br>
                                 <strong>MLOps expertise:</strong> Content moderation (YOLO), intelligent autoscaling (VPA/HPA/KEDA), security automation
                             </div>
@@ -1295,18 +1295,18 @@
                         </div>
                         <div class="feature-card">
                             <h4 class="feature-title">🎬 Content Moderation AI</h4>
-                            <p class="feature-description">Ran infra for 20 AI-powered content screening tasks — YOLO object detection on GPU-optimized services for video analysis. Production MLOps for child safety and age-assurance systems.</p>
+                            <p class="feature-description">Ran infra for 20 AI-powered content screening tasks: YOLO object detection on GPU-optimized services for video analysis. Production MLOps for child safety and age-assurance systems.</p>
                         </div>
                         <div class="feature-card">
                             <h4 class="feature-title">⚡ Intelligent Infrastructure</h4>
-                            <p class="feature-description">Set up VPA/HPA/MPA/KEDA so scaling decisions are based on actual metrics, not manually tuned thresholds. Also coordinated YOLO batch ReID processing alongside a live vLLM server on the same GPU — scheduling matters when GPU memory is finite.</p>
+                            <p class="feature-description">Set up VPA/HPA/MPA/KEDA so scaling decisions are based on actual metrics, not manually tuned thresholds. Also coordinated YOLO batch ReID processing alongside a live vLLM server on the same GPU; scheduling matters when GPU memory is finite.</p>
                         </div>
                     </div>
 
                     <div class="card">
                         <h3 class="card-title"><span class="card-icon">🖥️</span> vLLM Production Infrastructure — Full Journey</h3>
                         <p class="case-description case-description--mb">
-                            Built and ran production LLM serving for <strong>Gemma 3 12B (GGUF Q4)</strong> via vLLM 0.15.1 — started on a single GCP VM and grew it into a multi-provider, multi-GPU setup with automatic failover and profile-driven GPU selection.
+                            Built and ran production LLM serving for <strong>Gemma 3 12B (GGUF Q4)</strong> via vLLM 0.15.1. Started on a single GCP VM and grew it into a multi-provider, multi-GPU setup with automatic failover and profile-driven GPU selection.
                         </p>
                         <div class="grid-2">
                             <div class="feature-card">
@@ -1373,9 +1373,9 @@
                         <div class="highlight-content">
                             <h3 class="highlight-title">💰 Total Savings: $331K/year</h3>
                             <div class="highlight-text">
-                                <strong>Storage Migration:</strong> $148K/year (95.9% reduction) — 360 TiB → 21 TiB<br>
+                                <strong>Storage Migration:</strong> $148K/year (95.9% reduction), 360 TiB → 21 TiB<br>
                                 <strong>Compute Optimization:</strong> $183K/year (27% reduction)<br>
-                                <strong>3-Year Projected Impact: $993,288 — nearly $1M</strong>
+                                <strong>3-Year Projected Impact: $993,288 (nearly $1M)</strong>
                             </div>
                         </div>
                     </div>
@@ -1385,8 +1385,8 @@
                             <h4 class="feature-title">💾 Storage Policy Migration</h4>
                             <p class="feature-description">
                                 <strong>$148K/year saved (95.9% reduction)</strong><br><br>
-                                Before: 360 TiB Standard storage — $12,874/month<br>
-                                After: 21 TiB total — $533/month<br><br>
+                                Before: 360 TiB Standard storage at $12,874/month<br>
+                                After: 21 TiB total at $533/month<br><br>
                                 Strategy: archive &gt;5 days · auto-delete after 365 days · keep only last 5 days in Standard
                             </p>
                         </div>
@@ -1394,7 +1394,7 @@
                             <h4 class="feature-title">🖥️ GPU Infrastructure</h4>
                             <p class="feature-description">
                                 <strong>$77,262/year saved</strong><br><br>
-                                Scaled down 6 GPU instances and moved AI apps from GPU MIG to CPU-based K8s where GPU wasn't actually needed. Rightsized based on real usage data — no performance hit.
+                                Scaled down 6 GPU instances and moved AI apps from GPU MIG to CPU-based K8s where GPU wasn't actually needed. Rightsized based on real usage data with no performance hit.
                             </p>
                         </div>
                         <div class="feature-card">
@@ -1459,16 +1459,16 @@
                 <div id="technical" class="tab-content section-anchor" role="tabpanel" aria-labelledby="tab-technical" tabindex="-1" aria-hidden="true">
                     <div class="section-header">
                         <h2 class="section-title">Advanced Technical Implementations</h2>
-                        <p class="section-subtitle">Networking, security, deployment, and platform migration work — the kind that shows up at Staff and Principal level.</p>
+                        <p class="section-subtitle">Networking, security, deployment, and platform migration work at Staff and Principal level.</p>
                     </div>
                     <div class="grid-3">
                         <div class="feature-card">
                             <h4 class="feature-title">🔐 mTLS with Cloudflare</h4>
-                            <p class="feature-description">Set up Mutual TLS with Cloudflare so both client and server verify identity using certificates. Every service-to-service call is encrypted and authenticated — nothing gets through on network position alone.</p>
+                            <p class="feature-description">Set up Mutual TLS with Cloudflare so both client and server verify identity using certificates. Every service-to-service call is encrypted and authenticated; nothing gets through on network position alone.</p>
                         </div>
                         <div class="feature-card">
                             <h4 class="feature-title">🌉 AWS-GCP HA VPN</h4>
-                            <p class="feature-description">Built HA VPN tunnels between AWS and GCP with BGP failover — if a tunnel drops, routing adjusts automatically in under 30 seconds. All inter-cloud traffic stays off the public internet.</p>
+                            <p class="feature-description">Built HA VPN tunnels between AWS and GCP with BGP failover. If a tunnel drops, routing adjusts automatically in under 30 seconds. All inter-cloud traffic stays off the public internet.</p>
                         </div>
                         <div class="feature-card">
                             <h4 class="feature-title">🚀 Canary Deployment</h4>
@@ -1484,7 +1484,7 @@
                         </div>
                         <div class="feature-card">
                             <h4 class="feature-title">🛡️ Zero-Trust Architecture</h4>
-                            <p class="feature-description">mTLS, private networking, and certificate-based auth across the stack — services verify each other rather than relying on being inside the network perimeter.</p>
+                            <p class="feature-description">mTLS, private networking, and certificate-based auth across the stack. Services verify each other rather than relying on being inside the network perimeter.</p>
                         </div>
                         <div class="feature-card">
                             <h4 class="feature-title">☁️ Cloud Functions Gen1 → Gen2 Migration</h4>
@@ -1492,7 +1492,7 @@
                         </div>
                         <div class="feature-card">
                             <h4 class="feature-title">🖥️ Automated GPU VM Provisioning (GCP)</h4>
-                            <p class="feature-description">Built fully automated pipeline for provisioning GPU-enabled GCP Compute Engine VMs and deploying vLLM. Terraform creates the VM; 3 modular shell scripts handle CUDA install, model download, and vLLM startup. GitHub Actions orchestrates the full lifecycle: preflight checks skip re-provisioning if VM already exists; smoke tests validate <code>/health</code> and a live inference call post-deploy; SCP/SSH fixed for OpenSSH 9+ compatibility. HuggingFace token secured via GCP Secret Manager — no hardcoded credentials.</p>
+                            <p class="feature-description">Built fully automated pipeline for provisioning GPU-enabled GCP Compute Engine VMs and deploying vLLM. Terraform creates the VM; 3 modular shell scripts handle CUDA install, model download, and vLLM startup. GitHub Actions orchestrates the full lifecycle: preflight checks skip re-provisioning if VM already exists; smoke tests validate <code>/health</code> and a live inference call post-deploy; SCP/SSH fixed for OpenSSH 9+ compatibility. HuggingFace token secured via GCP Secret Manager with no hardcoded credentials.</p>
                         </div>
                         <div class="feature-card">
                             <h4 class="feature-title">🔧 Terraform Modular GCP Network</h4>
@@ -1500,7 +1500,7 @@
                         </div>
                         <div class="feature-card">
                             <h4 class="feature-title">📦 vLLM RunPod Serverless — Multi-GPU + Multi-DC</h4>
-                            <p class="feature-description">Extended RunPod Serverless deployment from single-GPU to a <strong>profile-driven system</strong> supporting 6 GPU types (RTX 4090 · 5090 · A6000 · 6000 Ada · L40S · A100 SXM). Implemented multi-datacenter EU failover (EU-RO-1 → EU-CZ-1 → EU-NL-1) with per-DC network volumes. Added exponential backoff with SUPPLY_CONSTRAINT retry — handles GPU unavailability gracefully instead of failing the deploy pipeline.</p>
+                            <p class="feature-description">Extended RunPod Serverless deployment from single-GPU to a <strong>profile-driven system</strong> supporting 6 GPU types (RTX 4090 · 5090 · A6000 · 6000 Ada · L40S · A100 SXM). Implemented multi-datacenter EU failover (EU-RO-1 → EU-CZ-1 → EU-NL-1) with per-DC network volumes. Added exponential backoff with SUPPLY_CONSTRAINT retry so GPU unavailability is handled gracefully instead of failing the deploy pipeline.</p>
                         </div>
                     </div>
                 </div>
@@ -1509,20 +1509,20 @@
                 <div id="achievements" class="tab-content section-anchor" role="tabpanel" aria-labelledby="tab-achievements" tabindex="-1" aria-hidden="true">
                     <div class="section-header">
                         <h2 class="section-title">Major Achievements</h2>
-                        <p class="section-subtitle">Quantifiable impact — $331K annual savings across FinOps, security, platform reliability, and team enablement.</p>
+                        <p class="section-subtitle">$331K in quantifiable annual savings across FinOps, security, platform reliability, and team enablement.</p>
                     </div>
                     <div class="grid-2">
                         <div class="feature-card">
                             <h4 class="feature-title">💾 Storage Migration Champion</h4>
-                            <p class="feature-description"><strong>$148K/year saved (95.9% reduction)</strong> — Moved 360 TiB from Standard storage to lifecycle-managed tiers. Files older than 5 days archive automatically; anything past 365 days is deleted. Cost dropped from $12,874/mo to $533/mo.</p>
+                            <p class="feature-description"><strong>$148K/year saved (95.9% reduction).</strong> Moved 360 TiB from Standard storage to lifecycle-managed tiers. Files older than 5 days archive automatically; anything past 365 days is deleted. Cost dropped from $12,874/mo to $533/mo.</p>
                         </div>
                         <div class="feature-card">
                             <h4 class="feature-title">💰 FinOps Excellence</h4>
-                            <p class="feature-description"><strong>$331K total annual savings</strong> across compute and storage — documented, line-item savings. Projects to nearly <strong>$1M over 3 years</strong>.</p>
+                            <p class="feature-description"><strong>$331K total annual savings</strong> across compute and storage, documented line-item. Projects to nearly <strong>$1M over 3 years</strong>.</p>
                         </div>
                         <div class="feature-card">
                             <h4 class="feature-title">🔒 ISO 27001 Compliance</h4>
-                            <p class="feature-description">Drove the infrastructure side of the ISO 27001 effort — 61 databases secured, automated security scanning added to CI, and the company got certified.</p>
+                            <p class="feature-description">Drove the infrastructure side of the ISO 27001 effort: 61 databases secured, automated security scanning added to CI, and the company got certified.</p>
                         </div>
                         <div class="feature-card">
                             <h4 class="feature-title">🌐 Kong Gateway at Scale</h4>
@@ -1530,7 +1530,7 @@
                         </div>
                         <div class="feature-card">
                             <h4 class="feature-title">🚀 65+ CI/CD Pipelines</h4>
-                            <p class="feature-description">Built and maintain 65+ Jenkins pipelines with a <strong>98%+ first-deploy success rate</strong>. Teams ship without waiting for ops — they trigger the pipeline themselves.</p>
+                            <p class="feature-description">Built and maintain 65+ Jenkins pipelines with a <strong>98%+ first-deploy success rate</strong>. Teams ship without waiting for ops; they trigger the pipeline themselves.</p>
                         </div>
                         <div class="feature-card">
                             <h4 class="feature-title">☸️ Kubernetes Multi-Cluster</h4>
@@ -1538,7 +1538,7 @@
                         </div>
                         <div class="feature-card">
                             <h4 class="feature-title">📦 Infrastructure Inventory</h4>
-                            <p class="feature-description">Full infrastructure inventory across 17 tracking sheets — <strong>863 assets documented</strong> with enough detail to actually be useful during incidents.</p>
+                            <p class="feature-description">Full infrastructure inventory across 17 tracking sheets, <strong>863 assets documented</strong> with enough detail to actually be useful during incidents.</p>
                         </div>
                         <div class="feature-card">
                             <h4 class="feature-title">🤖 AI Early Adopter</h4>
@@ -1551,7 +1551,7 @@
                 <div id="skills" class="tab-content section-anchor" role="tabpanel" aria-labelledby="tab-skills" tabindex="-1" aria-hidden="true">
                     <div class="section-header">
                         <h2 class="section-title">Technical Skills &amp; Expertise</h2>
-                        <p class="section-subtitle">50+ skills with proficiency levels — from expert to proficient across cloud, containers, security, and automation.</p>
+                        <p class="section-subtitle">50+ skills with proficiency levels, from expert to proficient across cloud, containers, security, and automation.</p>
                     </div>
 
                     <div class="card">
@@ -1794,7 +1794,7 @@
                 <div id="projects" class="tab-content section-anchor" role="tabpanel" aria-labelledby="tab-projects" tabindex="-1" aria-hidden="true">
                     <div class="section-header">
                         <h2 class="section-title">Personal Projects</h2>
-                        <p class="section-subtitle">Side projects built outside of work — full production systems with real users, real infrastructure, and real constraints.</p>
+                        <p class="section-subtitle">Side projects built outside of work. Full production systems with real users, real infrastructure, and real constraints.</p>
                     </div>
 
                     <!-- Pokemon GO Payment -->
@@ -1824,7 +1824,7 @@
                                 <h4 class="case-section-title">How it's built</h4>
                                 <ul class="impact-list">
                                     <li class="impact-item">Full-stack Next.js 16 App Router with Server Components, Server Actions, and Docker multi-stage build deployed to Cloud Run (scale to zero)</li>
-                                    <li class="impact-item">Dual payment gateway: <strong>Mercado Pago</strong> for PT/BRL subscribers, <strong>Stripe</strong> for EN+ES/USD — same codebase, locale-driven routing via middleware</li>
+                                    <li class="impact-item">Dual payment gateway: <strong>Mercado Pago</strong> for PT/BRL subscribers, <strong>Stripe</strong> for EN+ES/USD; same codebase, locale-driven routing via middleware</li>
                                     <li class="impact-item">i18n with <code>/pt</code>, <code>/en</code>, <code>/es</code> subpaths; Accept-Language middleware auto-redirects on first visit</li>
                                     <li class="impact-item">Webhook state machine with idempotent processing and <code>submission_logs</code> table tracking every payment event</li>
                                     <li class="impact-item">Zero static credentials: GCP Secret Manager at runtime, Workload Identity Federation for GitHub → GCP auth in CI</li>
@@ -1835,8 +1835,8 @@
                             <div class="impact-metrics">
                                 <h4 class="impact-title">Technical highlights</h4>
                                 <ul class="impact-list">
-                                    <li class="impact-item"><strong>Cloud Run southamerica-east1</strong> — auto-scales, HTTPS via custom domain (pokemongofriendscode.com)</li>
-                                    <li class="impact-item"><strong>Workload Identity Federation</strong> — no long-lived service account keys in CI; GitHub Actions exchanges OIDC tokens with GCP</li>
+                                    <li class="impact-item"><strong>Cloud Run southamerica-east1</strong>: auto-scales, HTTPS via custom domain (pokemongofriendscode.com)</li>
+                                    <li class="impact-item"><strong>Workload Identity Federation</strong>: no long-lived service account keys in CI; GitHub Actions exchanges OIDC tokens with GCP</li>
                                     <li class="impact-item"><strong>Tested</strong> with Jest (unit/integration) and Playwright (E2E)</li>
                                 </ul>
                             </div>
@@ -1878,14 +1878,14 @@
                             <div class="case-section">
                                 <h4 class="case-section-title">What it does</h4>
                                 <p class="case-description">
-                                    The automation backend for the subscription service. A scheduled Cloud Run Job that reads active trainer codes from Cloud SQL and submits them to two community sites daily at 15:00 BRT — fully headless, with no manual intervention.
+                                    The automation backend for the subscription service. A scheduled Cloud Run Job that reads active trainer codes from Cloud SQL and submits them to two community sites daily at 15:00 BRT, fully headless with no manual intervention.
                                 </p>
                             </div>
                             <div class="case-section">
                                 <h4 class="case-section-title">How it's built</h4>
                                 <ul class="impact-list">
                                     <li class="impact-item">Two independent scrapers: <strong>Puppeteer + stealth plugin</strong> for pokemongofriendcodes.com, <strong>Playwright</strong> for pogocodes.com (React-based form)</li>
-                                    <li class="impact-item">React controlled component workaround on pogocodes.com — dispatches input events with <code>bubbles: true</code> to trigger synthetic event handlers</li>
+                                    <li class="impact-item">React controlled component workaround on pogocodes.com; dispatches input events with <code>bubbles: true</code> to trigger synthetic event handlers</li>
                                     <li class="impact-item">Verification step after each submission: navigates to the listings page to confirm the code actually appears</li>
                                     <li class="impact-item">Batch processing (3 codes simultaneously) with configurable delays per action type to avoid rate limiting</li>
                                     <li class="impact-item">Database-driven: codes sourced from Cloud SQL <code>trainer_codes</code> table (single source of truth, synced from payment webhooks)</li>
@@ -1895,9 +1895,9 @@
                             <div class="impact-metrics">
                                 <h4 class="impact-title">Technical highlights</h4>
                                 <ul class="impact-list">
-                                    <li class="impact-item"><strong>Cost: ~$0/month</strong> — within GCP free tier for scheduled job execution</li>
-                                    <li class="impact-item"><strong>Rate limit detection</strong> — pokemongofriendcodes.com blocks re-submissions within 24h; script detects and stops gracefully</li>
-                                    <li class="impact-item"><strong>Cloud Monitoring alerts</strong> on exit code ≠ 0 — failed job execution pages the owner</li>
+                                    <li class="impact-item"><strong>Cost: ~$0/month</strong>: within GCP free tier for scheduled job execution</li>
+                                    <li class="impact-item"><strong>Rate limit detection</strong>: pokemongofriendcodes.com blocks re-submissions within 24h; script detects and stops gracefully</li>
+                                    <li class="impact-item"><strong>Cloud Monitoring alerts</strong> on exit code ≠ 0; failed job execution pages the owner</li>
                                 </ul>
                             </div>
                             <div class="tech-stack-list">
@@ -1941,10 +1941,10 @@
                             <div class="case-section">
                                 <h4 class="case-section-title">How it's built</h4>
                                 <ul class="impact-list">
-                                    <li class="impact-item">Fully migrated to <strong>Kotlin</strong> (from Java) with MVVM architecture — AndroidViewModel + LiveData + Repository pattern</li>
+                                    <li class="impact-item">Fully migrated to <strong>Kotlin</strong> (from Java) with MVVM architecture: AndroidViewModel + LiveData + Repository pattern</li>
                                     <li class="impact-item"><strong>Hilt</strong> for dependency injection · <strong>Coroutines</strong> for async database operations on IO thread</li>
                                     <li class="impact-item">Room ORM with dual-layer database (Room + legacy DAOs coexist; eager Room initialization ensures migrations complete first)</li>
-                                    <li class="impact-item">Backtracking draw algorithm extracted to pure function (<code>SorteioEngine.kt</code>) — testable, no side effects, handles impossible constraint scenarios gracefully</li>
+                                    <li class="impact-item">Backtracking draw algorithm extracted to pure function (<code>SorteioEngine.kt</code>): testable, no side effects, handles impossible constraint scenarios gracefully</li>
                                     <li class="impact-item">Batch queries with INNER JOIN to eliminate N+1 problem on wish list counts · All DB writes in atomic transactions</li>
                                     <li class="impact-item">Edge-to-Edge layout (Android 15), PDF export (PDFKit), QR code generation, local notifications, backup/restore as JSON</li>
                                     <li class="impact-item">GitHub Actions CI/CD: push to master → internal Play track; tag <code>v3.x</code> → production track</li>
@@ -1955,7 +1955,7 @@
                                 <ul class="impact-list">
                                     <li class="impact-item"><strong>297 unit tests</strong> + Espresso integration tests · <code>UnconfinedTestDispatcher</code> for deterministic coroutine testing</li>
                                     <li class="impact-item"><strong>Min SDK 21</strong> (Android 5.0+) · Target SDK 35 (Android 15) · R8 minification in release builds</li>
-                                    <li class="impact-item">Spoiler protection on WhatsApp sharing — 30 blank lines before the assignment to prevent previews from revealing the result</li>
+                                    <li class="impact-item">Spoiler protection on WhatsApp sharing: 30 blank lines before the assignment to prevent previews from revealing the result</li>
                                 </ul>
                             </div>
                             <div class="tech-stack-list">
@@ -1994,17 +1994,17 @@
                             <div class="case-section">
                                 <h4 class="case-section-title">What it does</h4>
                                 <p class="case-description">
-                                    The iOS counterpart to AmigoSecreto — same product concept rebuilt natively in Swift and SwiftUI for iPhone. Multiple groups, exclusion rules, wish lists, secure reveal, QR codes, PDF export, and local notifications. Zero external dependencies.
+                                    The iOS counterpart to AmigoSecreto, same product concept rebuilt natively in Swift and SwiftUI for iPhone. Multiple groups, exclusion rules, wish lists, secure reveal, QR codes, PDF export, and local notifications. Zero external dependencies.
                                 </p>
                             </div>
                             <div class="case-section">
                                 <h4 class="case-section-title">How it's built</h4>
                                 <ul class="impact-list">
-                                    <li class="impact-item"><strong>SwiftUI + SwiftData</strong> only — no third-party packages; persistence, UI, PDF, QR codes, and notifications all via native Apple frameworks</li>
-                                    <li class="impact-item">MVVM via SwiftData's <code>@Query</code> and <code>@Environment(\.modelContext)</code> — no separate ViewModel classes needed</li>
-                                    <li class="impact-item">JSON serialization workaround for many-to-many relationships (SwiftData limitation) — exclusions and draw pairs stored as <code>Data</code> fields with computed property decoders</li>
-                                    <li class="impact-item">Backtracking draw algorithm with 200-attempt limit — same logic as Android, adapted for Swift</li>
-                                    <li class="impact-item"><code>SequentialShareView</code> — workaround for iOS limitation that prevents opening multiple URL schemes simultaneously; shows sequential buttons for WhatsApp, SMS, Email</li>
+                                    <li class="impact-item"><strong>SwiftUI + SwiftData</strong> only, no third-party packages; persistence, UI, PDF, QR codes, and notifications all via native Apple frameworks</li>
+                                    <li class="impact-item">MVVM via SwiftData's <code>@Query</code> and <code>@Environment(\.modelContext)</code> with no separate ViewModel classes needed</li>
+                                    <li class="impact-item">JSON serialization workaround for many-to-many relationships (SwiftData limitation): exclusions and draw pairs stored as <code>Data</code> fields with computed property decoders</li>
+                                    <li class="impact-item">Backtracking draw algorithm with 200-attempt limit; same logic as Android, adapted for Swift</li>
+                                    <li class="impact-item"><code>SequentialShareView</code>: workaround for iOS limitation that prevents opening multiple URL schemes simultaneously; shows sequential buttons for WhatsApp, SMS, Email</li>
                                     <li class="impact-item">6-page onboarding, draw history, statistics, backup/restore with JSON forward compatibility</li>
                                 </ul>
                             </div>
@@ -2012,7 +2012,7 @@
                                 <h4 class="impact-title">Technical highlights</h4>
                                 <ul class="impact-list">
                                     <li class="impact-item"><strong>30+ unit tests</strong> using Swift Testing framework (<code>@Suite</code>, <code>@Test</code>)</li>
-                                    <li class="impact-item"><strong>iOS 17+ minimum</strong> — uses <code>ContentUnavailableView</code>, <code>@Bindable</code>, and other modern APIs throughout</li>
+                                    <li class="impact-item"><strong>iOS 17+ minimum</strong>: uses <code>ContentUnavailableView</code>, <code>@Bindable</code>, and other modern APIs throughout</li>
                                     <li class="impact-item">PDF generation via <code>UIGraphicsPDFRenderer</code> · QR codes via Core Image <code>CIQRCodeGenerator</code> · haptic feedback on reveal</li>
                                 </ul>
                             </div>
@@ -2039,7 +2039,7 @@
                 <div class="footer-inner">
                     <div class="footer-heading">Let's build something great</div>
                     <p class="footer-sub">
-                        13+ years in infrastructure — GKE multi-cluster, $331K in documented cloud savings, mTLS, HA VPN, and production LLM serving.
+                        13+ years in infrastructure: GKE multi-cluster, $331K in documented cloud savings, mTLS, HA VPN, and production LLM serving.
                         Platform Engineering · Cloud Cost Optimization · Advanced Networking · Security Architecture
                     </p>
                     <div class="footer-links">
