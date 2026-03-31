@@ -185,8 +185,8 @@
                     <h1>Platform &amp; Reliability<br><span>Engineering Expert</span></h1>
 
                     <p class="hero-subtitle">
-                        13+ years building resilient infrastructure at scale — from Kubernetes multi-cluster
-                        management to zero-trust security and $331K in documented cloud cost savings.
+                        13+ years in infrastructure, the last 7 focused on SRE and platform work — Kubernetes
+                        multi-cluster management, mTLS, HA VPN, and $331K in documented cloud cost savings.
                     </p>
 
                     <div class="hero-cta">
@@ -292,14 +292,14 @@
                                 <strong>13+ years</strong> total experience (support → development → SRE → platform engineering leadership)<br>
                                 <strong>7+ years</strong> in SRE/Platform Engineering roles (2018–present)<br>
                                 <strong>$331K/year</strong> documented cloud cost savings (compute + storage optimization)<br>
-                                <strong>AI/ML Operations:</strong> 207 tasks managing production ML systems (face recognition, content moderation)<br>
-                                <strong>vLLM Production Infra:</strong> Gemma 3 12B served across 3 GPU providers — cold start 10 min → 3 min, 6 GPU profiles, EU multi-DC failover<br>
-                                <strong>Fallback Router:</strong> FastAPI multi-provider chain (RunPod 568ms · Cloud Run 1.9s · GKE MIG 7.7s) deployed on GKE PRD<br>
-                                <strong>GitOps at Scale:</strong> ArgoCD 9-phase rollout managing 4 GKE clusters (dev · stg · prd · sdx), Argo Rollouts for canary delivery<br>
-                                <strong>GKE Infrastructure as Code:</strong> Terraform + Shared VPC, modular architecture, <code>prevent_destroy</code> on critical network resources<br>
-                                <strong>Modern AI Adoption:</strong> Claude AI, GitHub Copilot, Claude Code — CLAUDE.md standards deployed across all repos<br>
-                                <strong>Advanced Networking:</strong> mTLS with Cloudflare, AWS-GCP HA VPN, zero-trust architecture<br>
-                                <strong>Security Excellence:</strong> 61 databases secured · xmrig supply-chain incident response · P1 outage management<br>
+                                <strong>AI/ML Operations:</strong> 207 tasks across production ML systems — face recognition, content moderation<br>
+                                <strong>vLLM Production Infra:</strong> Gemma 3 12B running across 3 GPU providers; cut cold start from 10 min to 3 min, 6 GPU profiles, EU multi-DC failover<br>
+                                <strong>Fallback Router:</strong> ~150-line FastAPI reverse proxy chaining RunPod (568ms) → Cloud Run (1.9s) → GKE MIG (7.7s), deployed on GKE PRD<br>
+                                <strong>GitOps at Scale:</strong> ArgoCD 9-phase rollout across 4 GKE clusters (dev · stg · prd · sdx) with Argo Rollouts for canary delivery<br>
+                                <strong>GKE Infrastructure as Code:</strong> Terraform + Shared VPC, split into reusable modules, <code>prevent_destroy</code> on critical network resources<br>
+                                <strong>AI Tooling:</strong> Claude AI, GitHub Copilot, Claude Code — CLAUDE.md standards across all repos<br>
+                                <strong>Networking:</strong> mTLS with Cloudflare, AWS-GCP HA VPN, mutual auth everywhere<br>
+                                <strong>Security:</strong> 61 databases locked down · handled xmrig supply-chain incident · P1 outage management<br>
                                 <strong>Cloud Functions Migration:</strong> 60+ functions Gen1 → Gen2 (HTTP + Pub/Sub), deprecated Go 1.16 runtime replaced<br>
                                 <strong>Scale:</strong> 160+ applications, 863 infrastructure assets, 99.9% uptime SLO
                             </div>
@@ -427,7 +427,7 @@
                                 <ul class="impact-list">
                                     <li class="impact-item"><strong>94.2% storage reduction</strong> (360 TiB → 21 TiB)</li>
                                     <li class="impact-item"><strong>$444K saved over 3 years</strong> with zero data loss</li>
-                                    <li class="impact-item"><strong>Automated lifecycle</strong> — no manual intervention required</li>
+                                    <li class="impact-item"><strong>Fully automated lifecycle</strong> — archival and deletion run on their own once the policies are in place</li>
                                     <li class="impact-item"><strong>Maintained performance</strong> — hot data still in Standard class</li>
                                 </ul>
                             </div>
@@ -465,7 +465,7 @@
                                 <h4 class="case-section-title">💡 Solution</h4>
                                 <ul class="impact-list">
                                     <li class="impact-item">Analyzed actual workload patterns and resource utilization</li>
-                                    <li class="impact-item">Implemented intelligent autoscaling (4–10 replicas per environment)</li>
+                                    <li class="impact-item">Added autoscaling (4–10 replicas per environment) based on actual queue depth</li>
                                     <li class="impact-item">Rightsized CPU and memory based on real usage data</li>
                                     <li class="impact-item">Consolidated from 7 nodes to 1 node with better bin-packing</li>
                                 </ul>
@@ -531,11 +531,11 @@
                             <div class="case-section">
                                 <h4 class="case-section-title">💡 Solution</h4>
                                 <ul class="impact-list">
-                                    <li class="impact-item">Configured Cloudflare for Mutual TLS authentication</li>
-                                    <li class="impact-item">Generated and distributed client certificates to authorized services</li>
-                                    <li class="impact-item">Implemented certificate revocation and rotation policies</li>
-                                    <li class="impact-item">Built zero-trust architecture — verify every request with certificates</li>
-                                    <li class="impact-item">Automated certificate lifecycle management</li>
+                                    <li class="impact-item">Set up Cloudflare for Mutual TLS — both sides now present certificates, not just the server</li>
+                                    <li class="impact-item">Generated and distributed client certificates to each authorized service</li>
+                                    <li class="impact-item">Added certificate revocation and rotation so compromised certs can be killed immediately</li>
+                                    <li class="impact-item">Every request is verified by certificate — no implicit trust based on network position</li>
+                                    <li class="impact-item">Automated the certificate lifecycle so rotation doesn't require manual steps</li>
                                 </ul>
                             </div>
                             <div class="diagram-placeholder">
@@ -548,7 +548,7 @@
                             <div class="impact-metrics">
                                 <h4 class="impact-title">Business Impact</h4>
                                 <ul class="impact-list">
-                                    <li class="impact-item"><strong>Zero-trust security posture</strong> — every request authenticated</li>
+                                    <li class="impact-item"><strong>Every request authenticated by certificate</strong> — nothing gets through on network position alone</li>
                                     <li class="impact-item"><strong>ISO 27001 compliance</strong> requirement satisfied</li>
                                     <li class="impact-item"><strong>Protection against</strong> MITM attacks and API abuse</li>
                                     <li class="impact-item"><strong>Instant revocation</strong> if certificate is compromised</li>
@@ -588,11 +588,11 @@
                             <div class="case-section">
                                 <h4 class="case-section-title">💡 Solution</h4>
                                 <ul class="impact-list">
-                                    <li class="impact-item">Architected HA VPN with redundant tunnels</li>
-                                    <li class="impact-item">Configured BGP routing for automatic failover</li>
-                                    <li class="impact-item">Set up private IP addressing and internal routing tables</li>
-                                    <li class="impact-item">Implemented encryption for all inter-cloud traffic</li>
-                                    <li class="impact-item">Built monitoring and alerting for tunnel health</li>
+                                    <li class="impact-item">Built HA VPN between AWS and GCP with redundant tunnels on both sides</li>
+                                    <li class="impact-item">Configured BGP so failover is automatic — no manual intervention when a tunnel drops</li>
+                                    <li class="impact-item">Assigned private IPs and set up internal routing tables so traffic never touches the public internet</li>
+                                    <li class="impact-item">All inter-cloud traffic encrypted end-to-end over IPSec</li>
+                                    <li class="impact-item">Added monitoring and alerts for tunnel health — know before it affects workloads</li>
                                 </ul>
                             </div>
                             <div class="impact-metrics">
@@ -601,7 +601,7 @@
                                     <li class="impact-item"><strong>99.99% availability</strong> through redundant tunnels</li>
                                     <li class="impact-item"><strong>Automatic failover</strong> via BGP (&lt;30 seconds)</li>
                                     <li class="impact-item"><strong>Zero public internet exposure</strong> for sensitive data</li>
-                                    <li class="impact-item"><strong>Enabled hybrid architecture</strong> — workloads span both clouds</li>
+                                    <li class="impact-item"><strong>Workloads now span both clouds</strong> without any public internet exposure</li>
                                 </ul>
                             </div>
                             <div class="tech-stack-list">
@@ -637,19 +637,19 @@
                             <div class="case-section">
                                 <h4 class="case-section-title">💡 Solution</h4>
                                 <ul class="impact-list">
-                                    <li class="impact-item">Developed custom canary deployment automation from scratch</li>
-                                    <li class="impact-item">Implemented progressive traffic splitting (10% → 25% → 50% → 100%)</li>
-                                    <li class="impact-item">Built health check monitoring at each stage</li>
-                                    <li class="impact-item">Created metric-based automated rollback (error rate, latency thresholds)</li>
-                                    <li class="impact-item">Integrated with Jenkins pipelines for seamless deployment</li>
+                                    <li class="impact-item">Wrote custom canary deployment automation from scratch — off-the-shelf tools didn't fit the multi-environment setup</li>
+                                    <li class="impact-item">Progressive traffic split: 10% → 25% → 50% → 100%, with a gate at each stage</li>
+                                    <li class="impact-item">Health checks run at each stage before traffic advances</li>
+                                    <li class="impact-item">Automatic rollback kicks in when error rate or latency crosses defined thresholds</li>
+                                    <li class="impact-item">Wired into Jenkins pipelines — works the same way for every team</li>
                                 </ul>
                             </div>
                             <div class="impact-metrics">
                                 <h4 class="impact-title">Business Impact</h4>
                                 <ul class="impact-list">
-                                    <li class="impact-item"><strong>Zero failed deployments</strong> — automatic rollback prevents incidents</li>
-                                    <li class="impact-item"><strong>Reduced blast radius</strong> — issues caught at 10% traffic</li>
-                                    <li class="impact-item"><strong>Custom solution</strong> — not dependent on expensive third-party tools</li>
+                                    <li class="impact-item"><strong>No failed deployments since rollout</strong> — issues surface at 10% traffic and trigger automatic rollback before reaching everyone</li>
+                                    <li class="impact-item"><strong>Deployment frequency increased</strong> — teams ship more often because the cost of a bad release dropped dramatically</li>
+                                    <li class="impact-item"><strong>No third-party tooling dependency</strong> — built from scratch to fit the existing setup</li>
                                 </ul>
                             </div>
                             <div class="tech-stack-list">
@@ -740,10 +740,10 @@
                             <div class="impact-metrics">
                                 <h4 class="impact-title">Business Impact</h4>
                                 <ul class="impact-list">
-                                    <li class="impact-item"><strong>160+ applications</strong> managed through single gateway</li>
-                                    <li class="impact-item"><strong>Centralized rate limiting</strong> — prevent API abuse</li>
-                                    <li class="impact-item"><strong>Consistent policies</strong> — auth, CORS, headers enforced globally</li>
-                                    <li class="impact-item"><strong>Faster troubleshooting</strong> — centralized logging and tracing</li>
+                                    <li class="impact-item"><strong>160+ applications</strong> now go through a single gateway — one place to enforce policy</li>
+                                    <li class="impact-item"><strong>Rate limiting</strong> configured centrally; no per-service implementation needed</li>
+                                    <li class="impact-item"><strong>Auth, CORS, and headers</strong> applied globally — developers don't handle this per app</li>
+                                    <li class="impact-item"><strong>Centralized logging and tracing</strong> cuts troubleshooting time significantly</li>
                                 </ul>
                             </div>
                             <div class="tech-stack-list">
@@ -1070,9 +1070,9 @@
                             <div class="impact-metrics">
                                 <h4 class="impact-title">Business Impact</h4>
                                 <ul class="impact-list">
-                                    <li class="impact-item"><strong>Early mover advantage</strong> — adopted AI tools before most competitors</li>
-                                    <li class="impact-item"><strong>Faster code reviews</strong> through Claude Code automation</li>
-                                    <li class="impact-item"><strong>Knowledge democratization</strong> — junior developers learn faster</li>
+                                    <li class="impact-item"><strong>Adopted AI tools early</strong> — Claude AI in Dec 2024, Copilot in Aug 2024, before most teams in the org</li>
+                                    <li class="impact-item"><strong>Automated PR reviews</strong> via Claude Code — reviewers spend time on logic, not style</li>
+                                    <li class="impact-item"><strong>Junior developers ramp up faster</strong> — AI-assisted development reduces the gap between seniors and juniors on routine tasks</li>
                                 </ul>
                             </div>
                         </div>
@@ -1201,7 +1201,7 @@
                                 <strong>Production LLM infrastructure:</strong> Gemma 3 12B serving via vLLM across 3 GPU providers with automatic failover<br>
                                 <strong>6 GPU profiles validated:</strong> RTX 4090 · RTX 5090 · RTX A6000 · RTX 6000 Ada · L40S · A100 SXM 80GB<br>
                                 <strong>Cold start engineering:</strong> 10 min → 3 min — pre-baked Docker images, model warm-up, Tier 1 + Tier 2 boot optimizations<br>
-                                <strong>Early AI adopter:</strong> Claude AI (Dec 2024), GitHub Copilot (Aug 2024), Claude Code for automated PR reviews<br>
+                                <strong>AI tooling:</strong> Rolled out Claude AI (Dec 2024) and GitHub Copilot (Aug 2024) to the team; runs automated PR reviews in CI with Claude Code<br>
                                 <strong>MLOps expertise:</strong> Content moderation (YOLO), intelligent autoscaling (VPA/HPA/KEDA), security automation
                             </div>
                         </div>
@@ -1232,22 +1232,22 @@
                     <div class="grid-3">
                         <div class="feature-card">
                             <h4 class="feature-title">🧠 Modern AI Tools</h4>
-                            <p class="feature-description">Early adopter of Claude AI (Dec 2024) and GitHub Copilot (Aug 2024). Deployed Claude Code for automated PR reviews (Aug 2025). Built CLAUDE.md standards for AI-assisted development across all repos.</p>
+                            <p class="feature-description">Rolled out Claude AI (Dec 2024) and GitHub Copilot (Aug 2024) to the team. Evaluated Claude Code for automated PR reviews in Bitbucket (Aug 2025). Wrote CLAUDE.md standards so AI-assisted development is consistent across all repos.</p>
                         </div>
                         <div class="feature-card">
                             <h4 class="feature-title">🎬 Content Moderation AI</h4>
-                            <p class="feature-description">Managed 20 tasks for AI-powered content screening. YOLO object detection and GPU-optimized services for video analysis. MLOps for child safety and age-assurance systems at production scale.</p>
+                            <p class="feature-description">Ran infra for 20 AI-powered content screening tasks — YOLO object detection on GPU-optimized services for video analysis. Production MLOps for child safety and age-assurance systems.</p>
                         </div>
                         <div class="feature-card">
                             <h4 class="feature-title">⚡ Intelligent Infrastructure</h4>
-                            <p class="feature-description">Implemented VPA/HPA/MPA/KEDA for ML-driven autoscaling. Systems optimize themselves using machine learning predictions, not manual thresholds. YOLO batch ReID processing coordinated with live vLLM server on shared GPU.</p>
+                            <p class="feature-description">Set up VPA/HPA/MPA/KEDA so scaling decisions are based on actual metrics, not manually tuned thresholds. Also coordinated YOLO batch ReID processing alongside a live vLLM server on the same GPU — scheduling matters when GPU memory is finite.</p>
                         </div>
                     </div>
 
                     <div class="card">
                         <h3 class="card-title"><span class="card-icon">🖥️</span> vLLM Production Infrastructure — Full Journey</h3>
                         <p style="font-size:0.9375rem;line-height:1.75;color:var(--text-secondary);margin-bottom:var(--space-md);">
-                            Designed and operated end-to-end production LLM serving infrastructure for <strong>Gemma 3 12B (GGUF Q4)</strong> via vLLM 0.15.1. Evolved from single GCP VM to a multi-provider, multi-GPU architecture with automatic failover and profile-driven GPU selection.
+                            Built and ran production LLM serving for <strong>Gemma 3 12B (GGUF Q4)</strong> via vLLM 0.15.1 — started on a single GCP VM and grew it into a multi-provider, multi-GPU setup with automatic failover and profile-driven GPU selection.
                         </p>
                         <div class="grid-2">
                             <div class="feature-card">
@@ -1335,7 +1335,7 @@
                             <h4 class="feature-title">🖥️ GPU Infrastructure</h4>
                             <p class="feature-description">
                                 <strong>$77,262/year saved</strong><br><br>
-                                Scaled down 6 GPU instances and migrated AI apps from MIG (GPU) to K8s (CPU). Strategic instance rightsizing without performance degradation.
+                                Scaled down 6 GPU instances and moved AI apps from GPU MIG to CPU-based K8s where GPU wasn't actually needed. Rightsized based on real usage data — no performance hit.
                             </p>
                         </div>
                         <div class="feature-card">
@@ -1400,32 +1400,32 @@
                 <div id="technical" class="tab-content section-anchor" role="tabpanel" aria-labelledby="tab-technical" tabindex="-1" aria-hidden="true">
                     <div class="section-header">
                         <h2 class="section-title">Advanced Technical Implementations</h2>
-                        <p class="section-subtitle">Cutting-edge networking, security, deployment, and platform migration work that distinguishes Staff/Principal Engineer level execution.</p>
+                        <p class="section-subtitle">Networking, security, deployment, and platform migration work — the kind that shows up at Staff and Principal level.</p>
                     </div>
                     <div class="grid-3">
                         <div class="feature-card">
                             <h4 class="feature-title">🔐 mTLS with Cloudflare</h4>
-                            <p class="feature-description">Configured Mutual TLS for end-to-end encryption and certificate-based authentication. Zero-trust architecture with encrypted service-to-service communication.</p>
+                            <p class="feature-description">Set up Mutual TLS with Cloudflare so both client and server verify identity using certificates. Every service-to-service call is encrypted and authenticated — nothing gets through on network position alone.</p>
                         </div>
                         <div class="feature-card">
                             <h4 class="feature-title">🌉 AWS-GCP HA VPN</h4>
-                            <p class="feature-description">Architected High Availability VPN tunnels for secure inter-cloud communication with BGP routing. Enables seamless multi-cloud operations with redundancy.</p>
+                            <p class="feature-description">Built HA VPN tunnels between AWS and GCP with BGP failover — if a tunnel drops, routing adjusts automatically in under 30 seconds. All inter-cloud traffic stays off the public internet.</p>
                         </div>
                         <div class="feature-card">
                             <h4 class="feature-title">🚀 Canary Deployment</h4>
-                            <p class="feature-description">Custom canary deployment automation with progressive rollouts (10%→25%→50%→100%), health checks, and metric-based automated rollback.</p>
+                            <p class="feature-description">Wrote custom canary automation that rolls traffic progressively (10%→25%→50%→100%), checks health at each step, and rolls back automatically if error rate or latency crosses the threshold.</p>
                         </div>
                         <div class="feature-card">
                             <h4 class="feature-title">🔒 Database Security (61 DBs)</h4>
-                            <p class="feature-description">Secured all 61 databases (18 MongoDB Atlas + 44 PostgreSQL) with SSL/TLS encryption, private IPs, and certificate-based authentication.</p>
+                            <p class="feature-description">Moved all 61 databases (18 MongoDB Atlas + 44 PostgreSQL) off public IPs, enforced SSL/TLS on every connection, and switched from password-only auth to certificate-based. Part of the ISO 27001 push.</p>
                         </div>
                         <div class="feature-card">
                             <h4 class="feature-title">⚡ Redis 7.2 Security</h4>
-                            <p class="feature-description">Implemented Redis 7.2 on GCP with SSL certificate authentication and password security. Encryption in transit and at rest.</p>
+                            <p class="feature-description">Deployed Redis 7.2 on GCP with SSL certificate auth and encrypted connections. Traffic in transit is encrypted; passwords alone aren't enough to connect.</p>
                         </div>
                         <div class="feature-card">
                             <h4 class="feature-title">🛡️ Zero-Trust Architecture</h4>
-                            <p class="feature-description">Comprehensive zero-trust network with encrypted communication, mutual authentication, and service mesh implementation.</p>
+                            <p class="feature-description">mTLS, private networking, and certificate-based auth across the stack — services verify each other rather than relying on being inside the network perimeter.</p>
                         </div>
                         <div class="feature-card">
                             <h4 class="feature-title">☁️ Cloud Functions Gen1 → Gen2 Migration</h4>
@@ -1455,35 +1455,35 @@
                     <div class="grid-2">
                         <div class="feature-card">
                             <h4 class="feature-title">💾 Storage Migration Champion</h4>
-                            <p class="feature-description"><strong>$148K/year saved (95.9% reduction)</strong> — Migrated 360 TiB to lifecycle-managed storage. Automated archival &gt;5 days, deletion after 365 days. World-class FinOps execution.</p>
+                            <p class="feature-description"><strong>$148K/year saved (95.9% reduction)</strong> — Moved 360 TiB from Standard storage to lifecycle-managed tiers. Files older than 5 days archive automatically; anything past 365 days is deleted. Cost dropped from $12,874/mo to $533/mo.</p>
                         </div>
                         <div class="feature-card">
                             <h4 class="feature-title">💰 FinOps Excellence</h4>
-                            <p class="feature-description"><strong>$331K total annual savings</strong> — 99th percentile of FinOps practitioners. Nearly <strong>$1M saved over 3 years</strong>.</p>
+                            <p class="feature-description"><strong>$331K total annual savings</strong> across compute and storage — documented, line-item savings. Projects to nearly <strong>$1M over 3 years</strong>.</p>
                         </div>
                         <div class="feature-card">
                             <h4 class="feature-title">🔒 ISO 27001 Compliance</h4>
-                            <p class="feature-description">Led infrastructure security initiatives. Implemented automated security scanning pipeline. Company achieved ISO 27001 certification.</p>
+                            <p class="feature-description">Drove the infrastructure side of the ISO 27001 effort — 61 databases secured, automated security scanning added to CI, and the company got certified.</p>
                         </div>
                         <div class="feature-card">
                             <h4 class="feature-title">🌐 Kong Gateway at Scale</h4>
-                            <p class="feature-description">Designed and implemented Kong Gateway as API management layer for 160+ applications. Rate limiting, authentication, monitoring — all centralized.</p>
+                            <p class="feature-description">Replaced per-app nginx ingress with Kong Gateway across 160+ applications. Rate limiting, auth, CORS, and monitoring now configured in one place rather than scattered across service configs.</p>
                         </div>
                         <div class="feature-card">
                             <h4 class="feature-title">🚀 65+ CI/CD Pipelines</h4>
-                            <p class="feature-description">Built and maintain 65+ Jenkins pipelines with <strong>98%+ first-time deploy success rate</strong>. Enabled self-service deployments across all teams.</p>
+                            <p class="feature-description">Built and maintain 65+ Jenkins pipelines with a <strong>98%+ first-deploy success rate</strong>. Teams ship without waiting for ops — they trigger the pipeline themselves.</p>
                         </div>
                         <div class="feature-card">
                             <h4 class="feature-title">☸️ Kubernetes Multi-Cluster</h4>
-                            <p class="feature-description">Manage 160+ applications across 4 environments (dev/stg/prd/sdx) with <strong>99.9% uptime SLO</strong>.</p>
+                            <p class="feature-description">160+ applications running across 4 GKE environments (dev/stg/prd/sdx), holding <strong>99.9% uptime SLO</strong>.</p>
                         </div>
                         <div class="feature-card">
                             <h4 class="feature-title">📦 Infrastructure Inventory</h4>
-                            <p class="feature-description">Complete infrastructure inventory with 17 tracking sheets. CMDB-level maturity — <strong>863 assets documented and maintained</strong>.</p>
+                            <p class="feature-description">Full infrastructure inventory across 17 tracking sheets — <strong>863 assets documented</strong> with enough detail to actually be useful during incidents.</p>
                         </div>
                         <div class="feature-card">
                             <h4 class="feature-title">🤖 AI Early Adopter</h4>
-                            <p class="feature-description">Adopted Claude AI, GitHub Copilot, and Claude Code before most enterprises. Enabled team productivity gains and automated PR reviews at scale.</p>
+                            <p class="feature-description">Rolled out Claude AI (Dec 2024) and GitHub Copilot (Aug 2024) to the team, then runs automated PR reviews in CI with Claude Code in Bitbucket pipelines. Most of this happened before it was common practice at peer companies.</p>
                         </div>
                     </div>
                 </div>
@@ -1738,7 +1738,7 @@
                 <div class="footer-inner">
                     <div class="footer-heading">Let's build something great</div>
                     <p class="footer-sub">
-                        Specialized in transforming infrastructure challenges into scalable, cost-efficient solutions.
+                        13+ years in infrastructure — GKE multi-cluster, $331K in documented cloud savings, mTLS, HA VPN, and production LLM serving.
                         Platform Engineering · Cloud Cost Optimization · Advanced Networking · Security Architecture
                     </p>
                     <div class="footer-links">
