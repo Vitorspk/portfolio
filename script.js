@@ -71,9 +71,8 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         // Scroll main content area to top so users start at the top of the new panel.
-        // scrollTo with behavior:'instant' is explicit and bypasses smooth scroll-behavior.
-        const mainContent = document.querySelector('.main-content');
-        if (mainContent && pushState) mainContent.scrollTo({ top: 0, behavior: 'instant' });
+        // behavior:'auto' respects the user's scroll-behavior preference.
+        if (pushState) window.scrollTo({ top: 0, behavior: 'auto' });
 
         // Move focus to the active panel when the tab was activated by keyboard
         // within the tablist (not on URL load or programmatic navigation).
@@ -201,6 +200,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
         mq.addEventListener('change', syncTablists);
         syncTablists(); // set initial state
+    }
+
+    // ─── Mobile tab strip overflow indicator ──────────────────────────────────
+    // Toggles .has-overflow-right so the mask-image fade only shows when there
+    // are off-screen tabs to the right — avoids a false affordance at the end.
+    if (mobileNav) {
+        const updateTabOverflow = () => {
+            const hasOverflow = mobileNav.scrollLeft + mobileNav.clientWidth < mobileNav.scrollWidth - 1;
+            mobileNav.classList.toggle('has-overflow-right', hasOverflow);
+        };
+        mobileNav.addEventListener('scroll', updateTabOverflow, { passive: true });
+        window.addEventListener('resize', updateTabOverflow, { passive: true });
+        updateTabOverflow(); // set initial state
     }
 
     // ─── Keyboard Navigation (Arrow / Home / End) ─────────────────────────────

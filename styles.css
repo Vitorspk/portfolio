@@ -10,6 +10,7 @@
     --primary-light:  #60a5fa;
     --primary-glow:   rgba(59, 130, 246, 0.15);
     --secondary:      #8b5cf6;
+    --secondary-light: #a78bfa;
     --accent:         #06b6d4;
     --success:        #10b981;
     --warning:        #f59e0b;
@@ -67,7 +68,7 @@
     --sidebar-w:   240px;
     --content-max: 900px;
     --header-h:    64px;
-    --mobile-tabs-h: 48px;
+    --mobile-tabs-h: 45px;
 }
 
 /* ============================================================
@@ -599,7 +600,7 @@ a:hover {
 
 .hero-stat-value.accent-green  { color: var(--success); }
 .hero-stat-value.accent-blue   { color: var(--primary-light); }
-.hero-stat-value.accent-purple { color: #a78bfa; }
+.hero-stat-value.accent-purple { color: var(--secondary-light); }
 
 .hero-stat-label {
     font-size: 0.75rem;
@@ -681,6 +682,12 @@ a:hover {
     top: var(--header-h);
     z-index: 400;
 
+}
+
+/* Only show the right-edge fade when there are off-screen tabs to the right */
+.mobile-tabs.has-overflow-right {
+    -webkit-mask-image: linear-gradient(to right, black 80%, transparent 100%);
+    mask-image: linear-gradient(to right, black 80%, transparent 100%);
 }
 
 .mobile-tabs::-webkit-scrollbar { display: none; }
@@ -1688,7 +1695,7 @@ footer {
 
     /* Full-width CTA buttons on mobile for easy tapping */
     .hero-cta .btn-primary,
-    .hero-cta .btn-secondary {
+    .hero-cta .btn-ghost {
         width: 100%;
         justify-content: center;
         min-height: 44px;
