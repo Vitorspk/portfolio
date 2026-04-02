@@ -682,10 +682,12 @@ a:hover {
     top: var(--header-h);
     z-index: 400;
 
-    /* Right-edge fade signals that more tabs are off-screen */
+}
+
+/* Only show the right-edge fade when there are off-screen tabs to the right */
+.mobile-tabs.has-overflow-right {
     -webkit-mask-image: linear-gradient(to right, black 80%, transparent 100%);
     mask-image: linear-gradient(to right, black 80%, transparent 100%);
-
 }
 
 .mobile-tabs::-webkit-scrollbar { display: none; }
@@ -1693,7 +1695,6 @@ footer {
 
     /* Full-width CTA buttons on mobile for easy tapping */
     .hero-cta .btn-primary,
-    .hero-cta .btn-secondary,
     .hero-cta .btn-ghost {
         width: 100%;
         justify-content: center;
