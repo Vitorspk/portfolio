@@ -72,8 +72,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Scroll main content area to top so users start at the top of the new panel.
         // scrollTo with behavior:'instant' is explicit and bypasses smooth scroll-behavior.
-        const mainContent = document.querySelector('.main-content');
-        if (mainContent && pushState) mainContent.scrollTo({ top: 0, behavior: 'instant' });
+        if (pushState) window.scrollTo({ top: 0, behavior: 'instant' });
 
         // Move focus to the active panel when the tab was activated by keyboard
         // within the tablist (not on URL load or programmatic navigation).
