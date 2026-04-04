@@ -785,13 +785,8 @@ a:hover {
     transition: border-color var(--t-base), box-shadow var(--t-base);
 }
 
-.card:hover {
-    border-color: var(--border-hover);
-    box-shadow: var(--shadow-lg);
-}
-
-/* Keyboard-accessible card focus matches hover appearance */
-.card:focus-within {
+.card:hover,
+.card:focus-within:has(:focus-visible) {
     border-color: var(--border-hover);
     box-shadow: var(--shadow-lg);
 }
