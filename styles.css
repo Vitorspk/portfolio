@@ -1714,8 +1714,8 @@ footer {
     }
 
     .timeline-item::before {
-        /* -24px = -(padding-left) + (dot-width/2) to center on the line */
-        left: -24px;
+        /* Adjusted from desktop -25px to match the reduced timeline padding */
+        left: -22px;
         width: 12px;
         height: 12px;
     }
