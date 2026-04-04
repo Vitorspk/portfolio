@@ -53,8 +53,9 @@
     }
     </script>
 
-    <!-- Favicon — inline SVG matching the VS avatar brand -->
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%233b82f6'/><text x='16' y='22' font-family='Inter,system-ui,sans-serif' font-size='16' font-weight='800' fill='white' text-anchor='middle'>VS</text></svg>">
+    <!-- Favicon — inline SVG matching the VS avatar brand.
+         %233b82f6 mirrors --primary (#3b82f6); update both if brand colour changes. -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%233b82f6'/><text x='16' y='22' font-family='Inter,system-ui,sans-serif' font-size='16' font-weight='800' fill='white' text-anchor='middle'>VS</text></svg>">
 
     <link rel="stylesheet" href="styles.css">
 </head>
@@ -234,7 +235,7 @@
                         </div>
                         <div class="hero-stat-divider"></div>
                         <div class="hero-stat">
-                            <span class="hero-stat-value">863</span>
+                            <span class="hero-stat-value accent-purple">863</span>
                             <span class="hero-stat-label">Infra assets</span>
                         </div>
                     </div>
@@ -284,27 +285,27 @@
                             </div>
                             <div class="highlight-grid">
                                 <div class="highlight-card">
-                                    <h4 class="highlight-card-title">💰 FinOps</h4>
+                                    <h4 class="highlight-card-title"><span aria-hidden="true">💰</span> FinOps</h4>
                                     <p class="highlight-card-text">$331K/year documented cloud cost savings through compute and storage optimization</p>
                                 </div>
                                 <div class="highlight-card">
-                                    <h4 class="highlight-card-title">🤖 AI/ML Ops</h4>
+                                    <h4 class="highlight-card-title"><span aria-hidden="true">🤖</span> AI/ML Ops</h4>
                                     <p class="highlight-card-text">Production ML systems: face recognition, content moderation, LLM serving. vLLM Gemma 3 12B on RunPod + GCP</p>
                                 </div>
                                 <div class="highlight-card">
-                                    <h4 class="highlight-card-title">🚀 GitOps at Scale</h4>
+                                    <h4 class="highlight-card-title"><span aria-hidden="true">🚀</span> GitOps at Scale</h4>
                                     <p class="highlight-card-text">ArgoCD 9-phase rollout across 4 GKE clusters with Argo Rollouts for canary delivery</p>
                                 </div>
                                 <div class="highlight-card">
-                                    <h4 class="highlight-card-title">🏗️ Infrastructure as Code</h4>
+                                    <h4 class="highlight-card-title"><span aria-hidden="true">🏗️</span> Infrastructure as Code</h4>
                                     <p class="highlight-card-text">Terraform + Shared VPC with reusable modules. 60+ Cloud Functions migrated Gen1 → Gen2</p>
                                 </div>
                                 <div class="highlight-card">
-                                    <h4 class="highlight-card-title">🔐 Security</h4>
+                                    <h4 class="highlight-card-title"><span aria-hidden="true">🔐</span> Security</h4>
                                     <p class="highlight-card-text">mTLS with Cloudflare, AWS-GCP HA VPN, 61 databases hardened, xmrig supply-chain incident response</p>
                                 </div>
                                 <div class="highlight-card">
-                                    <h4 class="highlight-card-title">📊 Scale</h4>
+                                    <h4 class="highlight-card-title"><span aria-hidden="true">📊</span> Scale</h4>
                                     <p class="highlight-card-text">160+ applications, 863 infrastructure assets, 99.9% uptime SLO</p>
                                 </div>
                             </div>
