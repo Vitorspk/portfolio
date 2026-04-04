@@ -1349,6 +1349,106 @@
                         <p class="case-description case-description--mb">
                             Built and ran production LLM serving for <strong>Gemma 3 12B (GGUF Q4)</strong> via vLLM 0.15.1. Started on a single GCP VM and grew it into a multi-provider, multi-GPU setup with automatic failover and profile-driven GPU selection.
                         </p>
+
+                        <!-- Architecture Diagram — vLLM Multi-Provider Fallback -->
+                        <figure class="architecture-diagram" aria-label="vLLM multi-provider architecture diagram showing request flow from client through FastAPI router to three GPU providers with failover chain">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 520" role="img" aria-hidden="true" style="width:100%;height:auto;max-width:820px;margin:0 auto;display:block;">
+                                <!-- Background -->
+                                <rect width="820" height="520" rx="12" fill="var(--bg-card)" stroke="var(--border)" stroke-width="1"/>
+
+                                <!-- Title -->
+                                <text x="410" y="35" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="14" font-weight="600" fill="var(--text-primary)">Multi-Provider Inference Architecture</text>
+
+                                <!-- Client Box -->
+                                <rect x="335" y="55" width="150" height="44" rx="8" fill="var(--bg-elevated)" stroke="var(--border)" stroke-width="1"/>
+                                <text x="410" y="76" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="11" font-weight="600" fill="var(--text-primary)">Client Request</text>
+                                <text x="410" y="91" text-anchor="middle" font-family="monospace" font-size="9" fill="var(--text-muted)">/v1/chat/completions</text>
+
+                                <!-- Arrow: Client → Router -->
+                                <line x1="410" y1="99" x2="410" y2="125" stroke="var(--text-muted)" stroke-width="1.5" stroke-dasharray="4,3"/>
+                                <polygon points="405,122 410,132 415,122" fill="var(--text-muted)"/>
+
+                                <!-- FastAPI Router Box -->
+                                <rect x="295" y="132" width="230" height="50" rx="10" fill="var(--primary)" fill-opacity="0.12" stroke="var(--primary)" stroke-width="1.5"/>
+                                <text x="410" y="154" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="12" font-weight="700" fill="var(--primary)">FastAPI Fallback Router</text>
+                                <text x="410" y="172" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="9" fill="var(--text-muted)">~150 lines · GKE PRD · OpenAI-compatible</text>
+
+                                <!-- Three arrows from Router to Providers -->
+                                <!-- Left arrow → RunPod -->
+                                <line x1="340" y1="182" x2="155" y2="228" stroke="#22c55e" stroke-width="1.5"/>
+                                <polygon points="150,224 158,233 162,223" fill="#22c55e"/>
+                                <text x="230" y="200" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="9" font-weight="600" fill="#22c55e">Primary</text>
+
+                                <!-- Center arrow → Cloud Run -->
+                                <line x1="410" y1="182" x2="410" y2="228" stroke="#f59e0b" stroke-width="1.5"/>
+                                <polygon points="405,225 410,235 415,225" fill="#f59e0b"/>
+                                <text x="440" y="212" text-anchor="start" font-family="Inter, system-ui, sans-serif" font-size="9" font-weight="600" fill="#f59e0b">Fallback 1</text>
+
+                                <!-- Right arrow → GKE MIG -->
+                                <line x1="480" y1="182" x2="665" y2="228" stroke="#ef4444" stroke-width="1.5"/>
+                                <polygon points="660,224 668,233 672,223" fill="#ef4444"/>
+                                <text x="590" y="200" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="9" font-weight="600" fill="#ef4444">Fallback 2</text>
+
+                                <!-- Provider 1: RunPod Serverless -->
+                                <rect x="40" y="235" width="230" height="95" rx="10" fill="var(--bg-elevated)" stroke="#22c55e" stroke-width="1.5"/>
+                                <text x="155" y="257" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="12" font-weight="700" fill="#22c55e">RunPod Serverless</text>
+                                <text x="155" y="274" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="10" fill="var(--text-secondary)">RTX 5090 · A6000 · 6000 Ada · L40S</text>
+                                <text x="155" y="292" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="11" font-weight="600" fill="var(--text-primary)">568 ms avg latency</text>
+                                <text x="155" y="308" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="9" fill="var(--text-muted)">6 GPU profiles · Cost-optimized burst</text>
+                                <text x="155" y="322" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="9" fill="var(--text-muted)">Ada Lovelace / Ampere</text>
+
+                                <!-- Provider 2: Cloud Run GPU -->
+                                <rect x="295" y="235" width="230" height="95" rx="10" fill="var(--bg-elevated)" stroke="#f59e0b" stroke-width="1.5"/>
+                                <text x="410" y="257" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="12" font-weight="700" fill="#f59e0b">Cloud Run GPU</text>
+                                <text x="410" y="274" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="10" fill="var(--text-secondary)">NVIDIA L4</text>
+                                <text x="410" y="292" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="11" font-weight="600" fill="var(--text-primary)">1.9 s warm · 41 s cold</text>
+                                <text x="410" y="308" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="9" fill="var(--text-muted)">Managed serverless · Ada Lovelace</text>
+                                <text x="410" y="322" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="9" fill="var(--text-muted)">Auto-scales to zero</text>
+
+                                <!-- Provider 3: GKE MIG -->
+                                <rect x="550" y="235" width="230" height="95" rx="10" fill="var(--bg-elevated)" stroke="#ef4444" stroke-width="1.5"/>
+                                <text x="665" y="257" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="12" font-weight="700" fill="#ef4444">GKE MIG</text>
+                                <text x="665" y="274" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="10" fill="var(--text-secondary)">L40S · A100 SXM 80 GB</text>
+                                <text x="665" y="292" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="11" font-weight="600" fill="var(--text-primary)">7.7 s avg latency</text>
+                                <text x="665" y="308" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="9" fill="var(--text-muted)">Dedicated · High-throughput</text>
+                                <text x="665" y="322" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="9" fill="var(--text-muted)">Ada / Ampere</text>
+
+                                <!-- EU Multi-DC Failover (RunPod detail) -->
+                                <rect x="40" y="355" width="230" height="65" rx="8" fill="var(--bg-card)" stroke="var(--secondary)" stroke-width="1" stroke-dasharray="5,3"/>
+                                <text x="155" y="374" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="10" font-weight="600" fill="var(--secondary)">EU Multi-DC Failover</text>
+                                <text x="155" y="392" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="10" fill="var(--text-secondary)">EU-RO-1 → EU-CZ-1 → EU-NL-1</text>
+                                <text x="155" y="408" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="9" fill="var(--text-muted)">Per-DC network volumes · Exponential backoff</text>
+
+                                <!-- Arrow RunPod → EU DC -->
+                                <line x1="155" y1="330" x2="155" y2="355" stroke="var(--secondary)" stroke-width="1" stroke-dasharray="4,3"/>
+                                <polygon points="150,352 155,360 160,352" fill="var(--secondary)"/>
+
+                                <!-- Model Info Box -->
+                                <rect x="295" y="355" width="230" height="65" rx="8" fill="var(--bg-card)" stroke="var(--border)" stroke-width="1"/>
+                                <text x="410" y="374" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="10" font-weight="600" fill="var(--text-primary)">Gemma 3 12B (GGUF Q4)</text>
+                                <text x="410" y="392" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="10" fill="var(--text-secondary)">vLLM 0.15.1 · OpenAI API</text>
+                                <text x="410" y="408" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="9" fill="var(--text-muted)">Profile-driven GPU selection</text>
+
+                                <!-- 503 Diagnostics Box -->
+                                <rect x="550" y="355" width="230" height="65" rx="8" fill="var(--bg-card)" stroke="var(--border)" stroke-width="1"/>
+                                <text x="665" y="374" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="10" font-weight="600" fill="var(--text-primary)">All Providers Down</text>
+                                <text x="665" y="392" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="10" fill="var(--text-secondary)">HTTP 503 + per-provider errors</text>
+                                <text x="665" y="408" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="9" fill="var(--text-muted)">4 failure scenarios validated in PRD</text>
+
+                                <!-- Legend -->
+                                <rect x="40" y="445" width="740" height="55" rx="8" fill="var(--bg-elevated)" stroke="var(--border)" stroke-width="1"/>
+                                <circle cx="70" cy="467" r="5" fill="#22c55e"/>
+                                <text x="82" y="471" font-family="Inter, system-ui, sans-serif" font-size="9" fill="var(--text-secondary)">Primary (568 ms)</text>
+                                <circle cx="200" cy="467" r="5" fill="#f59e0b"/>
+                                <text x="212" y="471" font-family="Inter, system-ui, sans-serif" font-size="9" fill="var(--text-secondary)">Fallback 1 (1.9 s)</text>
+                                <circle cx="340" cy="467" r="5" fill="#ef4444"/>
+                                <text x="352" y="471" font-family="Inter, system-ui, sans-serif" font-size="9" fill="var(--text-secondary)">Fallback 2 (7.7 s)</text>
+                                <circle cx="480" cy="467" r="5" fill="var(--secondary)"/>
+                                <text x="492" y="471" font-family="Inter, system-ui, sans-serif" font-size="9" fill="var(--text-secondary)">EU DC Failover</text>
+                                <text x="410" y="490" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="9" fill="var(--text-muted)">3x redundancy · 99.9% inference availability · All failure scenarios validated in GKE PRD</text>
+                            </svg>
+                        </figure>
+
                         <div class="grid-2">
                             <div class="feature-card">
                                 <h4 class="feature-title">🔥 Cold Start Optimization</h4>

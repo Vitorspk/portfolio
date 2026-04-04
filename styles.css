@@ -1045,6 +1045,12 @@ a:hover {
     gap: var(--space-md);
 }
 
+.architecture-diagram {
+    margin-bottom: var(--space-lg);
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
 .feature-card {
     background: var(--bg-card);
     border: 1px solid var(--border);
