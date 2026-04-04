@@ -78,7 +78,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (pushState) {
             const contentArea = document.getElementById('main-content');
             if (contentArea) {
-                contentArea.scrollIntoView({ behavior: 'auto' });
+                contentArea.scrollIntoView({ behavior: 'auto', block: 'start' });
             }
         }
 
