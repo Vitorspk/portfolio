@@ -72,6 +72,39 @@
     --mobile-tabs-h: 45px;
 }
 
+/* ── Light theme overrides ─────────────────────────────────── */
+
+[data-theme="light"] {
+    /* Surface Palette */
+    --bg-base:        #f8fafc;
+    --bg-surface:     #f1f5f9;
+    --bg-elevated:    #e2e8f0;
+    --bg-card:        #ffffff;
+    --bg-hover:       #e2e8f0;
+    --bg-subtle:      rgba(0,0,0,0.03);
+
+    /* Text */
+    --text-primary:   #0f172a;
+    --text-secondary: #475569;
+    --text-muted:     #64748b;
+    --text-inverse:   #f1f5f9;
+
+    /* Borders */
+    --border:         rgba(0,0,0,0.1);
+    --border-hover:   rgba(59,130,246,0.4);
+
+    /* Shadows */
+    --shadow-sm:   0 1px 3px rgba(0,0,0,0.08);
+    --shadow-md:   0 4px 12px rgba(0,0,0,0.08);
+    --shadow-lg:   0 8px 24px rgba(0,0,0,0.1);
+    --shadow-xl:   0 20px 48px rgba(0,0,0,0.12);
+    --glow-primary: 0 0 24px rgba(59,130,246,0.1);
+
+    /* Brand adjustments for light bg */
+    --primary-glow:   rgba(59, 130, 246, 0.1);
+    --success-glow:   color-mix(in srgb, var(--success) 10%, transparent);
+}
+
 /* ============================================================
    RESET & BASE
    ============================================================ */
@@ -208,6 +241,36 @@ a:hover {
 }
 
 .scroll-to-top:hover {
+    background: var(--primary);
+    color: white;
+    border-color: var(--primary);
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-xl), var(--glow-primary);
+}
+
+/* ── Theme Toggle ─────────────────────────────────────────── */
+
+.theme-toggle {
+    position: fixed;
+    bottom: 32px;
+    right: 88px;
+    width: 44px;
+    height: 44px;
+    background: var(--bg-elevated);
+    color: var(--text-secondary);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    font-size: 1.125rem;
+    cursor: pointer;
+    transition: color var(--t-base), background-color var(--t-base), border-color var(--t-base), transform var(--t-base), box-shadow var(--t-base);
+    box-shadow: var(--shadow-lg);
+    z-index: 999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.theme-toggle:hover {
     background: var(--primary);
     color: white;
     border-color: var(--primary);
@@ -1203,6 +1266,34 @@ tr:last-child td {
     justify-content: space-between;
     align-items: flex-start;
     gap: var(--space-md);
+    cursor: pointer;
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+.case-header:hover {
+    background: var(--bg-surface);
+}
+
+.case-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    flex-shrink: 0;
+    align-self: center;
+    border-radius: var(--radius-md);
+    color: var(--text-muted);
+    transition: transform var(--t-base), color var(--t-base);
+}
+
+.case-header:hover .case-toggle {
+    color: var(--text-secondary);
+}
+
+.case-study[aria-expanded="true"] .case-toggle {
+    transform: rotate(180deg);
 }
 
 .case-title {
@@ -1238,6 +1329,24 @@ tr:last-child td {
 
 .case-body {
     padding: var(--space-xl);
+    overflow: hidden;
+    transition: max-height var(--t-slow), padding var(--t-slow), opacity var(--t-base);
+}
+
+.case-study[aria-expanded="false"] .case-body {
+    max-height: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    opacity: 0;
+}
+
+.case-study[aria-expanded="true"] .case-body {
+    max-height: 2000px;
+    opacity: 1;
+}
+
+.case-study[aria-expanded="false"] .case-header {
+    border-bottom-color: transparent;
 }
 
 .case-section {
@@ -1738,6 +1847,11 @@ footer {
         right: 16px;
     }
 
+    .theme-toggle {
+        bottom: max(20px, env(safe-area-inset-bottom));
+        right: 68px;
+    }
+
     .quick-links-grid {
         grid-template-columns: 1fr;
     }
@@ -1771,7 +1885,7 @@ footer {
    ============================================================ */
 
 @media print {
-    .sidebar, .topbar, .mobile-tabs, .scroll-to-top, .reading-progress {
+    .sidebar, .topbar, .mobile-tabs, .scroll-to-top, .theme-toggle, .reading-progress {
         display: none !important;
     }
 
