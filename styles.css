@@ -1387,6 +1387,17 @@ tr:last-child td {
     font-weight: 500;
 }
 
+.case-repo-link {
+    color: var(--primary-light);
+    text-decoration: none;
+    font-weight: 600;
+    transition: color var(--t-fast);
+}
+
+.case-repo-link:hover {
+    color: var(--primary);
+}
+
 .case-tags {
     display: flex;
     flex-wrap: wrap;
