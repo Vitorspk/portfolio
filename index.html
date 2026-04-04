@@ -1018,10 +1018,22 @@
                                     <li class="impact-item"><strong>Post-mortem and team training</strong>: dependency pinning, supply-chain threat model published internally</li>
                                 </ul>
                             </div>
+                            <div class="case-section">
+                                <h4 class="case-section-title">📝 Lessons &amp; Permanent Changes</h4>
+                                <ul class="impact-list">
+                                    <li class="impact-item"><strong>Lock files enforced:</strong> all repos now require committed <code>package-lock.json</code>; CI fails if lockfile is missing or modified without review</li>
+                                    <li class="impact-item"><strong>Runtime isolation:</strong> implemented Pod Security Standards (restricted) across all GKE namespaces to prevent privilege escalation</li>
+                                    <li class="impact-item"><strong>Network policies:</strong> egress rules block outbound connections to mining pools and unknown endpoints by default</li>
+                                    <li class="impact-item"><strong>Alerting gap closed:</strong> added GKE node-level CPU anomaly detection via Cloud Monitoring with 5-minute threshold alerts</li>
+                                </ul>
+                            </div>
                             <div class="tech-stack-list">
                                 <span class="tech-badge">GKE</span>
                                 <span class="tech-badge">Trivy</span>
                                 <span class="tech-badge">npm audit</span>
+                                <span class="tech-badge">Pod Security Standards</span>
+                                <span class="tech-badge">Network Policies</span>
+                                <span class="tech-badge">Cloud Monitoring</span>
                                 <span class="tech-badge">Incident Response</span>
                                 <span class="tech-badge">Supply Chain Security</span>
                             </div>
@@ -1551,7 +1563,7 @@
                         </div>
                         <div class="feature-card">
                             <h4 class="feature-title">🔒 ISO 27001 Compliance</h4>
-                            <p class="feature-description">Drove the infrastructure side of the ISO 27001 effort: 61 databases secured, automated security scanning added to CI, and the company got certified.</p>
+                            <p class="feature-description">Drove the infrastructure side of the ISO 27001 certification: migrated 61 databases off public IPs, enforced SSL/TLS on every connection, and replaced password-only auth with certificate-based authentication. Added automated security scanning (Trivy, Checkov) to CI pipelines, implemented Pod Security Standards across all GKE namespaces, and documented 863 assets across 17 tracking sheets for the audit. The company achieved certification on the first attempt with zero non-conformities on infrastructure controls.</p>
                         </div>
                         <div class="feature-card">
                             <h4 class="feature-title">🌐 Kong Gateway at Scale</h4>
@@ -1559,7 +1571,7 @@
                         </div>
                         <div class="feature-card">
                             <h4 class="feature-title">🚀 65+ CI/CD Pipelines</h4>
-                            <p class="feature-description">Built and maintain 65+ Jenkins pipelines with a <strong>98%+ first-deploy success rate</strong>. Teams ship without waiting for ops; they trigger the pipeline themselves.</p>
+                            <p class="feature-description">Built and maintain 65+ Jenkins pipelines with a <strong>98%+ first-deploy success rate</strong>. Standardized multi-language builds (Node.js, Go, Python, Java) via Jenkins Shared Libraries — teams add a Jenkinsfile and ship without waiting for ops. Pipelines include Trivy image scanning, Helm chart linting, automated canary rollouts, and Slack notifications. Managed Jenkins controller + 8 ephemeral agents on GKE with auto-scaling based on queue depth.</p>
                         </div>
                         <div class="feature-card">
                             <h4 class="feature-title">☸️ Kubernetes Multi-Cluster</h4>
