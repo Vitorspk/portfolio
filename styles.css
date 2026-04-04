@@ -16,6 +16,12 @@
     --success-glow:   color-mix(in srgb, var(--success) 15%, transparent);
     --warning:        #f59e0b;
     --danger:         #ef4444;
+    --before-label-color: #fca5a5;
+    --before-bg:      rgba(239,68,68,0.15);
+    --before-border:  rgba(239,68,68,0.25);
+    --after-label-color:  #6ee7b7;
+    --after-bg:       rgba(16,185,129,0.15);
+    --after-border:   rgba(16,185,129,0.25);
 
     /* Dark Surface Palette */
     --bg-base:        #0a0f1e;
@@ -24,6 +30,7 @@
     --bg-card:        #162032;
     --bg-hover:       #1e2d42;
     --bg-subtle:      rgba(255,255,255,0.03);
+    --bg-topbar:      rgba(15,23,42,0.92);
 
     /* Text */
     --text-primary:   #f1f5f9;
@@ -82,11 +89,12 @@
     --bg-card:        #ffffff;
     --bg-hover:       #e2e8f0;
     --bg-subtle:      rgba(0,0,0,0.03);
+    --bg-topbar:      rgba(248,250,252,0.92);
 
     /* Text */
     --text-primary:   #0f172a;
     --text-secondary: #475569;
-    --text-muted:     #64748b;
+    --text-muted:     #556578;
     --text-inverse:   #f1f5f9;
 
     /* Borders */
@@ -103,6 +111,14 @@
     /* Brand adjustments for light bg */
     --primary-glow:   rgba(59, 130, 246, 0.1);
     --success-glow:   color-mix(in srgb, var(--success) 10%, transparent);
+
+    /* Before/After card labels — darker for light bg readability */
+    --before-label-color:   #dc2626;
+    --before-bg:            rgba(239,68,68,0.08);
+    --before-border:        rgba(239,68,68,0.25);
+    --after-label-color:    #059669;
+    --after-bg:             rgba(16,185,129,0.08);
+    --after-border:         rgba(16,185,129,0.25);
 }
 
 /* ============================================================
@@ -689,9 +705,9 @@ a:hover {
     top: 0;
     z-index: 500;
     height: var(--header-h);
-    background: rgba(15,23,42,0.92);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
+    background: var(--bg-topbar);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
     border-bottom: 1px solid var(--border);
     align-items: center;
 
@@ -1273,6 +1289,11 @@ tr:last-child td {
     background: var(--bg-surface);
 }
 
+.case-header:focus-visible {
+    outline: 2px solid var(--primary);
+    outline-offset: -2px;
+}
+
 .case-toggle {
     display: flex;
     align-items: center;
@@ -1401,15 +1422,15 @@ tr:last-child td {
 .before-card {
     padding: var(--space-lg);
     border-radius: var(--radius-lg);
-    background: rgba(239,68,68,0.05);
-    border: 1px solid rgba(239,68,68,0.2);
+    background: var(--before-bg);
+    border: 1px solid var(--before-border);
 }
 
 .after-card {
     padding: var(--space-lg);
     border-radius: var(--radius-lg);
-    background: rgba(16,185,129,0.05);
-    border: 1px solid rgba(16,185,129,0.2);
+    background: var(--after-bg);
+    border: 1px solid var(--after-border);
 }
 
 .before-label, .after-label {
@@ -1424,15 +1445,15 @@ tr:last-child td {
 }
 
 .before-label {
-    background: rgba(239,68,68,0.15);
-    color: #fca5a5;
-    border: 1px solid rgba(239,68,68,0.25);
+    background: var(--before-bg);
+    color: var(--before-label-color);
+    border: 1px solid var(--before-border);
 }
 
 .after-label {
-    background: rgba(16,185,129,0.15);
-    color: #6ee7b7;
-    border: 1px solid rgba(16,185,129,0.25);
+    background: var(--after-bg);
+    color: var(--after-label-color);
+    border: 1px solid var(--after-border);
 }
 
 .metric-row {
@@ -1440,7 +1461,7 @@ tr:last-child td {
     justify-content: space-between;
     align-items: center;
     padding: 8px 0;
-    border-bottom: 1px solid rgba(255,255,255,0.05);
+    border-bottom: 1px solid var(--border);
     font-size: 0.9rem;
     gap: var(--space-md);
 }
@@ -1875,6 +1896,26 @@ footer {
         animation-iteration-count: 1 !important;
         transition-duration: 0.01ms !important;
         scroll-behavior: auto !important;
+    }
+}
+
+/* ============================================================
+   HIGH CONTRAST
+   ============================================================ */
+
+@media (prefers-contrast: more) {
+    :root {
+        --border:       rgba(255,255,255,0.2);
+        --text-muted:   #94a3b8;
+        --shadow-sm:    none;
+        --shadow-md:    none;
+        --shadow-lg:    none;
+        --shadow-xl:    none;
+    }
+
+    [data-theme="light"] {
+        --border:       rgba(0,0,0,0.25);
+        --text-muted:   #334155;
     }
 }
 
