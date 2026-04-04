@@ -73,9 +73,14 @@ document.addEventListener('DOMContentLoaded', () => {
             history.pushState({ tab: name }, '', `#${name}`);
         }
 
-        // Scroll main content area to top so users start at the top of the new panel.
-        // behavior:'auto' respects the user's scroll-behavior preference.
-        if (pushState) window.scrollTo({ top: 0, behavior: 'auto' });
+        // Scroll to the top of the tab content area (not the page top) so users
+        // land at the beginning of the new panel, not back at the hero section.
+        if (pushState) {
+            const contentArea = document.getElementById('main-content');
+            if (contentArea) {
+                contentArea.scrollIntoView({ behavior: 'auto' });
+            }
+        }
 
         // Auto-scroll the active mobile tab button into view so it's never
         // clipped off-screen after a tab switch (especially important for the
