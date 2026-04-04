@@ -73,12 +73,13 @@ document.addEventListener('DOMContentLoaded', () => {
             history.pushState({ tab: name }, '', `#${name}`);
         }
 
-        // Scroll to the top of the tab content area (not the page top) so users
-        // land at the beginning of the new panel, not back at the hero section.
+        // Scroll to the active panel (not the page top) so users land at the
+        // beginning of the new content. .section-anchor on each panel provides
+        // scroll-margin-top to clear the sticky header / mobile tab bar.
         if (pushState) {
-            const contentArea = document.getElementById('main-content');
-            if (contentArea) {
-                contentArea.scrollIntoView({ behavior: 'auto', block: 'start' });
+            const panel = tabPanels.find(p => p.id === name);
+            if (panel) {
+                panel.scrollIntoView({ behavior: 'auto', block: 'start' });
             }
         }
 
