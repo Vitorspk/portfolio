@@ -1267,8 +1267,6 @@ tr:last-child td {
     align-items: flex-start;
     gap: var(--space-md);
     cursor: pointer;
-    -webkit-user-select: none;
-    user-select: none;
 }
 
 .case-header:hover {
@@ -1341,7 +1339,7 @@ tr:last-child td {
 }
 
 .case-study[aria-expanded="true"] .case-body {
-    max-height: 2000px;
+    max-height: 1200px;
     opacity: 1;
 }
 

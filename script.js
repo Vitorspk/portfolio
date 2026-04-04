@@ -270,8 +270,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const body = study.querySelector('.case-body');
         if (!header || !body) return;
 
-        // Start collapsed
-        study.setAttribute('aria-expanded', 'false');
+        // Initial state is set in HTML (aria-expanded="false") to avoid FOUC
 
         // Add chevron indicator
         const toggle = document.createElement('span');
@@ -326,9 +325,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 theme === 'dark' ? 'Switch to light theme' : 'Switch to dark theme'
             );
         }
-        // Update meta theme-color to match current background
+        // Update meta theme-color from the active CSS --bg-base value
         const meta = document.querySelector('meta[name="theme-color"]');
-        if (meta) meta.setAttribute('content', theme === 'dark' ? '#0a0f1e' : '#f8fafc');
+        if (meta) {
+            const bgBase = getComputedStyle(document.documentElement).getPropertyValue('--bg-base').trim();
+            meta.setAttribute('content', bgBase);
+        }
     }
 
     // ─── Dynamic copyright year ──────────────────────────────────────────────
