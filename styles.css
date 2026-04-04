@@ -708,7 +708,7 @@ a:hover {
     font-weight: 600;
     cursor: pointer;
     white-space: nowrap;
-    border-bottom: 2px solid transparent;
+    border-bottom: 3px solid transparent;
     transition: color var(--t-fast), background-color var(--t-fast), border-color var(--t-fast), opacity var(--t-fast), transform var(--t-fast), box-shadow var(--t-fast);
     flex-shrink: 0;
 
@@ -785,7 +785,8 @@ a:hover {
     transition: border-color var(--t-base), box-shadow var(--t-base);
 }
 
-.card:hover {
+.card:hover,
+.card:focus-within:has(:focus-visible) {
     border-color: var(--border-hover);
     box-shadow: var(--shadow-lg);
 }
@@ -1695,6 +1696,27 @@ footer {
     /* Tables on mobile: smaller cell padding */
     th, td {
         padding: var(--space-sm) var(--space-md);
+    }
+
+    /* Timeline: tighter left spacing on mobile */
+    .timeline {
+        padding-left: var(--space-xl);
+    }
+
+    .timeline::before {
+        /* 6px = half of 12px dot, centering the line under the dot */
+        left: 6px;
+    }
+
+    .timeline-item::before {
+        /* Adjusted from desktop -25px to match the reduced timeline padding */
+        left: -22px;
+        width: 12px;
+        height: 12px;
+    }
+
+    .timeline-company {
+        font-size: 1.125rem;
     }
 }
 
