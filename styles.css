@@ -13,7 +13,7 @@
     --secondary-light: #a78bfa;
     --accent:         #06b6d4;
     --success:        #10b981;
-    --success-glow:   rgba(16, 185, 129, 0.15);
+    --success-glow:   color-mix(in srgb, var(--success) 15%, transparent);
     --warning:        #f59e0b;
     --danger:         #ef4444;
 
