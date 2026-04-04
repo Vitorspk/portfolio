@@ -326,6 +326,17 @@ a:hover {
     display: none;
 }
 
+.sidebar::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--primary), var(--secondary), var(--accent));
+    z-index: 1;
+}
+
 /* Sidebar brand block */
 .sidebar-brand {
     padding: var(--space-xl) var(--space-lg);
@@ -435,6 +446,7 @@ a:hover {
     background: var(--primary-glow);
     color: var(--primary-light);
     font-weight: 600;
+    box-shadow: inset 0 0 12px rgba(59,130,246,0.08);
 }
 
 .nav-item.active::before {
@@ -545,16 +557,24 @@ a:hover {
     pointer-events: none;
 }
 
-/* Glow orb */
+/* Animated glow orbs */
 .hero::after {
     content: '';
     position: absolute;
-    top: -20%;
-    right: -5%;
-    width: 45%;
-    height: 140%;
-    background: radial-gradient(ellipse, rgba(139,92,246,0.08) 0%, transparent 70%);
+    top: -30%;
+    right: -10%;
+    width: 60%;
+    height: 160%;
+    background:
+        radial-gradient(ellipse at 30% 50%, rgba(59,130,246,0.06) 0%, transparent 60%),
+        radial-gradient(ellipse at 70% 50%, rgba(139,92,246,0.08) 0%, transparent 60%);
     pointer-events: none;
+    animation: heroShimmer 12s ease-in-out infinite alternate;
+}
+
+@keyframes heroShimmer {
+    0%   { transform: translate(0, 0) scale(1); opacity: 0.7; }
+    100% { transform: translate(-3%, 3%) scale(1.05); opacity: 1; }
 }
 
 .hero-inner {
@@ -662,6 +682,10 @@ a:hover {
     display: flex;
     flex-wrap: wrap;
     gap: var(--space-xl);
+    background: var(--bg-subtle);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-xl);
+    padding: var(--space-lg) var(--space-xl);
 }
 
 .hero-stat {
@@ -843,6 +867,19 @@ a:hover {
     letter-spacing: -0.02em;
     line-height: 1.2;
     margin-bottom: 6px;
+    position: relative;
+    padding-bottom: var(--space-md);
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 48px;
+    height: 3px;
+    background: linear-gradient(90deg, var(--primary), var(--secondary));
+    border-radius: var(--radius-full);
 }
 
 .section-subtitle {
@@ -861,13 +898,34 @@ a:hover {
     border-radius: var(--radius-xl);
     padding: var(--space-xl);
     margin-bottom: var(--space-xl);
-    transition: border-color var(--t-base), box-shadow var(--t-base);
+    box-shadow: var(--shadow-sm);
+    position: relative;
+    overflow: hidden;
+    transition: border-color var(--t-base), box-shadow var(--t-base), transform var(--t-base);
+}
+
+.card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--primary), var(--secondary));
+    opacity: 0;
+    transition: opacity var(--t-base);
 }
 
 .card:hover,
 .card:focus-within:has(:focus-visible) {
     border-color: var(--border-hover);
     box-shadow: var(--shadow-lg);
+    transform: translateY(-2px);
+}
+
+.card:hover::before,
+.card:focus-within:has(:focus-visible)::before {
+    opacity: 1;
 }
 
 .card-title {
@@ -1884,6 +1942,25 @@ footer {
     .card {
         padding: var(--space-md);
     }
+}
+
+/* ============================================================
+   SCROLL REVEAL
+   ============================================================ */
+
+.reveal {
+    opacity: 0;
+    transform: translateY(16px);
+}
+
+.reveal.revealed {
+    animation: revealUp 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    animation-delay: var(--reveal-delay, 0ms);
+}
+
+@keyframes revealUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: translateY(0); }
 }
 
 /* ============================================================

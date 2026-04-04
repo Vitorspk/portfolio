@@ -182,6 +182,23 @@ document.addEventListener('DOMContentLoaded', () => {
         barObserver.observe(bar);
     });
 
+    // ─── Scroll Reveal (staggered card entrance) ──────────────────────────────
+    if (!prefersReducedMotion) {
+        const revealObserver = new IntersectionObserver((entries, obs) => {
+            entries.forEach(entry => {
+                if (!entry.isIntersecting) return;
+                entry.target.classList.add('revealed');
+                obs.unobserve(entry.target);
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.card, .case-study, .feature-card, .timeline-item, .highlight-card').forEach((el, i) => {
+            el.classList.add('reveal');
+            el.style.setProperty('--reveal-delay', (i % 6) * 80 + 'ms');
+            revealObserver.observe(el);
+        });
+    }
+
     // ─── Dual tablist inert/aria sync ─────────────────────────────────────────
     // sidebar-nav is visually hidden on mobile; mobile-tabs is hidden on desktop.
     // IMPORTANT CONTRACT: whichever nav is off-screen MUST stay inert + aria-hidden.
