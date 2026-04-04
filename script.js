@@ -74,6 +74,14 @@ document.addEventListener('DOMContentLoaded', () => {
         // behavior:'auto' respects the user's scroll-behavior preference.
         if (pushState) window.scrollTo({ top: 0, behavior: 'auto' });
 
+        // Auto-scroll the active mobile tab button into view so it's never
+        // clipped off-screen after a tab switch (especially important for the
+        // rightmost tabs on narrow viewports).
+        const activeMobTab = mobTabs.find(b => b.dataset.tab === name);
+        if (activeMobTab) {
+            activeMobTab.scrollIntoView({ block: 'nearest', inline: 'center', behavior: 'smooth' });
+        }
+
         // Move focus to the active panel when the tab was activated by keyboard
         // within the tablist (not on URL load or programmatic navigation).
         // tabindex="-1" on panels allows programmatic focus without entering tab order.
@@ -179,7 +187,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (sidebarNav && mobileNav) {
         const mq = window.matchMedia('(max-width: 768px)');
 
-        function syncTablists() {
+        const syncTablists = function syncTablists() {
             const isMobile = mq.matches;
             sidebarNav.inert = isMobile;
             mobileNav.inert  = !isMobile;
@@ -196,7 +204,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     : `tab-${tabName}`;
                 panel.setAttribute('aria-labelledby', labelId);
             });
-        }
+        };
 
         mq.addEventListener('change', syncTablists);
         syncTablists(); // set initial state

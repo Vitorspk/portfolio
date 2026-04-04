@@ -27,7 +27,7 @@
     /* Text */
     --text-primary:   #f1f5f9;
     --text-secondary: #94a3b8;
-    --text-muted:     #64748b;
+    --text-muted:     #7c8db0;
     --text-inverse:   #0f172a;
 
     /* Borders */
@@ -914,6 +914,42 @@ a:hover {
 .highlight-text strong {
     color: var(--text-primary);
     font-weight: 700;
+}
+
+.highlight-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: var(--space-md);
+    margin-top: var(--space-lg);
+}
+
+.highlight-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(16, 185, 129, 0.12);
+    border-radius: var(--radius-lg);
+    padding: var(--space-md) var(--space-lg);
+    transition: border-color var(--t-base), background-color var(--t-base);
+}
+
+.highlight-card:hover {
+    border-color: rgba(16, 185, 129, 0.3);
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.highlight-card-title {
+    font-size: 0.8125rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: var(--space-xs);
+    display: flex;
+    align-items: center;
+    gap: var(--space-xs);
+}
+
+.highlight-card-text {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
 }
 
 /* ============================================================
