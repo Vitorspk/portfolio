@@ -58,6 +58,15 @@
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%233b82f6'/><text x='16' y='22' font-family='Inter,system-ui,sans-serif' font-size='16' font-weight='800' fill='white' text-anchor='middle'>VS</text></svg>">
 
     <link rel="stylesheet" href="styles.css">
+
+    <!-- Blocking theme init — prevents FOUC when user has saved light mode.
+         Must run before first paint (no defer/async). -->
+    <script>
+        (function() {
+            var t = localStorage.getItem('theme');
+            if (t === 'light') document.documentElement.setAttribute('data-theme', 'light');
+        })();
+    </script>
 </head>
 <body>
 
@@ -68,6 +77,11 @@
     <div class="reading-progress">
         <div class="reading-progress-bar" id="progressBar"></div>
     </div>
+
+    <!-- Theme Toggle -->
+    <button type="button" class="theme-toggle" id="themeToggle" aria-label="Switch to light theme">
+        <span aria-hidden="true" id="themeIcon">☀️</span>
+    </button>
 
     <!-- Scroll to Top -->
     <button type="button" class="scroll-to-top" id="scrollToTop" aria-label="Scroll to top">↑</button>
@@ -381,7 +395,7 @@
                     </div>
 
                     <!-- Case 1 -->
-                    <div class="case-study">
+                    <div class="case-study" aria-expanded="false">
                         <div class="case-header">
                             <div>
                                 <h3 class="case-title">💾 GCP Storage Migration — 95.9% Cost Reduction</h3>
@@ -447,7 +461,7 @@
                     </div>
 
                     <!-- Case 2 -->
-                    <div class="case-study">
+                    <div class="case-study" aria-expanded="false">
                         <div class="case-header">
                             <div>
                                 <h3 class="case-title">✈️ Airflow Infrastructure Optimization — 93% Reduction</h3>
@@ -514,7 +528,7 @@
                     </div>
 
                     <!-- Case 3 -->
-                    <div class="case-study">
+                    <div class="case-study" aria-expanded="false">
                         <div class="case-header">
                             <div>
                                 <h3 class="case-title">🔐 mTLS with Cloudflare — Zero-Trust Architecture</h3>
@@ -571,7 +585,7 @@
                     </div>
 
                     <!-- Case 4 -->
-                    <div class="case-study">
+                    <div class="case-study" aria-expanded="false">
                         <div class="case-header">
                             <div>
                                 <h3 class="case-title">🌉 AWS-GCP HA VPN — Multi-Cloud Connectivity</h3>
@@ -621,7 +635,7 @@
                     </div>
 
                     <!-- Case 5 -->
-                    <div class="case-study">
+                    <div class="case-study" aria-expanded="false">
                         <div class="case-header">
                             <div>
                                 <h3 class="case-title">🚀 Custom Canary Deployment System</h3>
@@ -669,7 +683,7 @@
                     </div>
 
                     <!-- Case 6 -->
-                    <div class="case-study">
+                    <div class="case-study" aria-expanded="false">
                         <div class="case-header">
                             <div>
                                 <h3 class="case-title">🔒 Database Security Hardening — 61 Databases</h3>
@@ -723,7 +737,7 @@
                     </div>
 
                     <!-- Case 7 -->
-                    <div class="case-study">
+                    <div class="case-study" aria-expanded="false">
                         <div class="case-header">
                             <div>
                                 <h3 class="case-title">🌐 Kong Gateway — API Management at Scale</h3>
@@ -762,7 +776,7 @@
                     </div>
 
                     <!-- Case 8 — ArgoCD GitOps -->
-                    <div class="case-study">
+                    <div class="case-study" aria-expanded="false">
                         <div class="case-header">
                             <div>
                                 <h3 class="case-title">🔄 ArgoCD GitOps — Multi-Cluster Continuous Delivery</h3>
@@ -822,7 +836,7 @@
                     </div>
 
                     <!-- Case 9 — GKE Infrastructure Terraform -->
-                    <div class="case-study">
+                    <div class="case-study" aria-expanded="false">
                         <div class="case-header">
                             <div>
                                 <h3 class="case-title">🏗️ GKE Infrastructure — Production-Grade Terraform + Shared VPC</h3>
@@ -879,7 +893,7 @@
                     </div>
 
                     <!-- Case 10 — vLLM Fallback Router -->
-                    <div class="case-study">
+                    <div class="case-study" aria-expanded="false">
                         <div class="case-header">
                             <div>
                                 <h3 class="case-title">🌐 vLLM Inference Fallback Router — Multi-Provider with Measured SLAs</h3>
@@ -948,7 +962,7 @@
                     </div>
 
                     <!-- Case 11 — xmrig security incident -->
-                    <div class="case-study">
+                    <div class="case-study" aria-expanded="false">
                         <div class="case-header">
                             <div>
                                 <h3 class="case-title">🛡️ Cryptomining Incident Response — xmrig on GKE PRD</h3>
@@ -999,7 +1013,7 @@
                     </div>
 
                     <!-- Case 12 — Production Incidents -->
-                    <div class="case-study">
+                    <div class="case-study" aria-expanded="false">
                         <div class="case-header">
                             <div>
                                 <h3 class="case-title">🚨 Production Incident Response — P1 Outage &amp; Partner Auth Failure</h3>
@@ -1050,7 +1064,7 @@
                     </div>
 
                     <!-- Case 13 — AI Tools -->
-                    <div class="case-study">
+                    <div class="case-study" aria-expanded="false">
                         <div class="case-header">
                             <div>
                                 <h3 class="case-title">🧠 AI Tools Integration — Team Productivity</h3>
@@ -1809,7 +1823,7 @@
                     </div>
 
                     <!-- Pokemon GO Payment -->
-                    <div class="case-study">
+                    <div class="case-study" aria-expanded="false">
                         <div class="case-header">
                             <div>
                                 <h3 class="case-title">🎮 Pokémon GO Friend Code — Subscription SaaS</h3>
@@ -1870,7 +1884,7 @@
                     </div>
 
                     <!-- Pokemon GO GCP Automation -->
-                    <div class="case-study">
+                    <div class="case-study" aria-expanded="false">
                         <div class="case-header">
                             <div>
                                 <h3 class="case-title">🤖 Pokémon GO GCP — Automated Code Submission Engine</h3>
@@ -1927,7 +1941,7 @@
                     </div>
 
                     <!-- AmigoSecreto Android -->
-                    <div class="case-study">
+                    <div class="case-study" aria-expanded="false">
                         <div class="case-header">
                             <div>
                                 <h3 class="case-title">🎁 AmigoSecreto — Android App (Google Play)</h3>
@@ -1987,7 +2001,7 @@
                     </div>
 
                     <!-- Secret Santa iOS -->
-                    <div class="case-study">
+                    <div class="case-study" aria-expanded="false">
                         <div class="case-header">
                             <div>
                                 <h3 class="case-title">🍎 Secret Santa — iOS App (SwiftUI)</h3>

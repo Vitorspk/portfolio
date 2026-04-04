@@ -262,6 +262,77 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    // ─── Case Study Collapse/Expand ─────────────────────────────────────────
+    const caseStudies = Array.from(document.querySelectorAll('.case-study'));
+
+    caseStudies.forEach(study => {
+        const header = study.querySelector('.case-header');
+        const body = study.querySelector('.case-body');
+        if (!header || !body) return;
+
+        // Initial state is set in HTML (aria-expanded="false") to avoid FOUC
+
+        // Add chevron indicator
+        const toggle = document.createElement('span');
+        toggle.className = 'case-toggle';
+        toggle.setAttribute('aria-hidden', 'true');
+        toggle.textContent = '▼';
+        header.appendChild(toggle);
+
+        // Make header keyboard-accessible
+        header.setAttribute('role', 'button');
+        header.setAttribute('tabindex', '0');
+        header.setAttribute('aria-expanded', 'false');
+
+        const toggleCase = () => {
+            const isExpanded = study.getAttribute('aria-expanded') === 'true';
+            const next = isExpanded ? 'false' : 'true';
+            study.setAttribute('aria-expanded', next);
+            header.setAttribute('aria-expanded', next);
+        };
+
+        header.addEventListener('click', toggleCase);
+        header.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                toggleCase();
+            }
+        });
+    });
+
+    // ─── Theme Toggle ─────────────────────────────────────────────────────────
+    const themeToggle = document.getElementById('themeToggle');
+    const themeIcon = document.getElementById('themeIcon');
+
+    if (themeToggle) {
+        // Restore saved theme (default: dark)
+        const saved = localStorage.getItem('theme') || 'dark';
+        applyTheme(saved);
+
+        themeToggle.addEventListener('click', () => {
+            const current = document.documentElement.getAttribute('data-theme') || 'dark';
+            const next = current === 'dark' ? 'light' : 'dark';
+            applyTheme(next);
+            localStorage.setItem('theme', next);
+        });
+    }
+
+    function applyTheme(theme) {
+        document.documentElement.setAttribute('data-theme', theme);
+        if (themeIcon) themeIcon.textContent = theme === 'dark' ? '☀️' : '🌙';
+        if (themeToggle) {
+            themeToggle.setAttribute('aria-label',
+                theme === 'dark' ? 'Switch to light theme' : 'Switch to dark theme'
+            );
+        }
+        // Update meta theme-color from the active CSS --bg-base value
+        const meta = document.querySelector('meta[name="theme-color"]');
+        if (meta) {
+            const bgBase = getComputedStyle(document.documentElement).getPropertyValue('--bg-base').trim();
+            meta.setAttribute('content', bgBase);
+        }
+    }
+
     // ─── Dynamic copyright year ──────────────────────────────────────────────
     const yearEl = document.getElementById('copyright-year');
     if (yearEl) yearEl.textContent = new Date().getFullYear();
