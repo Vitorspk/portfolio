@@ -192,10 +192,13 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }, { threshold: 0.1 });
 
-        document.querySelectorAll('.card, .case-study, .feature-card, .timeline-item, .highlight-card').forEach((el, i) => {
-            el.classList.add('reveal');
-            el.style.setProperty('--reveal-delay', (i % 6) * 80 + 'ms');
-            revealObserver.observe(el);
+        // Group by tab panel so stagger index resets per section
+        document.querySelectorAll('.tab-content').forEach(container => {
+            container.querySelectorAll('.card, .case-study, .feature-card, .timeline-item, .highlight-card').forEach((el, i) => {
+                el.classList.add('reveal');
+                el.style.setProperty('--reveal-delay', (i % 6) * 80 + 'ms');
+                revealObserver.observe(el);
+            });
         });
     }
 
