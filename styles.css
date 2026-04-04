@@ -13,6 +13,7 @@
     --secondary-light: #a78bfa;
     --accent:         #06b6d4;
     --success:        #10b981;
+    --success-glow:   color-mix(in srgb, var(--success) 15%, transparent);
     --warning:        #f59e0b;
     --danger:         #ef4444;
 
@@ -27,7 +28,7 @@
     /* Text */
     --text-primary:   #f1f5f9;
     --text-secondary: #94a3b8;
-    --text-muted:     #64748b;
+    --text-muted:     #7c8db0;
     --text-inverse:   #0f172a;
 
     /* Borders */
@@ -804,68 +805,6 @@ a:hover {
 }
 
 /* ============================================================
-   STAT CARDS (overview grid)
-   ============================================================ */
-
-.stats-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-    gap: var(--space-md);
-    padding: var(--space-xl) var(--space-2xl);
-    background: var(--bg-surface);
-    border-bottom: 1px solid var(--border);
-}
-
-.stat-card {
-    background: var(--bg-card);
-    border: 1px solid var(--border);
-    border-radius: var(--radius-xl);
-    padding: var(--space-xl) var(--space-lg);
-    transition: color var(--t-base), background-color var(--t-base), border-color var(--t-base), opacity var(--t-base), transform var(--t-base), box-shadow var(--t-base);
-    cursor: default;
-    position: relative;
-    overflow: hidden;
-}
-
-.stat-card::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(135deg, rgba(59,130,246,0.04), transparent);
-    opacity: 0;
-    transition: opacity var(--t-base);
-}
-
-.stat-card:hover {
-    border-color: var(--border-hover);
-    transform: translateY(-3px);
-    box-shadow: var(--shadow-lg), var(--glow-primary);
-}
-
-.stat-card:hover::after {
-    opacity: 1;
-}
-
-.stat-number {
-    font-size: 2rem;
-    font-weight: 900;
-    background: linear-gradient(135deg, var(--primary-light) 0%, var(--secondary) 100%);
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    line-height: 1;
-    margin-bottom: 6px;
-    letter-spacing: -0.02em;
-}
-
-.stat-label {
-    font-size: 0.8rem;
-    color: var(--text-muted);
-    font-weight: 500;
-    line-height: 1.4;
-}
-
-/* ============================================================
    HIGHLIGHT BOX
    ============================================================ */
 
@@ -914,6 +853,42 @@ a:hover {
 .highlight-text strong {
     color: var(--text-primary);
     font-weight: 700;
+}
+
+.highlight-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: var(--space-md);
+    margin-top: var(--space-lg);
+}
+
+.highlight-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--success-glow);
+    border-radius: var(--radius-lg);
+    padding: var(--space-md) var(--space-lg);
+    transition: border-color var(--t-base), background-color var(--t-base);
+}
+
+.highlight-card:hover {
+    border-color: var(--success);
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.highlight-card-title {
+    font-size: 0.8125rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: var(--space-xs);
+    display: flex;
+    align-items: center;
+    gap: var(--space-xs);
+}
+
+.highlight-card-text {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
 }
 
 /* ============================================================
@@ -1668,11 +1643,6 @@ footer {
         display: none;
     }
 
-    .stats-grid {
-        grid-template-columns: repeat(2, 1fr);
-        padding: var(--space-lg);
-    }
-
     .page-content {
         padding: var(--space-lg);
 
@@ -1733,20 +1703,12 @@ footer {
    ============================================================ */
 
 @media (width <= 480px) {
-    .stats-grid {
-        grid-template-columns: 1fr;
-    }
-
     .hero {
         padding: var(--space-xl) var(--space-md);
     }
 
     .hero h1 {
         font-size: 1.75rem;
-    }
-
-    .stat-number {
-        font-size: 1.625rem;
     }
 
     .scroll-to-top {
