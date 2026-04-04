@@ -1709,11 +1709,13 @@ footer {
     }
 
     .timeline::before {
-        left: 5px;
+        /* 6px = half of 12px dot, centering the line under the dot */
+        left: 6px;
     }
 
     .timeline-item::before {
-        left: -23px;
+        /* -24px = -(padding-left) + (dot-width/2) to center on the line */
+        left: -24px;
         width: 12px;
         height: 12px;
     }
