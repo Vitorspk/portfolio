@@ -32,6 +32,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const mobTabs   = Array.from(document.querySelectorAll('.mobile-tab'));
     const tabPanels = Array.from(document.querySelectorAll('.tab-content'));
 
+    // Evaluate once — used by activateTab (mobile auto-scroll) and barObserver
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
     // ─── activateTab ─────────────────────────────────────────────────────────
 
     function activateTab(tabName, pushState = true) {
@@ -79,7 +82,11 @@ document.addEventListener('DOMContentLoaded', () => {
         // rightmost tabs on narrow viewports).
         const activeMobTab = mobTabs.find(b => b.dataset.tab === name);
         if (activeMobTab) {
-            activeMobTab.scrollIntoView({ block: 'nearest', inline: 'center', behavior: 'smooth' });
+            activeMobTab.scrollIntoView({
+                block: 'nearest',
+                inline: 'center',
+                behavior: prefersReducedMotion ? 'auto' : 'smooth',
+            });
         }
 
         // Move focus to the active panel when the tab was activated by keyboard
@@ -149,7 +156,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // ─── Metric Bar Animations (IntersectionObserver) ─────────────────────────
-    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
     const barObserver = new IntersectionObserver((entries, obs) => {
         entries.forEach(entry => {
