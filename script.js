@@ -73,9 +73,15 @@ document.addEventListener('DOMContentLoaded', () => {
             history.pushState({ tab: name }, '', `#${name}`);
         }
 
-        // Scroll main content area to top so users start at the top of the new panel.
-        // behavior:'auto' respects the user's scroll-behavior preference.
-        if (pushState) window.scrollTo({ top: 0, behavior: 'auto' });
+        // Scroll to the active panel (not the page top) so users land at the
+        // beginning of the new content. .section-anchor on each panel provides
+        // scroll-margin-top to clear the sticky header / mobile tab bar.
+        if (pushState) {
+            const panel = tabPanels.find(p => p.id === name);
+            if (panel) {
+                panel.scrollIntoView({ behavior: 'auto', block: 'start' });
+            }
+        }
 
         // Auto-scroll the active mobile tab button into view so it's never
         // clipped off-screen after a tab switch (especially important for the
