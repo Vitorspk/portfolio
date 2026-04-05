@@ -697,6 +697,7 @@ a:hover {
 .hero-stat {
     display: flex;
     flex-direction: column;
+    justify-content: center;
     gap: 3px;
     padding: var(--space-lg) var(--space-xl);
     border-right: 1px solid var(--border);
@@ -709,7 +710,7 @@ a:hover {
     border-right: none;
 }
 
-/* Remove bottom border on last row */
+/* Remove bottom border on last row (assumes 6 stats / 3-col grid) */
 .hero-stat:nth-last-child(-n+3) {
     border-bottom: none;
 }
