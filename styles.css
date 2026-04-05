@@ -1995,16 +1995,17 @@ footer {
         font-size: 1.125rem;
     }
 
-    /* Tables: tighter padding for small viewports */
-    th, td {
+    /* Tables: tighter padding for small viewports (scoped to tab content) */
+    .tab-content th,
+    .tab-content td {
         padding: var(--space-xs) var(--space-sm);
-        font-size: 0.8rem;
+        font-size: 0.875rem;
     }
 
     /* Footer links: ensure 44px touch target */
     .footer-link {
-        padding: 12px 18px;
-        min-height: 44px;
+        padding: var(--space-sm) var(--space-lg);
+        min-height: 44px; /* WCAG 2.5.5 touch target */
     }
 
     /* Impact metrics: reduce padding */
@@ -2012,7 +2013,7 @@ footer {
         padding: var(--space-sm) var(--space-md);
     }
 
-    /* SVG architecture diagram: set min-width to keep text legible */
+    /* Allow horizontal scroll rather than squashing diagram node labels */
     .architecture-diagram svg {
         min-width: 500px;
     }
