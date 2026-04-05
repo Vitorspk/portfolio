@@ -1837,7 +1837,7 @@ footer {
 
     .main-content {
         margin-left: 0;
-        max-width: 100vw;
+        max-width: 100%;
 
         /* No extra padding needed — sticky topbar and tabs handle their own offset */
     }
