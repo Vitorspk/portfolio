@@ -172,6 +172,12 @@ html {
 
     /* Prevent iOS font size inflation in landscape */
     text-size-adjust: 100%;
+
+    /* Prevent horizontal overflow on mobile — content that extends past the
+       viewport (e.g. wide SVG diagrams, long unbroken text) must not create
+       a horizontal scrollbar on the root element.  clip (not hidden) avoids
+       creating a scroll container that interferes with vertical scrolling. */
+    overflow-x: clip;
 }
 
 body {
@@ -1831,6 +1837,7 @@ footer {
 
     .main-content {
         margin-left: 0;
+        max-width: 100vw;
 
         /* No extra padding needed — sticky topbar and tabs handle their own offset */
     }
@@ -1944,6 +1951,17 @@ footer {
         font-size: 1.75rem;
     }
 
+    /* Hero stats: tighter gap and stack vertically on small screens */
+    .hero-stats {
+        gap: var(--space-md);
+        padding: var(--space-md) var(--space-lg);
+        flex-direction: column;
+    }
+
+    .hero-stat-value {
+        font-size: 1.375rem;
+    }
+
     .scroll-to-top {
         bottom: max(20px, env(safe-area-inset-bottom));
         right: 16px;
@@ -1963,9 +1981,58 @@ footer {
         padding-bottom: max(var(--space-md), env(safe-area-inset-bottom));
     }
 
-    /* Ensure card padding doesn't feel too tight on 320px screens */
+    /* Ensure card padding doesn't feel too tight on small screens */
     .card {
         padding: var(--space-md);
+    }
+
+    /* Case study headers: less padding on small screens */
+    .case-header {
+        padding: var(--space-lg);
+    }
+
+    .case-title {
+        font-size: 1.125rem;
+    }
+
+    /* Tables: tighter padding for small viewports */
+    th, td {
+        padding: var(--space-xs) var(--space-sm);
+        font-size: 0.8rem;
+    }
+
+    /* Footer links: ensure 44px touch target */
+    .footer-link {
+        padding: 12px 18px;
+        min-height: 44px;
+    }
+
+    /* Impact metrics: reduce padding */
+    .impact-metrics {
+        padding: var(--space-sm) var(--space-md);
+    }
+
+    /* SVG architecture diagram: set min-width to keep text legible */
+    .architecture-diagram svg {
+        min-width: 500px;
+    }
+}
+
+/* ============================================================
+   RESPONSIVE — ULTRA-SMALL MOBILE (≤320px)
+   ============================================================ */
+
+@media (width <= 320px) {
+    .hero h1 {
+        font-size: 1.5rem;
+    }
+
+    .hero-subtitle {
+        font-size: 0.875rem;
+    }
+
+    .hero-stat-value {
+        font-size: 1.25rem;
     }
 }
 
