@@ -1106,7 +1106,7 @@
                             <div class="case-section">
                                 <h4 class="case-section-title">🔴 Problem</h4>
                                 <ul class="impact-list">
-                                    <li class="impact-item">2 legacy Elastic Stack clusters running v2.4 on EC2 instances via docker-compose</li>
+                                    <li class="impact-item">2 legacy Elastic Stack clusters: Elasticsearch 5 on EC2 and Elasticsearch 6 on ECS, both via docker-compose</li>
                                     <li class="impact-item">No role separation: every node handled master election, data storage, and ingest simultaneously</li>
                                     <li class="impact-item">Manual scaling, no self-healing, single points of failure</li>
                                     <li class="impact-item">Storage bottleneck: no S3 snapshots, no automated retention policies</li>
@@ -1115,7 +1115,7 @@
                             <div class="case-section">
                                 <h4 class="case-section-title">💡 Solution</h4>
                                 <ul class="impact-list">
-                                    <li class="impact-item">Consolidated 2 clusters into 1 unified Kubernetes cluster on Elasticsearch 7.8</li>
+                                    <li class="impact-item">Consolidated both clusters into 1 unified EKS cluster on Elasticsearch 7.8</li>
                                     <li class="impact-item">Designed multi-node architecture with dedicated roles: 3 master (8 GB), 3 data (16 GB, 50 TB), 3 ingest (16 GB)</li>
                                     <li class="impact-item">Custom ECR image with S3 snapshot plugin for automated backup and retention</li>
                                     <li class="impact-item">Deployed via Helm Charts with rolling updates, PDB (maxUnavailable: 1), and soft anti-affinity</li>
@@ -1234,7 +1234,7 @@
 
                                     <!-- Legend -->
                                     <rect x="40" y="492" width="740" height="20" rx="6" fill="var(--bg-elevated)" stroke="var(--border)" stroke-width="1"/>
-                                    <text x="410" y="506" text-anchor="middle" font-size="9" fill="var(--text-muted)">v2.4 (2 clusters, EC2, docker-compose) → v7.8 (1 unified K8s cluster) · 9 nodes · 9 Logstash pipelines · Helm · Internal NLB</text>
+                                    <text x="410" y="506" text-anchor="middle" font-size="9" fill="var(--text-muted)">ES 5 (EC2) + ES 6 (ECS) → ES 7.8 (1 unified EKS cluster) · 9 nodes · 9 Logstash pipelines · Helm · Internal NLB</text>
                                 </svg>
                             </figure>
 
@@ -1242,7 +1242,7 @@
                                 <h4 class="impact-title">Business Impact</h4>
                                 <ul class="impact-list">
                                     <li class="impact-item"><strong>Consolidated 2 → 1 cluster</strong>: eliminated operational overhead of maintaining two separate Elasticsearch environments</li>
-                                    <li class="impact-item"><strong>Version upgrade v2.4 → v7.8</strong>: 4 major versions forward, unlocking modern features (ILM, security, index lifecycle)</li>
+                                    <li class="impact-item"><strong>Version upgrade v5/v6 → v7.8</strong>: major version leap, unlocking modern features (ILM, security, index lifecycle)</li>
                                     <li class="impact-item"><strong>9 dedicated Logstash pipelines</strong>: each pipeline tuned for its specific source, enabling independent scaling and troubleshooting</li>
                                     <li class="impact-item"><strong>Self-healing infrastructure</strong>: Kubernetes StatefulSets with PDB, rolling updates, and automated recovery replaced manual EC2 management</li>
                                     <li class="impact-item"><strong>S3 snapshots</strong>: automated backup and retention via custom ECR image with the repository-s3 plugin</li>
@@ -1467,7 +1467,7 @@
                             <div class="timeline-period">Feb 2020 – Jun 2021 · 1 year 5 months</div>
                             <p class="timeline-description">
                                 <strong>São Paulo, Brazil</strong>. SRE at a logistics technology company focused on reliability, observability, and infrastructure modernization at scale.<br><br>
-                                Migrated 2 Elastic Stack clusters from v2.4 (EC2/docker-compose) to a unified Kubernetes cluster on v7.8 with dedicated node roles (3 master, 3 data, 3 ingest) and custom ECR images with S3 snapshot plugin. Designed and deployed 9 specialized Logstash pipelines handling logs from GELF, Kubernetes, NiFi, RabbitMQ, and application-specific sources. Integrated Kafka (AWS MSK) for real-time event streaming to BI systems. Built log collection layer with Filebeat DaemonSets and Fluent Bit for container log forwarding. Deployed Kibana (3 replicas) with CSV reporting for business analytics, APM Server for application tracing, and Metricbeat for cluster health monitoring. Deep AWS work (EC2, EKS, VPC, CloudFormation, cost optimization). Implemented reliability mechanisms from ideation through delivery. Reduced application response times for end users. Expanded observability scope and promoted monitoring awareness among developers.<br><br>
+                                Migrated Elasticsearch 5 (EC2) and Elasticsearch 6 (ECS) clusters to a unified EKS cluster on v7.8 with dedicated node roles (3 master, 3 data, 3 ingest) and custom ECR images with S3 snapshot plugin. Designed and deployed 9 specialized Logstash pipelines handling logs from GELF, Kubernetes, NiFi, RabbitMQ, and application-specific sources. Integrated Kafka (AWS MSK) for real-time event streaming to BI systems. Built log collection layer with Filebeat DaemonSets and Fluent Bit for container log forwarding. Deployed Kibana (3 replicas) with CSV reporting for business analytics, APM Server for application tracing, and Metricbeat for cluster health monitoring. Deep AWS work (EC2, EKS, VPC, CloudFormation, cost optimization). Implemented reliability mechanisms from ideation through delivery. Reduced application response times for end users. Expanded observability scope and promoted monitoring awareness among developers.<br><br>
                                 <strong>Stack:</strong> AWS (Expert), GCP, Kubernetes, Elasticsearch 7.8, Logstash, Kibana, Filebeat, Fluent Bit, APM Server, Metricbeat, Kafka (MSK), RabbitMQ, NiFi, Docker, Helm, NGINX Ingress, PostgreSQL, Python, CloudFormation
                             </p>
                         </div>
