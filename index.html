@@ -1238,14 +1238,18 @@
                                 </svg>
                             </figure>
 
+                            <div class="savings-badge">💰 $111K/year saved (54.5% infrastructure cost reduction)</div>
                             <div class="impact-metrics">
                                 <h4 class="impact-title">Business Impact</h4>
                                 <ul class="impact-list">
-                                    <li class="impact-item"><strong>Consolidated 2 → 1 cluster</strong>: eliminated operational overhead of maintaining two separate Elasticsearch environments</li>
-                                    <li class="impact-item"><strong>Version upgrade v5/v6 → v7.8</strong>: major version leap, unlocking modern features (ILM, security, index lifecycle)</li>
+                                    <li class="impact-item"><strong>54.5% cost reduction</strong>: old cluster (65 EC2 + 183 disks + ~91 TB) cost $17,038/month; new EKS cluster (7 m5.2xlarge + 7x 7.1 TB SSD) cost $7,750/month, saving ~$111K/year</li>
+                                    <li class="impact-item"><strong>Consolidated 2 → 1 cluster</strong>: eliminated 65 EC2 instances and 183 EBS volumes, replacing with 7 EKS nodes</li>
+                                    <li class="impact-item"><strong>Version upgrade v5/v6 → v7.8</strong>: major version leap, unlocking ILM, security features, and index lifecycle management</li>
+                                    <li class="impact-item"><strong>EBS GP2 → Standard migration</strong>: migrated 124 volumes across 2 AWS regions (São Paulo + Virginia), reducing storage costs</li>
+                                    <li class="impact-item"><strong>Multi-region cost analysis</strong>: data-driven decision to consolidate in Virginia saved $10.7K/month vs São Paulo region pricing</li>
+                                    <li class="impact-item"><strong>S3 cleanup</strong>: deleted 141 TB unused S3 bucket, automated snapshot retention via custom ECR image with repository-s3 plugin</li>
                                     <li class="impact-item"><strong>9 dedicated Logstash pipelines</strong>: each pipeline tuned for its specific source, enabling independent scaling and troubleshooting</li>
                                     <li class="impact-item"><strong>Self-healing infrastructure</strong>: Kubernetes StatefulSets with PDB, rolling updates, and automated recovery replaced manual EC2 management</li>
-                                    <li class="impact-item"><strong>S3 snapshots</strong>: automated backup and retention via custom ECR image with the repository-s3 plugin</li>
                                 </ul>
                             </div>
                             <div class="tech-stack-list">
@@ -1467,7 +1471,7 @@
                             <div class="timeline-period">Feb 2020 – Jun 2021 · 1 year 5 months</div>
                             <p class="timeline-description">
                                 <strong>São Paulo, Brazil</strong>. SRE at a logistics technology company focused on reliability, observability, and infrastructure modernization at scale.<br><br>
-                                Migrated Elasticsearch 5 (EC2) and Elasticsearch 6 (ECS) clusters to a unified EKS cluster on v7.8 with dedicated node roles (3 master, 3 data, 3 ingest) and custom ECR images with S3 snapshot plugin. Designed and deployed 9 specialized Logstash pipelines handling logs from GELF, Kubernetes, NiFi, RabbitMQ, and application-specific sources. Integrated Kafka (AWS MSK) for real-time event streaming to BI systems. Built log collection layer with Filebeat DaemonSets and Fluent Bit for container log forwarding. Deployed Kibana (3 replicas) with CSV reporting for business analytics, APM Server for application tracing, and Metricbeat for cluster health monitoring. Deep AWS work (EC2, EKS, VPC, CloudFormation, cost optimization). Implemented reliability mechanisms from ideation through delivery. Reduced application response times for end users. Expanded observability scope and promoted monitoring awareness among developers.<br><br>
+                                Migrated Elasticsearch 5 (EC2) and Elasticsearch 6 (ECS) clusters to a unified EKS cluster on v7.8 with dedicated node roles (3 master, 3 data, 3 ingest) and custom ECR images with S3 snapshot plugin. Reduced Elasticsearch infrastructure cost by 54.5% ($17K/month → $7.75K/month, ~$111K/year saved) by consolidating 65 EC2 instances and 183 EBS volumes into 7 EKS nodes. Migrated 124 EBS volumes from GP2 to Standard across 2 AWS regions. Deleted 141 TB of unused S3 storage. Implemented instance scheduling for non-production environments. Designed and deployed 9 specialized Logstash pipelines handling logs from GELF, Kubernetes, NiFi, RabbitMQ, and application-specific sources. Integrated Kafka (AWS MSK) for real-time event streaming to BI systems. Built log collection layer with Filebeat DaemonSets and Fluent Bit for container log forwarding. Deployed Kibana (3 replicas) with CSV reporting, APM Server for tracing, and Metricbeat for cluster health. Led multi-region cost analysis (Virginia vs São Paulo) driving data-informed infrastructure placement decisions. Planned and provisioned dedicated Black Friday infrastructure. Expanded observability scope and promoted monitoring awareness among developers.<br><br>
                                 <strong>Stack:</strong> AWS (Expert), GCP, Kubernetes, Elasticsearch 7.8, Logstash, Kibana, Filebeat, Fluent Bit, APM Server, Metricbeat, Kafka (MSK), RabbitMQ, NiFi, Docker, Helm, NGINX Ingress, PostgreSQL, Python, CloudFormation
                             </p>
                         </div>
