@@ -9,7 +9,9 @@
     "lint:js": "eslint '*.js'",
     "lint:fix": "npm run lint:css -- --fix && npm run lint:js -- --fix",
     "validate": "npm run lint",
-    "test": "npm run validate"
+    "test:e2e": "npx playwright test",
+    "test:e2e:headed": "npx playwright test --headed",
+    "test": "npm run validate && npm run test:e2e"
   },
   "repository": {
     "type": "git",
@@ -18,8 +20,11 @@
   "author": "Vitor Schiavo",
   "license": "MIT",
   "devDependencies": {
+    "@axe-core/playwright": "^4.11.1",
+    "@playwright/test": "^1.59.1",
     "eslint": "^8.57.0",
     "html-validate": "^8.18.0",
+    "serve": "^14.2.6",
     "stylelint": "^16.3.1",
     "stylelint-config-standard": "^36.0.0"
   }
