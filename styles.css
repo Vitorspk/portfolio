@@ -266,8 +266,13 @@ a:hover {
     background: var(--primary);
     color: white;
     border-color: var(--primary);
-    transform: translateY(-3px);
     box-shadow: var(--shadow-xl), var(--glow-primary);
+}
+
+@media (hover: hover) {
+    .scroll-to-top:hover {
+        transform: translateY(-3px);
+    }
 }
 
 /* ── Theme Toggle ─────────────────────────────────────────── */
@@ -296,8 +301,13 @@ a:hover {
     background: var(--primary);
     color: white;
     border-color: var(--primary);
-    transform: translateY(-3px);
     box-shadow: var(--shadow-xl), var(--glow-primary);
+}
+
+@media (hover: hover) {
+    .theme-toggle:hover {
+        transform: translateY(-3px);
+    }
 }
 
 /* ============================================================
@@ -326,6 +336,8 @@ a:hover {
     z-index: 100;
     overflow-y: auto;
     scrollbar-width: none;
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
 }
 
 .sidebar::-webkit-scrollbar {
@@ -361,8 +373,16 @@ a:hover {
     font-weight: 800;
     color: white;
     margin-bottom: var(--space-md);
-    box-shadow: var(--glow-primary);
+    box-shadow: var(--glow-primary), 0 4px 12px rgba(59,130,246,0.25);
     flex-shrink: 0;
+    transition: box-shadow var(--t-base), transform var(--t-base);
+}
+
+@media (hover: hover) {
+    .sidebar-avatar:hover {
+        transform: scale(1.05);
+        box-shadow: var(--glow-primary), 0 6px 20px rgba(59,130,246,0.35);
+    }
 }
 
 .sidebar-name {
@@ -446,6 +466,10 @@ a:hover {
 .nav-item:hover {
     background: var(--bg-hover);
     color: var(--text-primary);
+}
+
+.nav-item:active {
+    background: var(--primary-glow);
 }
 
 .nav-item.active {
@@ -542,7 +566,7 @@ a:hover {
    ============================================================ */
 
 .hero {
-    padding: var(--space-3xl) var(--space-2xl);
+    padding: var(--space-2xl) var(--space-2xl);
     background: var(--bg-surface);
     border-bottom: 1px solid var(--border);
     position: relative;
@@ -567,10 +591,10 @@ a:hover {
 .hero::after {
     content: '';
     position: absolute;
-    top: -30%;
+    top: 0;
     right: -10%;
     width: 60%;
-    height: 160%;
+    height: 100%;
     background:
         radial-gradient(ellipse at 30% 50%, rgba(59,130,246,0.06) 0%, transparent 60%),
         radial-gradient(ellipse at 70% 50%, rgba(139,92,246,0.08) 0%, transparent 60%);
@@ -602,16 +626,16 @@ a:hover {
     color: var(--primary-light);
     letter-spacing: 0.04em;
     text-transform: uppercase;
-    margin-bottom: var(--space-lg);
+    margin-bottom: var(--space-md);
 }
 
 .hero h1 {
-    font-size: clamp(2.25rem, 4vw, 3.5rem);
+    font-size: clamp(1.75rem, 3.5vw, 2.75rem);
     font-weight: 900;
     line-height: 1.1;
     letter-spacing: -0.03em;
     color: var(--text-primary);
-    margin-bottom: var(--space-md);
+    margin-bottom: var(--space-sm);
 }
 
 .hero h1 span {
@@ -622,19 +646,19 @@ a:hover {
 }
 
 .hero-subtitle {
-    font-size: clamp(1rem, 1.5vw, 1.25rem);
+    font-size: clamp(1rem, 1.5vw, 1.125rem);
     color: var(--text-secondary);
     font-weight: 400;
-    line-height: 1.65;
+    line-height: 1.6;
     max-width: 640px;
-    margin-bottom: var(--space-xl);
+    margin-bottom: var(--space-lg);
 }
 
 .hero-cta {
     display: flex;
     flex-wrap: wrap;
     gap: var(--space-sm);
-    margin-bottom: var(--space-2xl);
+    margin-bottom: var(--space-lg);
 }
 
 .btn-primary {
@@ -657,8 +681,13 @@ a:hover {
 .btn-primary:hover {
     background: var(--primary-dark);
     color: white;
-    transform: translateY(-2px);
     box-shadow: 0 0 0 1px rgba(59,130,246,0.4), var(--shadow-lg), var(--glow-primary);
+}
+
+@media (hover: hover) {
+    .btn-primary:hover {
+        transform: translateY(-2px);
+    }
 }
 
 .btn-ghost {
@@ -699,10 +728,17 @@ a:hover {
     flex-direction: column;
     justify-content: center;
     gap: 3px;
-    padding: var(--space-lg) var(--space-xl);
+    padding: var(--space-md) var(--space-lg);
     border-right: 1px solid var(--border);
     border-bottom: 1px solid var(--border);
     text-align: center;
+    transition: background-color var(--t-fast);
+}
+
+@media (hover: hover) {
+    .hero-stat:hover {
+        background: var(--bg-hover);
+    }
 }
 
 /* Remove right border on last column of each row (3-col grid) */
@@ -716,7 +752,7 @@ a:hover {
 }
 
 .hero-stat-value {
-    font-size: 1.625rem;
+    font-size: 1.375rem;
     font-weight: 900;
     color: var(--text-primary);
     letter-spacing: -0.02em;
@@ -745,8 +781,8 @@ a:hover {
     z-index: 500;
     height: var(--header-h);
     background: var(--bg-topbar);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
     border-bottom: 1px solid var(--border);
     align-items: center;
 
@@ -754,6 +790,17 @@ a:hover {
     padding: 0 max(var(--space-md), env(safe-area-inset-right))
                0 max(var(--space-md), env(safe-area-inset-left));
     gap: var(--space-sm);
+}
+
+.topbar::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--primary), var(--secondary), var(--accent));
+    opacity: 0.6;
 }
 
 .topbar-brand {
@@ -794,13 +841,14 @@ a:hover {
     /* Safe-area insets prevent tab labels from clipping behind the notch/island in landscape */
     padding: 0 max(var(--space-md), env(safe-area-inset-right))
                0 max(var(--space-md), env(safe-area-inset-left));
-    gap: 0;
+    gap: 2px;
     position: sticky;
 
     /* Sits immediately below the topbar */
     top: var(--header-h);
     z-index: 400;
-
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
 }
 
 /* Only show the right-edge fade when there are off-screen tabs to the right */
@@ -814,10 +862,10 @@ a:hover {
 .mobile-tab {
     display: flex;
     align-items: center;
-    gap: 6px;
+    gap: 5px;
 
     /* Min 44px tall for iOS touch targets */
-    padding: 0 var(--space-md);
+    padding: 0 var(--space-sm);
     min-height: 44px;
     border: none;
     background: transparent;
@@ -826,20 +874,28 @@ a:hover {
     font-weight: 600;
     cursor: pointer;
     white-space: nowrap;
-    border-bottom: 3px solid transparent;
-    transition: color var(--t-fast), background-color var(--t-fast), border-color var(--t-fast), opacity var(--t-fast), transform var(--t-fast), box-shadow var(--t-fast);
+    border-bottom: 2px solid transparent;
+    border-radius: var(--radius-sm) var(--radius-sm) 0 0;
+    transition: color var(--t-fast), background-color var(--t-fast), border-color var(--t-fast);
     flex-shrink: 0;
+    position: relative;
 
     /* touch-action: manipulation inherited from global button rule */
 }
 
 .mobile-tab:hover {
     color: var(--text-secondary);
+    background: var(--bg-subtle);
+}
+
+.mobile-tab:active {
+    background: var(--primary-glow);
 }
 
 .mobile-tab.active {
     color: var(--primary-light);
     border-bottom-color: var(--primary);
+    background: var(--primary-glow);
 }
 
 /* ============================================================
@@ -917,6 +973,8 @@ a:hover {
     position: relative;
     overflow: hidden;
     transition: border-color var(--t-base), box-shadow var(--t-base), transform var(--t-base);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
 }
 
 .card::before {
@@ -935,7 +993,12 @@ a:hover {
 .card:focus-within:has(:focus-visible) {
     border-color: var(--border-hover);
     box-shadow: var(--shadow-lg);
-    transform: translateY(-2px);
+}
+
+@media (hover: hover) {
+    .card:hover {
+        transform: translateY(-2px);
+    }
 }
 
 .card:hover::before,
@@ -1101,7 +1164,12 @@ a:hover {
     border-color: var(--border-hover);
     background: var(--bg-hover);
     box-shadow: var(--shadow-md);
-    transform: translateY(-2px);
+}
+
+@media (hover: hover) {
+    .feature-card:hover {
+        transform: translateY(-2px);
+    }
 }
 
 .feature-card:hover::after {
@@ -1145,8 +1213,20 @@ a:hover {
 
 .timeline-item {
     position: relative;
-    margin-bottom: var(--space-2xl);
-    padding-left: var(--space-lg);
+    margin-bottom: var(--space-xl);
+    padding: var(--space-lg);
+    padding-left: var(--space-xl);
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    transition: border-color var(--t-base), box-shadow var(--t-base);
+}
+
+@media (hover: hover) {
+    .timeline-item:hover {
+        border-color: var(--border-hover);
+        box-shadow: var(--shadow-md);
+    }
 }
 
 .timeline-item::before {
@@ -1376,6 +1456,10 @@ tr:last-child td {
     background: var(--bg-surface);
 }
 
+.case-header:active {
+    background: var(--primary-glow);
+}
+
 .case-header:focus-visible {
     outline: 2px solid var(--primary);
     outline-offset: -2px;
@@ -1522,6 +1606,8 @@ tr:last-child td {
     border-radius: var(--radius-lg);
     background: var(--before-bg);
     border: 1px solid var(--before-border);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
 }
 
 .after-card {
@@ -1529,6 +1615,8 @@ tr:last-child td {
     border-radius: var(--radius-lg);
     background: var(--after-bg);
     border: 1px solid var(--after-border);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
 }
 
 .before-label, .after-label {
@@ -1589,10 +1677,11 @@ tr:last-child td {
     border: 1px solid rgba(16,185,129,0.3);
     color: var(--success);
     border-radius: var(--radius-lg);
-    font-size: 1.25rem;
+    font-size: clamp(1rem, 2.5vw, 1.25rem);
     font-weight: 900;
     margin: var(--space-lg) 0;
     letter-spacing: -0.01em;
+    word-break: break-word;
 }
 
 .diagram-placeholder {
@@ -1721,6 +1810,11 @@ tr:last-child td {
     border-color: rgba(59,130,246,0.25);
 }
 
+.quick-link:active {
+    background: rgba(59,130,246,0.2);
+    border-color: rgba(59,130,246,0.4);
+}
+
 .quick-link-icon {
     font-size: 0.875rem;
     flex-shrink: 0;
@@ -1790,6 +1884,10 @@ footer {
     background: var(--primary-glow);
     border-color: rgba(59,130,246,0.3);
     color: var(--primary-light);
+}
+
+.footer-link:active {
+    background: rgba(59,130,246,0.2);
 }
 
 .footer-copy {
@@ -1937,6 +2035,16 @@ footer {
     /* Tables on mobile: smaller cell padding */
     th, td {
         padding: var(--space-sm) var(--space-md);
+    }
+
+    /* Highlight box: tighter padding on mobile */
+    .highlight-box {
+        padding: var(--space-lg);
+    }
+
+    .highlight-grid {
+        grid-template-columns: 1fr;
+        gap: var(--space-sm);
     }
 
     /* Timeline: tighter left spacing on mobile */
